@@ -19,7 +19,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative -mt-[72px] overflow-hidden bg-[#020617] pb-24 pt-[92px] text-white md:-mt-[76px] md:pb-28 md:pt-[104px]">
+        <section className="relative -mt-[72px] overflow-hidden bg-[#020617] pb-24 pt-[92px] text-white md:-mt-[76px] md:pb-32 md:pt-[104px]">
             {/* Mouse glow */}
             <div
                 className="pointer-events-none absolute inset-0 z-0 transition-transform duration-200"
