@@ -1,29 +1,59 @@
+import { useEffect, useState } from "react";
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import heroImg from "../../assets/hero.png";
 
 export default function Hero() {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            const { innerWidth, innerHeight } = window;
+            const x = (e.clientX / innerWidth - 0.5) * 2;
+            const y = (e.clientY / innerHeight - 0.5) * 2;
+            setMousePosition({ x, y });
+        };
+
+        window.addEventListener("mousemove", handleMouseMove);
+        return () => window.removeEventListener("mousemove", handleMouseMove);
+    }, []);
+
     return (
-        <section className="relative overflow-hidden bg-[#020617] pb-24 pt-10 text-white md:pb-32 md:pt-12">
-            {/* Background glow blobs */}
-            <div className="absolute -left-45 -top-45 h-105 w-105 rounded-full bg-fuchsia-600/20 blur-[120px]" />
-            <div className="absolute -right-35 top-20 h-80 w-[320px] rounded-full bg-sky-500/20 blur-[120px]" />
-            <div className="absolute -bottom-45 left-[35%] h-90 w-90 rounded-full bg-violet-500/10 blur-[120px]" />
+        <section className="relative -mt-[72px] overflow-hidden bg-[#020617] pb-24 pt-[92px] text-white md:-mt-[76px] md:pb-28 md:pt-[104px]">
+            {/* Mouse glow */}
+            <div
+                className="pointer-events-none absolute inset-0 z-0 transition-transform duration-200"
+                style={{
+                    background: `radial-gradient(500px circle at ${50 + mousePosition.x * 20}% ${28 + mousePosition.y * 20
+                        }%, rgba(59,130,246,0.16), transparent 40%),
+          radial-gradient(400px circle at ${20 + mousePosition.x * 10}% ${18 + mousePosition.y * 10
+                        }%, rgba(168,85,247,0.14), transparent 35%)`,
+                }}
+            />
 
-            {/* Grid overlay */}
-            <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-size-[42px_42px]" />
+            {/* Blurred background blobs */}
+            <div className="absolute -left-32 top-0 h-[320px] w-[320px] animate-pulse rounded-full bg-fuchsia-600/20 blur-[120px]" />
+            <div className="absolute right-0 top-24 h-[280px] w-[280px] animate-pulse rounded-full bg-sky-500/20 blur-[120px]" />
+            <div className="absolute bottom-10 left-1/2 h-[240px] w-[240px] -translate-x-1/2 animate-pulse rounded-full bg-violet-500/10 blur-[120px]" />
 
-            {/* Extra radial light */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.18),transparent_28%),radial-gradient(circle_at_right,rgba(59,130,246,0.14),transparent_22%)]" />
+            {/* Subtle grid */}
+            <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:48px_48px]" />
+
+            {/* Floating shapes */}
+            <div className="absolute left-[8%] top-[20%] h-4 w-4 animate-[floatY_5s_ease-in-out_infinite] rounded-full bg-sky-400/70" />
+            <div className="absolute right-[12%] top-[30%] h-6 w-6 animate-[floatY_6s_ease-in-out_infinite] rounded-full bg-violet-400/60" />
+            <div className="absolute left-[18%] bottom-[22%] h-5 w-5 animate-[floatY_7s_ease-in-out_infinite] rounded-full bg-fuchsia-400/50" />
+            <div className="absolute right-[24%] bottom-[18%] h-3 w-3 animate-[floatY_4.5s_ease-in-out_infinite] rounded-full bg-cyan-300/70" />
 
             <Container>
-                <div className="relative z-10 grid items-center gap-14 md:grid-cols-2">
-                    <div>
-                        <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 backdrop-blur">
+                <div className="relative z-10 grid items-center gap-12 md:grid-cols-2 lg:gap-14">
+                    {/* Left Content */}
+                    <div className="pt-6 md:pt-10">
+                        <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
                             Smart SaaS Solutions For Modern Business
                         </span>
 
-                        <h1 className="mt-6 text-[42px] font-bold leading-tight md:text-[64px]">
+                        <h1 className="mt-6 text-[40px] font-bold leading-tight md:text-[56px] lg:text-[64px]">
                             Build better
                             <br />
                             digital systems
@@ -31,9 +61,10 @@ export default function Hero() {
                             with <span className="text-violet-400">confidence.</span>
                         </h1>
 
-                        <p className="mt-6 max-w-140 text-lg leading-8 text-slate-300">
-                            Powerful IT solutions for growing brands. Launch faster, automate
-                            smarter, and scale your workflow with a modern SaaS experience.
+                        <p className="mt-6 max-w-[560px] text-base leading-8 text-slate-300 md:text-lg">
+                            Powerful IT solutions for growing brands. Launch faster,
+                            automate smarter, and scale your workflow with a modern SaaS
+                            experience.
                         </p>
 
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -44,37 +75,58 @@ export default function Hero() {
                             </button>
                         </div>
 
-                        <div className="mt-10 flex flex-wrap items-center gap-8 text-sm text-slate-300">
+                        <div className="mt-12 flex flex-wrap gap-8 text-sm text-slate-300 md:gap-10">
                             <div>
                                 <p className="text-2xl font-bold text-white">15k+</p>
                                 <p>Active Users</p>
                             </div>
+
                             <div>
                                 <p className="text-2xl font-bold text-white">99.9%</p>
-                                <p>Uptime Guarantee</p>
+                                <p>Uptime</p>
                             </div>
+
                             <div>
                                 <p className="text-2xl font-bold text-white">24/7</p>
-                                <p>Premium Support</p>
+                                <p>Support</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="relative flex justify-center">
-                        <div className="absolute h-105 w-105 rounded-full bg-violet-500/20 blur-[100px]" />
+                    {/* Right Illustration */}
+                    <div className="relative flex justify-center md:justify-end">
+                        <div className="absolute h-[420px] w-[420px] rounded-full bg-violet-500/20 blur-[120px]" />
 
                         <img
                             src={heroImg}
                             alt="Hero"
-                            className="relative z-10 w-full max-w-[720px] animate-[float_4s_ease-in-out_infinite] drop-shadow-[0_25px_80px_rgba(0,0,0,0.45)]"
+                            className="relative z-10 w-full max-w-[640px] drop-shadow-[0_25px_80px_rgba(0,0,0,0.45)] lg:max-w-[720px]"
+                            style={{
+                                transform: `translate(${mousePosition.x * 12}px, ${mousePosition.y * 12}px)`,
+                                transition: "transform 0.2s ease-out",
+                                animation: "floatImage 5s ease-in-out infinite",
+                            }}
                         />
 
-                        <div className="absolute left-0 top-16 z-20 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white shadow-xl backdrop-blur-md lg:block">
+                        {/* Floating cards */}
+                        <div
+                            className="absolute left-0 top-16 z-20 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white shadow-xl backdrop-blur-md lg:block"
+                            style={{
+                                transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 8}px)`,
+                                transition: "transform 0.2s ease-out",
+                            }}
+                        >
                             <p className="font-semibold">+28% Growth</p>
                             <p className="text-xs text-slate-300">This month analytics</p>
                         </div>
 
-                        <div className="absolute bottom-16 right-4 z-20 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white shadow-xl backdrop-blur-md lg:block">
+                        <div
+                            className="absolute bottom-16 right-4 z-20 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white shadow-xl backdrop-blur-md lg:block"
+                            style={{
+                                transform: `translate(${mousePosition.x * -8}px, ${mousePosition.y * -8}px)`,
+                                transition: "transform 0.2s ease-out",
+                            }}
+                        >
                             <p className="font-semibold">Cloud Sync</p>
                             <p className="text-xs text-slate-300">Secure and real-time</p>
                         </div>
@@ -82,27 +134,25 @@ export default function Hero() {
                 </div>
             </Container>
 
-            {/* Bottom curve */}
+            {/* Bottom wave */}
             <div className="absolute bottom-0 left-0 w-full leading-none">
-                <svg
-                    viewBox="0 0 1440 200"
-                    className="h-auto w-full"
-                    fill="white"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path d="M0,96L80,106.7C160,117,320,139,480,149.3C640,160,800,160,960,138.7C1120,117,1280,75,1360,53.3L1440,32V200H0Z" />
+                <svg viewBox="0 0 1440 200" className="w-full" fill="white">
+                    <path d="M0,120L80,110C160,100,320,80,480,90C640,100,800,140,960,150C1120,160,1280,140,1360,130L1440,120V200H0Z" />
                 </svg>
             </div>
 
             <style>
                 {`
-          @keyframes float {
-            0%, 100% {
-              transform: translateY(0px);
-            }
-            50% {
-              transform: translateY(-14px);
-            }
+          @keyframes floatImage {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+          }
+
+          @keyframes floatY {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-14px); }
+            100% { transform: translateY(0px); }
           }
         `}
             </style>

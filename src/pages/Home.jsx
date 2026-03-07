@@ -4,6 +4,8 @@ export default function Home() {
     return (
         <>
             <Hero />
+
+            {/* Trusted brands / stats / features / testimonials / CTA sections will come next */}
         </>
     );
 }
