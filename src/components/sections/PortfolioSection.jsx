@@ -22,6 +22,12 @@ const projects = [
 export default function PortfolioSection() {
     return (
         <section className="relative overflow-hidden bg-white py-24 md:py-28">
+            {/* top curve */}
+            <div className="absolute top-0 left-0 w-full leading-none">
+                <svg viewBox="0 0 1440 220" className="w-full" fill="#020617">
+                    <path d="M0,80L80,90C160,100,320,120,480,118C640,116,800,92,960,82C1120,72,1280,76,1360,80L1440,84V0H0Z" />
+                </svg>
+            </div>
 
             {/* grid background */}
             <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#020617_1px,transparent_1px),linear-gradient(to_bottom,#020617_1px,transparent_1px)] bg-[size:48px_48px]" />
@@ -33,9 +39,7 @@ export default function PortfolioSection() {
             </div>
 
             <Container>
-                <div className="relative z-10">
-
-                    {/* heading */}
+                <div className="relative z-10 pt-20 md:pt-24">
                     <div className="mx-auto max-w-3xl text-center">
                         <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-600">
                             Featured Projects
@@ -50,33 +54,23 @@ export default function PortfolioSection() {
                         </p>
                     </div>
 
-                    {/* projects */}
                     <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
                         {projects.map((project, index) => (
                             <div
                                 key={index}
                                 className="group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-3 hover:shadow-2xl"
                             >
-
-                                {/* image */}
                                 <div className="relative aspect-[16/11] overflow-hidden">
                                     <img
                                         src={project.image}
                                         alt={project.title}
                                         className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                                     />
-
-                                    {/* overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70" />
                                 </div>
 
-                                {/* content */}
                                 <div className="absolute bottom-0 left-0 w-full p-6 text-white transition duration-500 group-hover:translate-y-[-4px]">
-
-                                    <p className="text-sm text-white/80">
-                                        {project.category}
-                                    </p>
+                                    <p className="text-sm text-white/80">{project.category}</p>
 
                                     <h3 className="mt-1 text-xl font-semibold">
                                         {project.title}
@@ -85,19 +79,14 @@ export default function PortfolioSection() {
                                     <button className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-violet-300 transition hover:text-violet-200">
                                         View Case Study →
                                     </button>
-
                                 </div>
-
                             </div>
                         ))}
-
                     </div>
 
-                    {/* CTA */}
                     <div className="mt-16 text-center">
                         <Button>View Full Portfolio</Button>
                     </div>
-
                 </div>
             </Container>
         </section>

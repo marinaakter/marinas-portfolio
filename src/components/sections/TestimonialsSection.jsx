@@ -43,7 +43,6 @@ export default function TestimonialsSection() {
 
             <Container>
                 <div className="relative z-10 pt-20 md:pt-24">
-                    {/* heading */}
                     <div className="mx-auto max-w-3xl text-center">
                         <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
                             Client testimonials
@@ -60,7 +59,6 @@ export default function TestimonialsSection() {
                         </p>
                     </div>
 
-                    {/* testimonial cards */}
                     <div className="mt-16 grid gap-6 lg:grid-cols-3">
                         {testimonials.map((item, index) => (
                             <div
@@ -73,7 +71,6 @@ export default function TestimonialsSection() {
                                 </div>
 
                                 <div className="relative z-10">
-                                    {/* stars */}
                                     <div className="flex items-center gap-1 text-violet-300">
                                         {Array.from({ length: 5 }).map((_, starIndex) => (
                                             <svg
@@ -102,7 +99,6 @@ export default function TestimonialsSection() {
                         ))}
                     </div>
 
-                    {/* bottom stats strip */}
                     <div className="mt-14 rounded-[28px] border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.03] p-6 backdrop-blur-xl md:p-8">
                         <div className="grid gap-6 text-center md:grid-cols-3 md:text-left">
                             <div>

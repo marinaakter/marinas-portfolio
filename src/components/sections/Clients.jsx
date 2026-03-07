@@ -12,7 +12,7 @@ export default function Clients() {
     const marqueeClients = [...clients, ...clients];
 
     return (
-        <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-20 md:py-24">
+        <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 py-20 md:py-18">
             {/* Premium grid background */}
             <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#020617_1px,transparent_1px),linear-gradient(to_bottom,#020617_1px,transparent_1px)] bg-[size:48px_48px]" />
 
