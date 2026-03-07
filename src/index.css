@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+:root {
+  --color-primary: #1693d1;
+  --color-dark: #0f172a;
+  --color-light: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #fff;
+  color: #0f172a;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container-custom {
+  width: min(1200px, calc(100% - 2rem));
+  margin-inline: auto;
+}
