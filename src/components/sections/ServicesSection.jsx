@@ -1,5 +1,5 @@
-import Button from "../ui/Button";
 import Container from "../ui/Container";
+import Button from "../ui/Button";
 
 const services = [
     {
@@ -42,11 +42,18 @@ const services = [
 
 export default function ServicesSection() {
     return (
-        <section className="relative overflow-hidden bg-[#020617] py-20 text-white md:py-18">
+        <section className="relative overflow-hidden bg-[#020617] py-24 text-white md:py-32">
+            {/* top curve for transition from light section */}
+            <div className="absolute top-0 left-0 w-full leading-none">
+                <svg viewBox="0 0 1440 220" className="w-full" fill="#f8fafc">
+                    <path d="M0,80L80,90C160,100,320,120,480,118C640,116,800,92,960,82C1120,72,1280,76,1360,80L1440,84V0H0Z" />
+                </svg>
+            </div>
+
             {/* background glow */}
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[-120px] top-16 h-72 w-72 rounded-full bg-sky-500/15 blur-[120px]" />
-                <div className="absolute right-[-120px] top-28 h-80 w-80 rounded-full bg-violet-500/15 blur-[120px]" />
+                <div className="absolute left-[-120px] top-32 h-72 w-72 rounded-full bg-sky-500/15 blur-[120px]" />
+                <div className="absolute right-[-120px] top-40 h-80 w-80 rounded-full bg-violet-500/15 blur-[120px]" />
                 <div className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-fuchsia-500/10 blur-[120px]" />
             </div>
 
@@ -54,7 +61,7 @@ export default function ServicesSection() {
             <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:48px_48px]" />
 
             <Container>
-                <div className="relative z-10">
+                <div className="relative z-10 pt-20 md:pt-24">
                     {/* heading */}
                     <div className="mx-auto max-w-3xl text-center">
                         <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
@@ -190,7 +197,7 @@ export default function ServicesSection() {
                                 <h3 className="mt-3 text-2xl font-bold text-white md:text-3xl">
                                     Premium execution with strategy-first thinking
                                 </h3>
-                                <p className="mt-3 text-slate-300 leading-7">
+                                <p className="mt-3 leading-7 text-slate-300">
                                     We do more than build pretty interfaces. We create digital
                                     experiences that connect business goals with measurable results.
                                 </p>

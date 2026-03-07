@@ -1,6 +1,9 @@
 import Hero from "../components/layout/Hero";
 import Clients from "../components/sections/Clients";
 import ServicesSection from "../components/sections/ServicesSection";
+import PortfolioSection from "../components/sections/PortfolioSection";
+import TestimonialsSection from "../components/sections/TestimonialsSection";
+import CTASection from "../components/sections/CTASection";
 
 export default function Home() {
     return (
@@ -8,7 +11,10 @@ export default function Home() {
             <Hero />
             <Clients />
             <ServicesSection />
-            
+            <PortfolioSection />
+            <TestimonialsSection />
+            <CTASection/>
+
             {/* Trusted brands / stats / features / testimonials / CTA sections will come next */}
         </>
     );
