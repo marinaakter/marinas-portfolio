@@ -42,7 +42,7 @@ const services = [
 
 export default function ServicesSection() {
     return (
-        <section className="relative overflow-hidden bg-[#020617] py-20 text-white md:py-28">
+        <section className="relative overflow-hidden bg-[#020617] py-20 text-white md:py-18">
             {/* background glow */}
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-[-120px] top-16 h-72 w-72 rounded-full bg-sky-500/15 blur-[120px]" />
