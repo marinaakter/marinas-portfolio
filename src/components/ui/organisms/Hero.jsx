@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Container from "../atoms/Container";
 import Button from "../atoms/Button";
-import heroImg from "../../../assets/Hero.png";
+import heroImg from "../../../assets/myHero.png";
 import mock from "../../../data/mock";
 
 export default function Hero() {
