@@ -1,4 +1,4 @@
-import { cn } from "../../utils/cn";
+import { cn } from "../../../utils/cn";
 
 export default function Button({
     children,
@@ -22,17 +22,14 @@ export default function Button({
             )}
             {...props}
         >
-            {/* Shine effect */}
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-all duration-700 group-hover:translate-x-full group-hover:opacity-100" />
 
-            {/* Loading spinner */}
             {loading && (
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
             )}
 
             {!loading && children}
 
-            {/* Optional icon */}
             {!loading && icon && (
                 <span className="transition-transform group-hover:translate-x-1">
                     {icon}

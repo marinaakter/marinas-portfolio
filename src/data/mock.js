@@ -1,21 +1,21 @@
 const mock = {
   brand: {
-    name: "Your IT Solution",
-    shortName: "Your",
-    highlightName: "IT SOLUTION",
-    logoAlt: "logo",
+    name: "Marina Akter",
+    shortName: "Marina",
+    highlightName: "PORTFOLIO",
+    logoAlt: "Marina Akter logo",
     description:
-      "Modern SaaS solutions to help businesses launch faster, automate smarter and scale their digital products.",
-    copyright: "© 2026 Your IT Solution. All rights reserved.",
+      "I build modern, high-converting websites and digital experiences with a focus on clean design, performance, and user experience.",
+    copyright: "© 2026 Marina Akter. All rights reserved.",
   },
 
   navigation: {
     navbar: [
       { name: "Home", path: "/" },
       { name: "Services", path: "/service" },
-      { name: "Pricing", path: "/pricing" },
-      { name: "Testimonials", path: "/testimonials" },
-      { name: "Blog", path: "/blog" },
+      { name: "Portfolio", path: "/portfolio" },
+      { name: "About", path: "/about" },
+      { name: "Contact", path: "/contact" },
     ],
     footerProduct: [
       { name: "Home", path: "/" },
@@ -44,39 +44,39 @@ const mock = {
   ],
 
   hero: {
-    badge: "Smart SaaS Solutions For Modern Business",
+    badge: "Personal Portfolio For Modern Digital Work",
     title: {
-      line1: "Build better",
-      line2: "digital systems",
-      line3: "with confidence.",
-      highlight: "confidence.",
+      line1: "I build",
+      line2: "clean digital",
+      prefix: "experiences with",
+      highlight: "purpose.",
     },
     description:
-      "Powerful IT solutions for growing brands. Launch faster, automate smarter, and scale your workflow with a modern SaaS experience.",
-    primaryButton: "Try A Live Demo",
-    secondaryButton: "See How It Works",
+      "I help brands, founders, and businesses create modern websites and products that look premium, perform smoothly, and support real growth.",
+    primaryButton: "View My Work",
+    secondaryButton: "Let’s Talk",
     stats: [
-      { value: "15k+", label: "Active Users" },
-      { value: "99.9%", label: "Uptime" },
-      { value: "24/7", label: "Support" },
+      { value: "20+", label: "Projects Completed" },
+      { value: "3+", label: "Years Experience" },
+      { value: "100%", label: "Client Focused" },
     ],
     floatingCards: [
       {
-        title: "+28% Growth",
-        subtitle: "This month analytics",
+        title: "Creative UI",
+        subtitle: "Modern and user-focused",
       },
       {
-        title: "Cloud Sync",
-        subtitle: "Secure and real-time",
+        title: "Fast Delivery",
+        subtitle: "Reliable workflow",
       },
     ],
   },
 
   clients: {
-    badge: "Trusted by global brands",
-    title: "Companies that trust our technology",
+    badge: "Worked with amazing brands",
+    title: "Helping businesses build a stronger online presence",
     description:
-      "Helping businesses scale with powerful SaaS solutions and modern digital systems.",
+      "I collaborate with startups, agencies, and growing businesses to create polished digital experiences.",
     logos: [
       { name: "Google", logo: "/logos/logo1.png" },
       { name: "Meta", logo: "/logos/logo2.png" },
@@ -85,192 +85,331 @@ const mock = {
       { name: "Canva", logo: "/logos/logo5.png" },
     ],
     stats: [
-      { value: "120+", label: "Projects delivered" },
-      { value: "50+", label: "Happy business clients" },
-      { value: "98%", label: "Client satisfaction rate" },
+      { value: "20+", label: "Projects delivered" },
+      { value: "10+", label: "Happy clients" },
+      { value: "95%", label: "Repeat collaboration" },
     ],
   },
 
   homeServices: {
-    badge: "Premium digital services",
-    title: "Solutions designed for ambitious brands",
-    highlight: "ambitious brands",
+    badge: "What I do",
+    title: "Services tailored for",
+    highlight: "modern brands",
     description:
-      "We blend strategy, design, and technology to craft digital products that look exceptional, perform beautifully, and scale with confidence.",
+      "I combine strategy, design, and development to create digital products that are visually strong and built for results.",
     featured: {
       eyebrow: "Featured service",
-      title: "Custom product development for fast-moving businesses",
+      title: "Personalized website and product development",
       description:
-        "From premium websites to scalable SaaS products, we create tailored digital systems that combine strategy, beautiful design, and robust engineering.",
-      button: "Explore Services",
+        "From landing pages to full portfolio and business websites, I design and build digital experiences that are modern, responsive, and goal-driven.",
+      stats: [
+        { value: "20+", label: "Projects launched" },
+        { value: "3+", label: "Years experience" },
+      ],
+      button: "Start a Project",
     },
     items: [
       {
         number: "01",
-        title: "Web Development",
+        title: "Portfolio Websites",
         description:
-          "High-performance websites and platforms built for speed, scalability, and strong user engagement.",
+          "Premium portfolio websites that present your work clearly and professionally.",
       },
       {
         number: "02",
-        title: "UI/UX Design",
+        title: "Business Websites",
         description:
-          "Clean, conversion-focused interfaces designed to create seamless digital experiences and stronger brand trust.",
+          "Modern websites for agencies, brands, and service businesses with clean structure and strong presentation.",
       },
       {
         number: "03",
-        title: "Mobile App Solutions",
+        title: "UI/UX Design",
         description:
-          "Modern mobile experiences with smooth performance, intuitive journeys, and cross-platform flexibility.",
+          "User-focused interface design with attention to clarity, hierarchy, and overall experience.",
       },
       {
         number: "04",
-        title: "Cloud & Automation",
+        title: "Responsive Development",
         description:
-          "Secure cloud workflows, system integrations, and business automation to help teams move faster with less friction.",
+          "Pixel-clean responsive builds that work smoothly across mobile, tablet, and desktop.",
       },
       {
         number: "05",
-        title: "SEO & Growth Strategy",
+        title: "Landing Pages",
         description:
-          "Data-driven optimization and digital growth strategies that increase visibility, traffic, and qualified leads.",
+          "High-converting landing pages designed to communicate value and encourage action.",
       },
       {
         number: "06",
-        title: "Product Strategy",
+        title: "Website Customization",
         description:
-          "From idea to launch, we shape digital products with the right balance of business goals, design thinking, and engineering.",
+          "Updating, refining, and improving existing websites without breaking the original structure.",
       },
     ],
+    bottomStrip: {
+      eyebrow: "Why work with me",
+      title: "Clean design, clear communication, solid execution",
+      description:
+        "I focus on building websites that feel premium, work smoothly, and support your professional goals.",
+      items: [
+        { title: "Modern", label: "Design" },
+        { title: "Clean", label: "Code" },
+        { title: "Reliable", label: "Delivery" },
+      ],
+    },
   },
 
   portfolioSection: {
     badge: "Featured Projects",
-    title: "Work that drives real business results",
+    title: "Selected work and recent builds",
     description:
-      "Explore some of our recent digital products built for ambitious companies.",
+      "A few projects that reflect my design style, development approach, and focus on quality.",
     button: "View Full Portfolio",
-    caseStudyButton: "View Case Study",
+    caseStudyButton: "View Details",
     projects: [
       {
-        title: "Fintech SaaS Dashboard",
-        category: "Web Application",
+        title: "Agency Website Redesign",
+        category: "Portfolio Website",
         image: "/projects/project1.png",
       },
       {
-        title: "E-commerce Platform",
-        category: "Full Stack Development",
+        title: "Business Landing Page",
+        category: "Frontend Development",
         image: "/projects/project2.png",
       },
       {
-        title: "AI Analytics Tool",
-        category: "Product Design",
+        title: "SaaS Dashboard UI",
+        category: "UI/UX Design",
         image: "/projects/project3.png",
       },
     ],
   },
 
   testimonialsSection: {
-    badge: "Client testimonials",
-    title: "Trusted by teams that expect premium results",
-    highlight: "premium results",
+    badge: "Client feedback",
+    title: "Trusted by clients who value",
+    highlight: "quality work",
     description:
-      "We partner with ambitious businesses to deliver modern digital products that create impact, improve experience, and drive growth.",
+      "I work closely with clients to deliver websites and digital experiences that feel polished, practical, and professional.",
     items: [
       {
         name: "Sarah Mitchell",
-        role: "Marketing Director, NovaEdge",
+        role: "Marketing Director",
         review:
-          "Their team transformed our platform into a modern, conversion-focused experience. The process was smooth, strategic, and incredibly professional from start to finish.",
+          "The website looked modern, worked perfectly, and matched our brand much better than before. Communication was smooth throughout the project.",
       },
       {
         name: "James Carter",
-        role: "Founder, BrightLayer",
+        role: "Startup Founder",
         review:
-          "We needed a partner who understood both design and business. They delivered a product that not only looked premium but also improved engagement and lead quality.",
+          "Very professional work. The final result was clean, responsive, and much stronger than our previous version.",
       },
       {
         name: "Ariana Brooks",
-        role: "Product Manager, CloudSync",
+        role: "Product Manager",
         review:
-          "From planning to launch, everything felt intentional and polished. Communication was excellent, timelines were respected, and the final result exceeded expectations.",
+          "Great design sense and strong execution. Everything felt organized, polished, and delivered with care.",
       },
     ],
     stats: [
-      { value: "98%", label: "Client satisfaction rate" },
-      { value: "50+", label: "Long-term partnerships" },
-      { value: "120+", label: "Projects successfully launched" },
+      { value: "95%", label: "Client satisfaction" },
+      { value: "10+", label: "Long-term clients" },
+      { value: "20+", label: "Completed projects" },
     ],
   },
 
   ctaSection: {
-    badge: "Let’s build something exceptional",
-    title: "Ready to turn your ideas into a premium digital product?",
-    highlight: "premium digital product?",
+    badge: "Let’s work together",
+    title: "Need a website that feels",
+    highlight: "modern and professional?",
     description:
-      "We help ambitious brands design, build, and launch modern digital experiences that perform beautifully and scale with confidence.",
+      "I help individuals, agencies, and businesses build strong digital experiences with clean design and solid frontend development.",
     primaryButton: "Start Your Project",
-    secondaryButton: "Book A Free Call",
+    secondaryButton: "Contact Me",
     cards: [
       {
-        label: "Project timeline",
-        title: "2–6 Weeks",
+        label: "Typical timeline",
+        title: "1–4 Weeks",
         description:
-          "Fast and focused delivery for modern websites, platforms, and digital products.",
+          "Fast delivery for portfolio sites, landing pages, and business websites.",
       },
       {
-        label: "Collaboration",
-        title: "Strategy First",
+        label: "Work style",
+        title: "Detail Focused",
         description:
-          "Clear communication, premium execution, and a process built around results.",
+          "Clear communication, thoughtful execution, and a strong focus on quality.",
       },
     ],
   },
 
   footer: {
-    productTitle: "Product",
-    companyTitle: "Company",
-    newsletterTitle: "Join our newsletter",
+    productTitle: "Pages",
+    companyTitle: "Information",
+    newsletterTitle: "Stay updated",
     newsletterDescription:
-      "Get product updates and SaaS growth tips directly in your inbox.",
+      "Get occasional updates, design insights, and project news.",
     newsletterPlaceholder: "Enter email",
     newsletterButton: "Join",
   },
 
   aboutPage: {
-    title: "About Page",
+    title: "About Me",
   },
 
   caseStudyPage: {
-    text: "This iAppRoutes.",
-  },
-
-  contactPage: {
-    title: "",
+    text: "Case study page content goes here.",
   },
 
   notFoundPage: {
     title: "404 | Page not found",
   },
 
+  portfolioPage: {
+    hero: {
+      badge: "My portfolio",
+      title: "A collection of selected digital work",
+      description:
+        "Here are some of my featured projects, including portfolio websites, landing pages, and modern UI builds.",
+    },
+    filterTabs: ["All", "Portfolio", "Business", "UI/UX"],
+    items: [
+      {
+        title: "Personal Brand Portfolio",
+        category: "Portfolio",
+        image: "/projects/project1.png",
+        description:
+          "A modern personal portfolio focused on clean layout, visual hierarchy, and smooth responsiveness.",
+        tech: ["React", "Tailwind", "Vite"],
+        liveLink: "#",
+        githubLink: "#",
+      },
+      {
+        title: "Creative Agency Website",
+        category: "Business",
+        image: "/projects/project2.png",
+        description:
+          "A premium agency website with strong visual presentation and section-based storytelling.",
+        tech: ["React", "Tailwind", "Framer Motion"],
+        liveLink: "#",
+        githubLink: "#",
+      },
+      {
+        title: "SaaS Dashboard Concept",
+        category: "UI/UX",
+        image: "/projects/project3.png",
+        description:
+          "A dashboard-focused interface concept with modern spacing, cards, and clear content structure.",
+        tech: ["React", "UI Design", "Responsive"],
+        liveLink: "#",
+        githubLink: "#",
+      },
+      {
+        title: "Service Business Landing Page",
+        category: "Business",
+        image: "/projects/project1.png",
+        description:
+          "A conversion-focused landing page designed to highlight services, trust, and calls to action.",
+        tech: ["React", "Tailwind", "SEO-ready"],
+        liveLink: "#",
+        githubLink: "#",
+      },
+      {
+        title: "Designer Portfolio Website",
+        category: "Portfolio",
+        image: "/projects/project2.png",
+        description:
+          "A visually balanced portfolio layout made to showcase work samples and brand identity.",
+        tech: ["React", "Tailwind", "Responsive"],
+        liveLink: "#",
+        githubLink: "#",
+      },
+      {
+        title: "Product Showcase Interface",
+        category: "UI/UX",
+        image: "/projects/project3.png",
+        description:
+          "A clean product display interface designed with strong hierarchy and premium visual style.",
+        tech: ["UI Design", "Frontend", "Component-based"],
+        liveLink: "#",
+        githubLink: "#",
+      },
+    ],
+    cta: {
+      title: "Want something like this for your brand?",
+      description:
+        "I can help you design and build a modern website tailored to your goals.",
+      primaryButton: "Start a Project",
+      secondaryButton: "Contact Me",
+    },
+  },
+
+  contactPage: {
+    hero: {
+      badge: "Contact me",
+      title: "Let’s discuss your next website or design project",
+      description:
+        "Have a project idea, redesign request, or portfolio update in mind? Send me a message and I’ll get back to you.",
+    },
+    infoCards: [
+      {
+        title: "Email",
+        value: "marinaakter878@gmail.com",
+        href: "mailto:marinaakter878@gmail.com",
+      },
+      {
+        title: "Phone",
+        value: "+880 1325383588",
+        href: "tel:+8801325383588",
+      },
+      {
+        title: "Location",
+        value: "Dhaka, Bangladesh",
+        href: "#",
+      },
+    ],
+    form: {
+      title: "Send a message",
+      description:
+        "Fill out the form below with your project details and I’ll respond as soon as possible.",
+      fields: {
+        name: "Your name",
+        email: "Email address",
+        subject: "Project subject",
+        message: "Tell me about your project",
+      },
+      button: "Send Message",
+    },
+    availability: {
+      title: "Availability",
+      description:
+        "Available for portfolio websites, business websites, landing pages, frontend updates, and design-focused web projects.",
+      items: [
+        "Personal portfolio websites",
+        "Agency and business websites",
+        "Landing page design and development",
+        "UI updates and website customization",
+      ],
+    },
+  },
+
   servicesPage: {
     hero: {
-      badge: "Premium digital services",
-      title: "Services built for modern brands",
+      badge: "Services",
+      title: "Services built for",
       highlight: "modern brands",
       description:
-        "We design and build premium digital products that help ambitious businesses launch faster, operate smarter, and grow with confidence.",
+        "I design and build premium digital products that help ambitious businesses launch faster, operate smarter, and grow with confidence.",
       primaryButton: "Start Your Project",
       secondaryButton: "Book A Free Call",
       stats: [
-        { value: "120+", label: "Projects delivered" },
-        { value: "50+", label: "Business clients" },
-        { value: "98%", label: "Satisfaction rate" },
+        { value: "20+", label: "Projects delivered" },
+        { value: "10+", label: "Clients" },
+        { value: "95%", label: "Satisfaction rate" },
       ],
     },
 
     servicesIntro: {
-      badge: "What we do best",
+      badge: "What I do best",
       title: "Solutions crafted with strategy and execution",
       description:
         "Every service is designed to solve real business problems with a balance of design quality, technical performance, and measurable impact.",
@@ -279,98 +418,86 @@ const mock = {
     services: [
       {
         number: "01",
-        title: "Web Development",
+        title: "Portfolio Website Development",
         description:
-          "We build modern, high-performance websites and platforms focused on speed, scalability, and a polished user experience.",
-        points: ["Responsive UI", "Clean architecture", "Performance focused"],
+          "I build clean and polished portfolio websites that help professionals present their work effectively.",
+        points: ["Responsive UI", "Clean structure", "Modern design"],
       },
       {
         number: "02",
-        title: "UI/UX Design",
+        title: "Business Website Development",
         description:
-          "From wireframes to refined interfaces, we design intuitive digital experiences that feel premium and convert better.",
-        points: [
-          "User-first flows",
-          "Modern visual systems",
-          "Conversion-focused design",
-        ],
+          "Professional websites for businesses that need a strong digital presence and clear communication.",
+        points: ["Brand-focused layout", "Fast loading", "Scalable sections"],
       },
       {
         number: "03",
-        title: "Mobile App Solutions",
+        title: "UI/UX Design",
         description:
-          "We create smooth and scalable mobile experiences that help brands stay connected with users across devices.",
-        points: [
-          "Cross-platform thinking",
-          "Scalable product design",
-          "Smooth user journeys",
-        ],
+          "Modern interface design with a focus on user experience, clarity, and polished visual presentation.",
+        points: ["User-first design", "Visual hierarchy", "Clean layouts"],
       },
       {
         number: "04",
-        title: "Cloud & Automation",
+        title: "Responsive Frontend Development",
         description:
-          "We streamline operations with smart cloud integration and workflow automation built for modern business needs.",
-        points: [
-          "System integration",
-          "Workflow automation",
-          "Secure cloud solutions",
-        ],
+          "Mobile-friendly frontend builds that look great and work consistently across screen sizes.",
+        points: ["Cross-device support", "Clean code", "Smooth layout"],
       },
       {
         number: "05",
-        title: "SEO & Growth Strategy",
+        title: "Landing Page Design",
         description:
-          "We improve visibility, traffic, and conversion through data-driven digital growth planning and optimization.",
-        points: ["Technical SEO", "Growth strategy", "Content optimization"],
+          "Focused landing pages made to communicate value and improve conversion.",
+        points: ["Clear CTA", "Strong structure", "Visual impact"],
       },
       {
         number: "06",
-        title: "Product Strategy",
+        title: "Website Customization",
         description:
-          "We help shape ideas into scalable digital products with the right mix of strategy, design, and engineering.",
-        points: ["Roadmapping", "Feature planning", "Launch strategy"],
+          "Improve and update existing websites while respecting the original project structure and logic.",
+        points: ["Safe updates", "Existing code support", "Focused edits"],
       },
     ],
 
     process: {
-      badge: "Our process",
-      title: "A clear process that keeps projects moving",
-      highlight: "projects moving",
+      badge: "My process",
+      title: "A simple process that keeps",
+      highlight: "projects clear",
       description:
-        "We follow a refined process to ensure strategy, clarity, and premium execution at every stage of the project.",
+        "I follow a practical workflow that keeps the project organized from first idea to final delivery.",
       steps: [
         {
           number: "01",
-          title: "Discovery",
-          desc: "We understand your business goals, users, challenges, and opportunities before designing the right solution.",
+          title: "Discussion",
+          desc: "We talk about the project goals, style, audience, and what the website needs to achieve.",
         },
         {
           number: "02",
-          title: "Strategy",
-          desc: "We define the product direction, experience, architecture, and execution plan with a clear roadmap.",
+          title: "Planning",
+          desc: "I create a structure for the pages, sections, and design direction before development starts.",
         },
         {
           number: "03",
           title: "Design & Build",
-          desc: "We craft premium interfaces and build modern, scalable systems with performance and usability in mind.",
+          desc: "I design and develop the website with a focus on quality, responsiveness, and clean execution.",
         },
         {
           number: "04",
-          title: "Launch & Optimize",
-          desc: "After launch, we refine, improve, and optimize the product for long-term growth and measurable results.",
+          title: "Delivery",
+          desc: "After review and refinements, I deliver the finished website ready for launch or next steps.",
         },
       ],
     },
 
     cta: {
-      badge: "Ready to work together?",
-      title: "Let’s build a digital product your audience will remember",
+      badge: "Ready to start?",
+      title: "Let’s build a digital project your",
       highlight: "audience will remember",
       description:
-        "Whether you need a premium website, SaaS platform, or a full product strategy, we’re ready to help you move forward.",
+        "Whether you need a portfolio website, landing page, or business website, I’m ready to help.",
       primaryButton: "Start Your Project",
-      secondaryButton: "Contact Us",
+      secondaryButton: "Contact Me",
     },
   },
 };

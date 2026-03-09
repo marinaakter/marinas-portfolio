@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Container from "../ui/Container";
-import Button from "../ui/Button";
-import logo from "../../assets/myLogo.png";
+import Container from "../atoms/Container";
+import Button from "../atoms/Button";
+import mock from "../../../data/mock";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -13,13 +13,7 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const navItems = [
-        { name: "Home", path: "/" },
-        { name: "Services", path: "/service" },
-        { name: "Pricing", path: "/pricing" },
-        { name: "Testimonials", path: "/testimonials" },
-        { name: "Blog", path: "/blog" },
-    ];
+    const navItems = mock.navigation.navbar;
 
     return (
         <header
@@ -30,25 +24,19 @@ export default function Navbar() {
         >
             <Container>
                 <div className="flex h-[68px] items-center justify-between md:h-[72px]">
-                    {/* Logo */}
                     <Link to="/" className="flex items-center gap-3">
-                        <img
-                            src={logo}
-                            alt="logo"
-                            className="h-9 w-auto object-contain md:h-10"
-                        />
+                        
 
                         <div className="leading-none">
                             <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-white/95 md:text-[12px]">
-                                Your
+                                {mock.brand.shortName}
                             </p>
                             <p className="mt-1 text-[13px] font-bold tracking-[0.22em] text-sky-400 md:text-[14px]">
-                                IT SOLUTION
+                                {mock.brand.highlightName}
                             </p>
                         </div>
                     </Link>
 
-                    {/* Desktop Nav */}
                     <nav className="hidden items-center gap-1 lg:flex">
                         {navItems.map((item) => (
                             <NavLink
@@ -82,7 +70,6 @@ export default function Navbar() {
                         ))}
                     </nav>
 
-                    {/* CTA */}
                     <Button className="px-5 py-2.5 text-sm font-semibold md:px-6">
                         Start Free
                     </Button>

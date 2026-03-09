@@ -1,11 +1,11 @@
-import React from 'react'
+import mock from "../data/mock";
 
 const CaseStudy = () => {
   return (
     <div>
-      <p>This iAppRoutes.</p>
+      <p>{mock.caseStudyPage.text}</p>
     </div>
-  )
-}
+  );
+};
 
-export default CaseStudy
+export default CaseStudy;

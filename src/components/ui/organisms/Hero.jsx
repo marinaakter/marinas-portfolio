@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import Container from "../ui/Container";
-import Button from "../ui/Button";
-import heroImg from "../../assets/hero.png";
+import Container from "../atoms/Container";
+import Button from "../atoms/Button";
+import heroImg from "../../../assets/Hero.png";
+import mock from "../../../data/mock";
 
 export default function Hero() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -18,9 +19,10 @@ export default function Hero() {
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
+    const hero = mock.hero;
+
     return (
         <section className="relative -mt-[72px] overflow-hidden bg-[#020617] pb-24 pt-[92px] text-white md:-mt-[76px] md:pb-32 md:pt-[104px]">
-            {/* Mouse glow */}
             <div
                 className="pointer-events-none absolute inset-0 z-0 transition-transform duration-200"
                 style={{
@@ -31,15 +33,12 @@ export default function Hero() {
                 }}
             />
 
-            {/* Blurred background blobs */}
             <div className="absolute -left-32 top-0 h-[320px] w-[320px] animate-pulse rounded-full bg-fuchsia-600/20 blur-[120px]" />
             <div className="absolute right-0 top-24 h-[280px] w-[280px] animate-pulse rounded-full bg-sky-500/20 blur-[120px]" />
             <div className="absolute bottom-10 left-1/2 h-[240px] w-[240px] -translate-x-1/2 animate-pulse rounded-full bg-violet-500/10 blur-[120px]" />
 
-            {/* Subtle grid */}
             <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:48px_48px]" />
 
-            {/* Floating shapes */}
             <div className="absolute left-[8%] top-[20%] h-4 w-4 animate-[floatY_5s_ease-in-out_infinite] rounded-full bg-sky-400/70" />
             <div className="absolute right-[12%] top-[30%] h-6 w-6 animate-[floatY_6s_ease-in-out_infinite] rounded-full bg-violet-400/60" />
             <div className="absolute left-[18%] bottom-[22%] h-5 w-5 animate-[floatY_7s_ease-in-out_infinite] rounded-full bg-fuchsia-400/50" />
@@ -47,53 +46,42 @@ export default function Hero() {
 
             <Container>
                 <div className="relative z-10 grid items-center gap-12 md:grid-cols-2 lg:gap-14">
-                    {/* Left Content */}
                     <div className="pt-6 md:pt-10">
                         <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
-                            Smart SaaS Solutions For Modern Business
+                            {hero.badge}
                         </span>
 
                         <h1 className="mt-6 text-[40px] font-bold leading-tight md:text-[56px] lg:text-[64px]">
-                            Build better
+                            {hero.title.line1}
                             <br />
-                            digital systems
+                            {hero.title.line2}
                             <br />
-                            with <span className="text-violet-400">confidence.</span>
+                            {hero.title.prefix}{" "}
+                            <span className="text-violet-400">{hero.title.highlight}</span>
                         </h1>
 
                         <p className="mt-6 max-w-[560px] text-base leading-8 text-slate-300 md:text-lg">
-                            Powerful IT solutions for growing brands. Launch faster,
-                            automate smarter, and scale your workflow with a modern SaaS
-                            experience.
+                            {hero.description}
                         </p>
 
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                            <Button>Try A Live Demo</Button>
+                            <Button>{hero.primaryButton}</Button>
 
                             <button className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10">
-                                See How It Works
+                                {hero.secondaryButton}
                             </button>
                         </div>
 
                         <div className="mt-12 flex flex-wrap gap-8 text-sm text-slate-300 md:gap-10">
-                            <div>
-                                <p className="text-2xl font-bold text-white">15k+</p>
-                                <p>Active Users</p>
-                            </div>
-
-                            <div>
-                                <p className="text-2xl font-bold text-white">99.9%</p>
-                                <p>Uptime</p>
-                            </div>
-
-                            <div>
-                                <p className="text-2xl font-bold text-white">24/7</p>
-                                <p>Support</p>
-                            </div>
+                            {hero.stats.map((stat) => (
+                                <div key={stat.label}>
+                                    <p className="text-2xl font-bold text-white">{stat.value}</p>
+                                    <p>{stat.label}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Right Illustration */}
                     <div className="relative flex justify-center md:justify-end">
                         <div className="absolute h-[420px] w-[420px] rounded-full bg-violet-500/20 blur-[120px]" />
 
@@ -108,7 +96,6 @@ export default function Hero() {
                             }}
                         />
 
-                        {/* Floating cards */}
                         <div
                             className="absolute left-0 top-16 z-20 hidden rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white shadow-xl backdrop-blur-md lg:block"
                             style={{
@@ -116,8 +103,8 @@ export default function Hero() {
                                 transition: "transform 0.2s ease-out",
                             }}
                         >
-                            <p className="font-semibold">+28% Growth</p>
-                            <p className="text-xs text-slate-300">This month analytics</p>
+                            <p className="font-semibold">{hero.floatingCards[0].title}</p>
+                            <p className="text-xs text-slate-300">{hero.floatingCards[0].subtitle}</p>
                         </div>
 
                         <div
@@ -127,14 +114,13 @@ export default function Hero() {
                                 transition: "transform 0.2s ease-out",
                             }}
                         >
-                            <p className="font-semibold">Cloud Sync</p>
-                            <p className="text-xs text-slate-300">Secure and real-time</p>
+                            <p className="font-semibold">{hero.floatingCards[1].title}</p>
+                            <p className="text-xs text-slate-300">{hero.floatingCards[1].subtitle}</p>
                         </div>
                     </div>
                 </div>
             </Container>
 
-            {/* Bottom wave */}
             <div className="absolute bottom-0 left-0 w-full leading-none">
                 <svg viewBox="0 0 1440 200" className="w-full" fill="white">
                     <path d="M0,120L80,110C160,100,320,80,480,90C640,100,800,140,960,150C1120,160,1280,140,1360,130L1440,120V200H0Z" />
