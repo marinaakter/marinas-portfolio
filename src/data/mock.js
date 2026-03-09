@@ -133,18 +133,18 @@ const mock = {
         description:
           "Professional social media handling with a focus on brand consistency, audience engagement, and strong visual communication.",
       },
-      {
-        number: "05",
-        title: "Landing Page Design & Optimization",
-        description:
-          "High-converting landing pages crafted to communicate value clearly and support campaign performance.",
-      },
-      {
-        number: "06",
-        title: "Website Updates & Customization",
-        description:
-          "Targeted improvements for existing websites while preserving the original structure, logic, and overall flow.",
-      },
+      // {
+      //   number: "05",
+      //   title: "Landing Page Design & Optimization",
+      //   description:
+      //     "High-converting landing pages crafted to communicate value clearly and support campaign performance.",
+      // },
+      // {
+      //   number: "06",
+      //   title: "Website Updates & Customization",
+      //   description:
+      //     "Targeted improvements for existing websites while preserving the original structure, logic, and overall flow.",
+      // },
     ],
     bottomStrip: {
       eyebrow: "Why work with me",
