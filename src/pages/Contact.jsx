@@ -7,7 +7,7 @@ const Contact = () => {
 
   return (
     <>
-      <section className="relative -mt-[72px] overflow-hidden bg-[#020617] pb-28 pt-[96px] text-white md:-mt-[76px] md:pb-32 md:pt-[108px]">
+      <section className="relative -mt-18 overflow-hidden bg-[#020617] pb-28 pt-[96px] text-white md:-mt-19 md:pb-32 md:pt-[108px]">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-[-120px] top-10 h-80 w-80 rounded-full bg-sky-500/15 blur-[120px]" />
           <div className="absolute right-[-120px] top-20 h-80 w-80 rounded-full bg-violet-500/15 blur-[120px]" />

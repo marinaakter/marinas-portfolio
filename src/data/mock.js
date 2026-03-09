@@ -5,21 +5,21 @@ const mock = {
     highlightName: "PORTFOLIO",
     logoAlt: "Marina Akter logo",
     description:
-      "I build modern, high-converting websites and digital experiences with a focus on clean design, performance, and user experience.",
+      "I help brands and businesses grow through premium websites, smart digital marketing, and strategic social media management.",
     copyright: "© 2026 Marina Akter. All rights reserved.",
   },
 
   navigation: {
     navbar: [
       { name: "Home", path: "/" },
-      { name: "Services", path: "/service" },
+      { name: "Services", path: "/services" },
       { name: "Portfolio", path: "/portfolio" },
       { name: "About", path: "/about" },
       { name: "Contact", path: "/contact" },
     ],
     footerProduct: [
       { name: "Home", path: "/" },
-      { name: "Services", path: "/service" },
+      { name: "Services", path: "/services" },
       { name: "Portfolio", path: "/portfolio" },
       { name: "Case Study", path: "/case-study" },
     ],
@@ -44,39 +44,39 @@ const mock = {
   ],
 
   hero: {
-    badge: "Personal Portfolio For Modern Digital Work",
+    badge: "Premium Personal Portfolio",
     title: {
-      line1: "I build",
-      line2: "clean digital",
-      prefix: "experiences with",
-      highlight: "purpose.",
+      line1: "I build brands",
+      line2: "through websites,",
+      prefix: "marketing, and",
+      highlight: "digital presence.",
     },
     description:
-      "I help brands, founders, and businesses create modern websites and products that look premium, perform smoothly, and support real growth.",
-    primaryButton: "View My Work",
-    secondaryButton: "Let’s Talk",
+      "I’m Marina Akter — a MERN Stack Web Developer, Digital Marketer, and Social Media Manager helping businesses create premium online experiences that look exceptional and perform with purpose.",
+    primaryButton: "Explore My Work",
+    secondaryButton: "Let’s Work Together",
     stats: [
-      { value: "20+", label: "Projects Completed" },
+      { value: "20+", label: "Projects Delivered" },
       { value: "3+", label: "Years Experience" },
-      { value: "100%", label: "Client Focused" },
+      { value: "100%", label: "Client-Focused Approach" },
     ],
     floatingCards: [
       {
-        title: "Creative UI",
-        subtitle: "Modern and user-focused",
+        title: "MERN Development",
+        subtitle: "Modern, scalable web solutions",
       },
       {
-        title: "Fast Delivery",
-        subtitle: "Reliable workflow",
+        title: "Brand Growth",
+        subtitle: "Marketing with clear strategy",
       },
     ],
   },
 
   clients: {
-    badge: "Worked with amazing brands",
-    title: "Helping businesses build a stronger online presence",
+    badge: "Trusted across industries",
+    title: "Helping businesses elevate their digital presence",
     description:
-      "I collaborate with startups, agencies, and growing businesses to create polished digital experiences.",
+      "From high-converting websites to strategic marketing and polished social media presence, I support brands that want to stand out online with confidence.",
     logos: [
       { name: "Google", logo: "/logos/logo1.png" },
       { name: "Meta", logo: "/logos/logo2.png" },
@@ -85,75 +85,75 @@ const mock = {
       { name: "Canva", logo: "/logos/logo5.png" },
     ],
     stats: [
-      { value: "20+", label: "Projects delivered" },
-      { value: "10+", label: "Happy clients" },
-      { value: "95%", label: "Repeat collaboration" },
+      { value: "20+", label: "Projects completed" },
+      { value: "10+", label: "Brands supported" },
+      { value: "95%", label: "Client satisfaction" },
     ],
   },
 
   homeServices: {
-    badge: "What I do",
-    title: "Services tailored for",
+    badge: "What I offer",
+    title: "Premium services for",
     highlight: "modern brands",
     description:
-      "I combine strategy, design, and development to create digital products that are visually strong and built for results.",
+      "I combine technical development, digital strategy, and content-driven brand management to help businesses grow with a stronger online identity.",
     featured: {
-      eyebrow: "Featured service",
-      title: "Personalized website and product development",
+      eyebrow: "Featured expertise",
+      title: "Web development, digital marketing, and social media growth",
       description:
-        "From landing pages to full portfolio and business websites, I design and build digital experiences that are modern, responsive, and goal-driven.",
+        "I create modern websites, build stronger brand positioning, and manage digital channels with a focus on performance, presentation, and long-term value.",
       stats: [
         { value: "20+", label: "Projects launched" },
-        { value: "3+", label: "Years experience" },
+        { value: "3+", label: "Years of experience" },
       ],
       button: "Start a Project",
     },
     items: [
       {
         number: "01",
-        title: "Portfolio Websites",
+        title: "MERN Stack Website Development",
         description:
-          "Premium portfolio websites that present your work clearly and professionally.",
+          "Custom, responsive, and performance-focused websites built with modern technologies and clean architecture.",
       },
       {
         number: "02",
-        title: "Business Websites",
+        title: "Personal & Business Portfolio Websites",
         description:
-          "Modern websites for agencies, brands, and service businesses with clean structure and strong presentation.",
+          "Elegant portfolio and business websites designed to present your brand with clarity, professionalism, and style.",
       },
       {
         number: "03",
-        title: "UI/UX Design",
+        title: "Digital Marketing Strategy",
         description:
-          "User-focused interface design with attention to clarity, hierarchy, and overall experience.",
+          "Strategic digital marketing support to help brands improve reach, engagement, and conversion across platforms.",
       },
       {
         number: "04",
-        title: "Responsive Development",
+        title: "Social Media Management",
         description:
-          "Pixel-clean responsive builds that work smoothly across mobile, tablet, and desktop.",
+          "Professional social media handling with a focus on brand consistency, audience engagement, and strong visual communication.",
       },
       {
         number: "05",
-        title: "Landing Pages",
+        title: "Landing Page Design & Optimization",
         description:
-          "High-converting landing pages designed to communicate value and encourage action.",
+          "High-converting landing pages crafted to communicate value clearly and support campaign performance.",
       },
       {
         number: "06",
-        title: "Website Customization",
+        title: "Website Updates & Customization",
         description:
-          "Updating, refining, and improving existing websites without breaking the original structure.",
+          "Targeted improvements for existing websites while preserving the original structure, logic, and overall flow.",
       },
     ],
     bottomStrip: {
       eyebrow: "Why work with me",
-      title: "Clean design, clear communication, solid execution",
+      title: "Strategy, design, and execution in one place",
       description:
-        "I focus on building websites that feel premium, work smoothly, and support your professional goals.",
+        "I bring together development skills, marketing understanding, and brand-focused thinking to create digital work that feels premium and performs effectively.",
       items: [
-        { title: "Modern", label: "Design" },
-        { title: "Clean", label: "Code" },
+        { title: "Premium", label: "Execution" },
+        { title: "Strategic", label: "Thinking" },
         { title: "Reliable", label: "Delivery" },
       ],
     },
@@ -161,25 +161,25 @@ const mock = {
 
   portfolioSection: {
     badge: "Featured Projects",
-    title: "Selected work and recent builds",
+    title: "Selected work crafted for impact",
     description:
-      "A few projects that reflect my design style, development approach, and focus on quality.",
+      "A selection of projects that reflect my approach to modern web development, digital branding, and polished online presentation.",
     button: "View Full Portfolio",
     caseStudyButton: "View Details",
     projects: [
       {
-        title: "Agency Website Redesign",
-        category: "Portfolio Website",
+        title: "Premium Portfolio Website",
+        category: "MERN Development",
         image: "/projects/project1.png",
       },
       {
-        title: "Business Landing Page",
-        category: "Frontend Development",
+        title: "Brand Landing Page Campaign",
+        category: "Digital Marketing",
         image: "/projects/project2.png",
       },
       {
-        title: "SaaS Dashboard UI",
-        category: "UI/UX Design",
+        title: "Social Media Brand System",
+        category: "Social Media Management",
         image: "/projects/project3.png",
       },
     ],
@@ -188,42 +188,42 @@ const mock = {
   testimonialsSection: {
     badge: "Client feedback",
     title: "Trusted by clients who value",
-    highlight: "quality work",
+    highlight: "quality and growth",
     description:
-      "I work closely with clients to deliver websites and digital experiences that feel polished, practical, and professional.",
+      "I work with a strong focus on presentation, performance, and communication so every project feels refined and results-driven.",
     items: [
       {
         name: "Sarah Mitchell",
         role: "Marketing Director",
         review:
-          "The website looked modern, worked perfectly, and matched our brand much better than before. Communication was smooth throughout the project.",
+          "Marina delivered an impressive website and supported the brand with thoughtful digital strategy. Her work felt premium, organized, and highly professional.",
       },
       {
         name: "James Carter",
         role: "Startup Founder",
         review:
-          "Very professional work. The final result was clean, responsive, and much stronger than our previous version.",
+          "From development to marketing direction, everything was handled with care. The final result elevated our brand and gave us a much stronger online presence.",
       },
       {
         name: "Ariana Brooks",
         role: "Product Manager",
         review:
-          "Great design sense and strong execution. Everything felt organized, polished, and delivered with care.",
+          "Excellent communication, polished execution, and a strong eye for both design and strategy. Working with Marina was smooth from start to finish.",
       },
     ],
     stats: [
       { value: "95%", label: "Client satisfaction" },
-      { value: "10+", label: "Long-term clients" },
-      { value: "20+", label: "Completed projects" },
+      { value: "10+", label: "Long-term collaborations" },
+      { value: "20+", label: "Projects delivered" },
     ],
   },
 
   ctaSection: {
-    badge: "Let’s work together",
-    title: "Need a website that feels",
-    highlight: "modern and professional?",
+    badge: "Let’s build your brand",
+    title: "Need a digital presence that feels",
+    highlight: "premium and memorable?",
     description:
-      "I help individuals, agencies, and businesses build strong digital experiences with clean design and solid frontend development.",
+      "I help businesses and personal brands stand out through modern websites, strategic marketing, and consistent social media presence.",
     primaryButton: "Start Your Project",
     secondaryButton: "Contact Me",
     cards: [
@@ -231,13 +231,13 @@ const mock = {
         label: "Typical timeline",
         title: "1–4 Weeks",
         description:
-          "Fast delivery for portfolio sites, landing pages, and business websites.",
+          "Ideal for portfolio websites, landing pages, brand refreshes, and focused digital projects.",
       },
       {
-        label: "Work style",
-        title: "Detail Focused",
+        label: "Work approach",
+        title: "Quality-Driven",
         description:
-          "Clear communication, thoughtful execution, and a strong focus on quality.",
+          "Every project is handled with attention to detail, strategic thinking, and a premium execution standard.",
       },
     ],
   },
@@ -245,9 +245,9 @@ const mock = {
   footer: {
     productTitle: "Pages",
     companyTitle: "Information",
-    newsletterTitle: "Stay updated",
+    newsletterTitle: "Stay connected",
     newsletterDescription:
-      "Get occasional updates, design insights, and project news.",
+      "Get occasional updates, marketing insights, and creative ideas from my latest work.",
     newsletterPlaceholder: "Enter email",
     newsletterButton: "Join",
   },
@@ -267,77 +267,77 @@ const mock = {
   portfolioPage: {
     hero: {
       badge: "My portfolio",
-      title: "A collection of selected digital work",
+      title: "A curated collection of my digital work",
       description:
-        "Here are some of my featured projects, including portfolio websites, landing pages, and modern UI builds.",
+        "Explore selected projects across MERN stack development, digital marketing, and social media management.",
     },
-    filterTabs: ["All", "Portfolio", "Business", "UI/UX"],
+    filterTabs: ["All", "Development", "Marketing", "Social Media"],
     items: [
       {
         title: "Personal Brand Portfolio",
-        category: "Portfolio",
+        category: "Development",
         image: "/projects/project1.png",
         description:
-          "A modern personal portfolio focused on clean layout, visual hierarchy, and smooth responsiveness.",
-        tech: ["React", "Tailwind", "Vite"],
+          "A premium personal portfolio website designed to showcase services, projects, and personal brand identity with clarity.",
+        tech: ["React", "MongoDB", "Express"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Creative Agency Website",
-        category: "Business",
+        title: "Business Website Experience",
+        category: "Development",
         image: "/projects/project2.png",
         description:
-          "A premium agency website with strong visual presentation and section-based storytelling.",
-        tech: ["React", "Tailwind", "Framer Motion"],
+          "A polished business website focused on responsive design, modern layout, and stronger brand presentation.",
+        tech: ["React", "Node.js", "Responsive Design"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "SaaS Dashboard Concept",
-        category: "UI/UX",
+        title: "Marketing Campaign Landing Page",
+        category: "Marketing",
         image: "/projects/project3.png",
         description:
-          "A dashboard-focused interface concept with modern spacing, cards, and clear content structure.",
-        tech: ["React", "UI Design", "Responsive"],
+          "A campaign-focused landing page designed to improve engagement, communicate value, and support conversions.",
+        tech: ["Landing Page", "Conversion Strategy", "Brand Messaging"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Service Business Landing Page",
-        category: "Business",
+        title: "Digital Growth Strategy Project",
+        category: "Marketing",
         image: "/projects/project1.png",
         description:
-          "A conversion-focused landing page designed to highlight services, trust, and calls to action.",
-        tech: ["React", "Tailwind", "SEO-ready"],
+          "A brand-focused marketing setup created to improve online visibility, audience targeting, and digital consistency.",
+        tech: ["Digital Strategy", "Content Planning", "Campaign Structure"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Designer Portfolio Website",
-        category: "Portfolio",
+        title: "Social Media Brand Management",
+        category: "Social Media",
         image: "/projects/project2.png",
         description:
-          "A visually balanced portfolio layout made to showcase work samples and brand identity.",
-        tech: ["React", "Tailwind", "Responsive"],
+          "A complete content and social presence plan designed to strengthen audience connection and improve brand communication.",
+        tech: ["Content Strategy", "Brand Positioning", "Social Management"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Product Showcase Interface",
-        category: "UI/UX",
+        title: "Creative Social Campaign System",
+        category: "Social Media",
         image: "/projects/project3.png",
         description:
-          "A clean product display interface designed with strong hierarchy and premium visual style.",
-        tech: ["UI Design", "Frontend", "Component-based"],
+          "A premium social media management approach focused on consistency, visual quality, and long-term engagement.",
+        tech: ["Creative Direction", "Engagement Strategy", "Content Flow"],
         liveLink: "#",
         githubLink: "#",
       },
     ],
     cta: {
-      title: "Want something like this for your brand?",
+      title: "Want to create a stronger brand presence?",
       description:
-        "I can help you design and build a modern website tailored to your goals.",
+        "I can help you build a modern website and a digital strategy that supports real business growth.",
       primaryButton: "Start a Project",
       secondaryButton: "Contact Me",
     },
@@ -346,9 +346,9 @@ const mock = {
   contactPage: {
     hero: {
       badge: "Contact me",
-      title: "Let’s discuss your next website or design project",
+      title: "Let’s discuss your next digital project",
       description:
-        "Have a project idea, redesign request, or portfolio update in mind? Send me a message and I’ll get back to you.",
+        "Whether you need a premium website, digital marketing support, or social media management, I’d love to hear about your goals.",
     },
     infoCards: [
       {
@@ -370,7 +370,7 @@ const mock = {
     form: {
       title: "Send a message",
       description:
-        "Fill out the form below with your project details and I’ll respond as soon as possible.",
+        "Share your project details and I’ll get back to you with the next steps.",
       fields: {
         name: "Your name",
         email: "Email address",
@@ -382,12 +382,12 @@ const mock = {
     availability: {
       title: "Availability",
       description:
-        "Available for portfolio websites, business websites, landing pages, frontend updates, and design-focused web projects.",
+        "Available for website development, digital marketing support, social media management, landing page projects, and brand-focused digital updates.",
       items: [
-        "Personal portfolio websites",
-        "Agency and business websites",
-        "Landing page design and development",
-        "UI updates and website customization",
+        "MERN stack website development",
+        "Digital marketing support",
+        "Social media management",
+        "Landing page design and optimization",
       ],
     },
   },
@@ -395,107 +395,119 @@ const mock = {
   servicesPage: {
     hero: {
       badge: "Services",
-      title: "Services built for",
-      highlight: "modern brands",
+      title: "Premium services for",
+      highlight: "digital growth",
       description:
-        "I design and build premium digital products that help ambitious businesses launch faster, operate smarter, and grow with confidence.",
+        "I provide a balanced combination of MERN stack development, digital marketing, and social media management to help brands build a stronger and more effective online presence.",
       primaryButton: "Start Your Project",
       secondaryButton: "Book A Free Call",
       stats: [
         { value: "20+", label: "Projects delivered" },
-        { value: "10+", label: "Clients" },
+        { value: "10+", label: "Brands supported" },
         { value: "95%", label: "Satisfaction rate" },
       ],
     },
 
     servicesIntro: {
       badge: "What I do best",
-      title: "Solutions crafted with strategy and execution",
+      title: "Solutions built for visibility, credibility, and growth",
       description:
-        "Every service is designed to solve real business problems with a balance of design quality, technical performance, and measurable impact.",
+        "Each service is designed to help your brand look better, communicate more clearly, and perform more effectively across digital platforms.",
     },
 
     services: [
       {
         number: "01",
-        title: "Portfolio Website Development",
+        title: "MERN Stack Web Development",
         description:
-          "I build clean and polished portfolio websites that help professionals present their work effectively.",
-        points: ["Responsive UI", "Clean structure", "Modern design"],
+          "Modern websites and web applications developed with clean structure, scalability, and performance in mind.",
+        points: ["Responsive UI", "Modern stack", "Clean architecture"],
       },
       {
         number: "02",
-        title: "Business Website Development",
+        title: "Portfolio & Business Website Design",
         description:
-          "Professional websites for businesses that need a strong digital presence and clear communication.",
-        points: ["Brand-focused layout", "Fast loading", "Scalable sections"],
+          "Premium website experiences crafted to strengthen your personal or business brand online.",
+        points: [
+          "Professional layout",
+          "Strong branding",
+          "Clean presentation",
+        ],
       },
       {
         number: "03",
-        title: "UI/UX Design",
+        title: "Digital Marketing",
         description:
-          "Modern interface design with a focus on user experience, clarity, and polished visual presentation.",
-        points: ["User-first design", "Visual hierarchy", "Clean layouts"],
+          "Strategic digital marketing support to help brands improve awareness, engagement, and conversions.",
+        points: [
+          "Growth-focused strategy",
+          "Audience targeting",
+          "Campaign support",
+        ],
       },
       {
         number: "04",
-        title: "Responsive Frontend Development",
+        title: "Social Media Management",
         description:
-          "Mobile-friendly frontend builds that look great and work consistently across screen sizes.",
-        points: ["Cross-device support", "Clean code", "Smooth layout"],
+          "Consistent and professional social media handling to maintain a strong and polished brand presence.",
+        points: [
+          "Content direction",
+          "Brand consistency",
+          "Audience engagement",
+        ],
       },
       {
         number: "05",
         title: "Landing Page Design",
         description:
-          "Focused landing pages made to communicate value and improve conversion.",
-        points: ["Clear CTA", "Strong structure", "Visual impact"],
+          "Conversion-focused landing pages designed to support promotions, campaigns, and lead generation.",
+        points: ["Clear CTA", "Strategic layout", "Optimized messaging"],
       },
       {
         number: "06",
         title: "Website Customization",
         description:
-          "Improve and update existing websites while respecting the original project structure and logic.",
-        points: ["Safe updates", "Existing code support", "Focused edits"],
+          "Focused updates and improvements for existing websites without disturbing the original logic or structure.",
+        points: ["Safe edits", "Code-aware updates", "Structure preserved"],
       },
     ],
 
     process: {
       badge: "My process",
-      title: "A simple process that keeps",
-      highlight: "projects clear",
+      title: "A refined workflow that keeps",
+      highlight: "projects on track",
       description:
-        "I follow a practical workflow that keeps the project organized from first idea to final delivery.",
+        "From discovery to delivery, I follow a practical and organized process to ensure every project is handled with clarity and care.",
       steps: [
         {
           number: "01",
-          title: "Discussion",
-          desc: "We talk about the project goals, style, audience, and what the website needs to achieve.",
+          title: "Discovery",
+          desc: "We discuss your goals, audience, brand positioning, and what success should look like for the project.",
         },
         {
           number: "02",
-          title: "Planning",
-          desc: "I create a structure for the pages, sections, and design direction before development starts.",
+          title: "Strategy",
+          desc: "I define the structure, messaging direction, and digital approach before moving into design or execution.",
         },
         {
           number: "03",
-          title: "Design & Build",
-          desc: "I design and develop the website with a focus on quality, responsiveness, and clean execution.",
+          title: "Build & Optimize",
+          desc: "I create the website or digital system with strong attention to design quality, functionality, and brand consistency.",
         },
         {
           number: "04",
-          title: "Delivery",
-          desc: "After review and refinements, I deliver the finished website ready for launch or next steps.",
+          title: "Launch & Support",
+          desc: "After refinements and approval, I deliver the final work ready for use, growth, and future updates.",
         },
       ],
     },
 
     cta: {
-      badge: "Ready to start?",
-      title: "Let’s build a digital project your",
+      badge: "Ready to grow?",
+      title: "Let’s create something your",
       highlight: "audience will remember",
       description:
-        "Whether you need a portfolio website, landing page, or business website, I’m ready to help.",
+        "Whether you need a premium website, stronger marketing, or a polished social media presence, I’m ready to help.",
       primaryButton: "Start Your Project",
       secondaryButton: "Contact Me",
     },
