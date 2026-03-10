@@ -55,7 +55,7 @@ export default function Hero() {
     return (
         <section
             id="home"
-            className="relative overflow-hidden bg-[#020617] pb-16 pt-[130px] text-white md:pb-24 md:pt-[138px] lg:pb-16 lg:pt-[150px]"
+            className="relative overflow-hidden bg-[#020617] pb-16 pt-[104px] text-white sm:pt-[108px] md:pb-24 md:pt-[112px] lg:pb-16 lg:pt-[122px] xl:pt-[128px]"
         >
             <div
                 className="pointer-events-none absolute inset-0 z-0 transition-transform duration-500"
@@ -357,8 +357,7 @@ export default function Hero() {
                         transform: translateY(0);
                     }
                 }
-            `}
-            </style>
+            `}</style>
         </section>
     );
 }
