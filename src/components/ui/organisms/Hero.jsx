@@ -19,10 +19,21 @@ export default function Hero() {
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
+    const handleScroll = (id) => {
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
     const hero = mock.hero;
 
     return (
-        <section className="relative -mt-[72px] overflow-hidden bg-[#020617] pb-24 pt-[92px] text-white md:-mt-[76px] md:pb-32 md:pt-[104px]">
+        <section
+            id="home"
+            className="relative -mt-[72px] overflow-hidden bg-[#020617] pb-24 pt-[92px] text-white md:-mt-[76px] md:pb-32 md:pt-[104px]"
+        >
             <div
                 className="pointer-events-none absolute inset-0 z-0 transition-transform duration-200"
                 style={{
@@ -56,8 +67,7 @@ export default function Hero() {
                             <br />
                             {hero.title.line2}
                             <br />
-                            {hero.title.prefix}{" "}
-                            <span className="text-violet-400">{hero.title.highlight}</span>
+                            {hero.title.prefix} <span className="text-violet-400">{hero.title.highlight}</span>
                         </h1>
 
                         <p className="mt-6 max-w-[560px] text-base leading-8 text-slate-300 md:text-lg">
@@ -65,9 +75,15 @@ export default function Hero() {
                         </p>
 
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                            <Button>{hero.primaryButton}</Button>
+                            <button type="button" onClick={() => handleScroll("projects")}>
+                                <Button>{hero.primaryButton}</Button>
+                            </button>
 
-                            <button className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10">
+                            <button
+                                type="button"
+                                onClick={() => handleScroll("contact")}
+                                className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                            >
                                 {hero.secondaryButton}
                             </button>
                         </div>
@@ -120,28 +136,6 @@ export default function Hero() {
                     </div>
                 </div>
             </Container>
-
-            <div className="absolute bottom-0 left-0 w-full leading-none">
-                <svg viewBox="0 0 1440 200" className="w-full" fill="white">
-                    <path d="M0,120L80,110C160,100,320,80,480,90C640,100,800,140,960,150C1120,160,1280,140,1360,130L1440,120V200H0Z" />
-                </svg>
-            </div>
-
-            <style>
-                {`
-          @keyframes floatImage {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-          }
-
-          @keyframes floatY {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-14px); }
-            100% { transform: translateY(0px); }
-          }
-        `}
-            </style>
         </section>
     );
 }

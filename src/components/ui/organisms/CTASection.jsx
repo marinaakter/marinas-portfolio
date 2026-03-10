@@ -5,8 +5,12 @@ import mock from "../../../data/mock";
 export default function CTASection() {
     const section = mock.ctaSection;
 
+    const handlePrimaryClick = () => {
+        window.location.href = "mailto:marinaakter878@gmail.com";
+    };
+
     return (
-        <section className="relative overflow-hidden bg-white py-24 md:py-28">
+        <section id="contact" className="relative overflow-hidden bg-white py-24 md:py-28">
             <div className="absolute top-0 left-0 w-full leading-none">
                 <svg viewBox="0 0 1440 220" className="w-full" fill="#020617">
                     <path d="M0,80L80,90C160,100,320,120,480,118C640,116,800,92,960,82C1120,72,1280,76,1360,80L1440,84V0H0Z" />
@@ -47,11 +51,38 @@ export default function CTASection() {
                                 </p>
 
                                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                                    <Button>{section.primaryButton}</Button>
-
-                                    <button className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10">
-                                        {section.secondaryButton}
+                                    <button type="button" onClick={handlePrimaryClick}>
+                                        <Button>{section.primaryButton}</Button>
                                     </button>
+
+                                    <a
+                                        href="mailto:marinaakter878@gmail.com"
+                                        className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-center font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                                    >
+                                        {section.secondaryButton}
+                                    </a>
+                                </div>
+
+                                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                                    <a
+                                        href="mailto:marinaakter878@gmail.com"
+                                        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition hover:border-sky-400/30"
+                                    >
+                                        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Email</p>
+                                        <p className="mt-3 text-base font-semibold text-white break-all">
+                                            marinaakter878@gmail.com
+                                        </p>
+                                    </a>
+
+                                    <a
+                                        href="tel:+8801325383588"
+                                        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition hover:border-violet-400/30"
+                                    >
+                                        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Phone</p>
+                                        <p className="mt-3 text-base font-semibold text-white">
+                                            +880 1325-383588
+                                        </p>
+                                    </a>
                                 </div>
                             </div>
 

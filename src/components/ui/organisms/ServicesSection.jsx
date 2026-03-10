@@ -5,8 +5,19 @@ import mock from "../../../data/mock";
 export default function ServicesSection() {
     const section = mock.homeServices;
 
+    const handleScroll = (id) => {
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
     return (
-        <section className="relative overflow-hidden bg-[#020617] py-24 text-white md:py-32">
+        <section
+            id="services"
+            className="relative overflow-hidden bg-[#020617] py-24 text-white md:py-32"
+        >
             <div className="absolute top-0 left-0 w-full leading-none">
                 <svg viewBox="0 0 1440 220" className="w-full" fill="#f8fafc">
                     <path d="M0,80L80,90C160,100,320,120,480,118C640,116,800,92,960,82C1120,72,1280,76,1360,80L1440,84V0H0Z" />
@@ -85,7 +96,9 @@ export default function ServicesSection() {
                                     </div>
 
                                     <div className="mt-8">
-                                        <Button>{section.featured.button}</Button>
+                                        <button type="button" onClick={() => handleScroll("contact")}>
+                                            <Button>{section.featured.button}</Button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

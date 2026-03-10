@@ -6,7 +6,10 @@ export default function Clients() {
     const marqueeClients = [...clients, ...clients];
 
     return (
-        <section className="relative overflow-hidden bg-linear-to-b from-white to-slate-50 py-20 md:py-18">
+        <section
+            id="about"
+            className="relative overflow-hidden bg-linear-to-b from-white to-slate-50 py-20 md:py-18"
+        >
             <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#020617_1px,transparent_1px),linear-gradient(to_bottom,#020617_1px,transparent_1px)] bg-size-[48px_48px]" />
 
             <div className="pointer-events-none absolute inset-0">
