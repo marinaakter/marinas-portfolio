@@ -40,7 +40,7 @@ export default function Hero() {
         const element = document.getElementById(id);
 
         if (element) {
-            const navbarOffset = 84;
+            const navbarOffset = 90;
             const top = element.getBoundingClientRect().top + window.scrollY - navbarOffset;
 
             window.scrollTo({
@@ -55,7 +55,7 @@ export default function Hero() {
     return (
         <section
             id="home"
-            className="relative -mt-[70px] overflow-hidden bg-[#020617] pb-16 pt-[112px] text-white md:-mt-[74px] md:pb-24 md:pt-[122px] lg:pb-16 lg:pt-[118px]"
+            className="relative overflow-hidden bg-[#020617] pb-16 pt-[130px] text-white md:pb-24 md:pt-[138px] lg:pb-16 lg:pt-[150px]"
         >
             <div
                 className="pointer-events-none absolute inset-0 z-0 transition-transform duration-500"
@@ -148,7 +148,7 @@ export default function Hero() {
                         )}
 
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                            <button type="button" onClick={() => handleScroll("projects")}>
+                            <button type="button" onClick={() => handleScroll("projects")} className="cursor-pointer">
                                 <Button className="w-full rounded-full px-6 py-3 text-sm font-semibold shadow-[0_14px_40px_rgba(14,165,233,0.2)] sm:w-auto md:px-7">
                                     {hero.primaryButton}
                                 </Button>
@@ -157,7 +157,7 @@ export default function Hero() {
                             <button
                                 type="button"
                                 onClick={() => handleScroll("contact")}
-                                className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-medium text-white backdrop-blur-xl transition-all duration-300 hover:border-white/25 hover:bg-white/[0.08] sm:w-auto md:px-7"
+                                className="inline-flex w-full cursor-pointer items-center justify-center rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-medium text-white backdrop-blur-xl transition-all duration-300 hover:border-white/25 hover:bg-white/[0.08] sm:w-auto md:px-7"
                             >
                                 {hero.secondaryButton}
                             </button>
@@ -357,7 +357,8 @@ export default function Hero() {
                         transform: translateY(0);
                     }
                 }
-            `}</style>
+            `}
+            </style>
         </section>
     );
 }
