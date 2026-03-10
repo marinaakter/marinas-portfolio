@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import Container from "../atoms/Container";
 import Button from "../atoms/Button";
 import mock from "../../../data/mock";
 import { HiOutlineMenuAlt3, HiOutlineX, HiOutlineArrowRight } from "react-icons/hi";
@@ -11,7 +10,6 @@ export default function Navbar() {
     const [manualActive, setManualActive] = useState(null);
 
     const manualScrollTargetRef = useRef(null);
-
     const navItems = useMemo(() => mock.navigation.navbar || [], []);
 
     useEffect(() => {
@@ -110,91 +108,89 @@ export default function Navbar() {
     return (
         <>
             <header className="fixed left-0 top-0 z-50 w-full">
-                <Container>
-                    <div
-                        className={`flex h-18.5 items-center justify-between border px-4 transition-all duration-300 md:px-5 lg:px-6 ${isScrolled
-                                ? "border-white/12 bg-[#020617]/78 shadow-[0_18px_50px_rgba(2,6,23,0.32)] backdrop-blur-2xl"
-                                : "border-white/10 bg-white/[0.04] backdrop-blur-xl"
-                            } rounded-none lg:rounded-none`}
+                <div
+                    className={`flex h-[74px] w-full items-center justify-between border-b px-4 transition-all duration-300 md:px-6 lg:px-8 ${isScrolled
+                            ? "border-white/12 bg-[#020617]/58 shadow-[0_18px_50px_rgba(2,6,23,0.26)] backdrop-blur-2xl"
+                            : "border-white/10 bg-transparent"
+                        }`}
+                >
+                    {/* Brand */}
+                    <button
+                        type="button"
+                        onClick={() => handleScroll("#home")}
+                        className="group flex cursor-pointer items-center gap-3"
+                        aria-label="Go to home"
                     >
-                        {/* Brand */}
-                        <button
-                            type="button"
-                            onClick={() => handleScroll("#home")}
-                            className="group flex cursor-pointer items-center gap-3"
-                            aria-label="Go to home"
-                        >
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl transition duration-300 group-hover:border-sky-400/30">
-                                {mock.brand.shortName?.charAt(0)}
-                            </div>
-
-                            <div className="text-left leading-tight">
-                                <p className="text-base font-bold text-white">
-                                    {mock.brand.shortName}
-                                </p>
-                                <p className="text-[10px] tracking-[0.28em] text-sky-400">
-                                    {mock.brand.highlightName}
-                                </p>
-                            </div>
-                        </button>
-
-                        {/* Desktop Nav */}
-                        <nav className="hidden lg:flex lg:items-center lg:gap-2">
-                            <div className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
-                                {navItems.map((item) => {
-                                    const itemId = item.path.replace("#", "");
-                                    const isActive = activeSection === itemId;
-
-                                    return (
-                                        <button
-                                            key={item.name}
-                                            type="button"
-                                            onClick={() => handleScroll(item.path)}
-                                            className={`cursor-pointer rounded-full px-4 py-2.5 text-sm font-medium transition duration-300 ${isActive
-                                                    ? "bg-white text-slate-900 shadow-sm"
-                                                    : "text-slate-200 hover:bg-white/[0.06] hover:text-white"
-                                                }`}
-                                        >
-                                            {item.name}
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                        </nav>
-
-                        {/* Desktop CTA */}
-                        <div className="hidden lg:flex lg:items-center lg:gap-3">
-                            {mock.navigation.showHireButton && (
-                                <button
-                                    type="button"
-                                    onClick={() => handleScroll("#contact")}
-                                    className="cursor-pointer"
-                                >
-                                    <Button className="rounded-full px-6 py-3 text-sm font-semibold shadow-[0_18px_45px_rgba(14,165,233,0.24)]">
-                                        <span className="inline-flex items-center gap-2">
-                                            {mock.navigation.ctaButton}
-                                            <HiOutlineArrowRight className="text-base" />
-                                        </span>
-                                    </Button>
-                                </button>
-                            )}
+                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl transition duration-300 group-hover:border-sky-400/30">
+                            {mock.brand.shortName?.charAt(0)}
                         </div>
 
-                        {/* Mobile Toggle */}
-                        <button
-                            type="button"
-                            onClick={() => setIsOpen((prev) => !prev)}
-                            aria-label={mock.navigation.mobileMenuLabel}
-                            className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-white backdrop-blur-xl transition duration-300 hover:border-sky-400/30 lg:hidden"
-                        >
-                            {isOpen ? (
-                                <HiOutlineX className="text-2xl" />
-                            ) : (
-                                <HiOutlineMenuAlt3 className="text-2xl" />
-                            )}
-                        </button>
+                        <div className="text-left leading-tight">
+                            <p className="text-base font-bold text-white">
+                                {mock.brand.shortName}
+                            </p>
+                            <p className="text-[10px] tracking-[0.28em] text-sky-400">
+                                {mock.brand.highlightName}
+                            </p>
+                        </div>
+                    </button>
+
+                    {/* Desktop Nav */}
+                    <nav className="hidden lg:flex lg:items-center lg:gap-2">
+                        <div className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
+                            {navItems.map((item) => {
+                                const itemId = item.path.replace("#", "");
+                                const isActive = activeSection === itemId;
+
+                                return (
+                                    <button
+                                        key={item.name}
+                                        type="button"
+                                        onClick={() => handleScroll(item.path)}
+                                        className={`cursor-pointer rounded-full px-4 py-2.5 text-sm font-medium transition duration-300 ${isActive
+                                                ? "bg-white text-slate-900 shadow-sm"
+                                                : "text-slate-200 hover:bg-white/[0.06] hover:text-white"
+                                            }`}
+                                    >
+                                        {item.name}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </nav>
+
+                    {/* Desktop CTA */}
+                    <div className="hidden lg:flex lg:items-center lg:gap-3">
+                        {mock.navigation.showHireButton && (
+                            <button
+                                type="button"
+                                onClick={() => handleScroll("#contact")}
+                                className="cursor-pointer"
+                            >
+                                <Button className="rounded-full px-6 py-3 text-sm font-semibold shadow-[0_18px_45px_rgba(14,165,233,0.24)]">
+                                    <span className="inline-flex items-center gap-2">
+                                        {mock.navigation.ctaButton}
+                                        <HiOutlineArrowRight className="text-base" />
+                                    </span>
+                                </Button>
+                            </button>
+                        )}
                     </div>
-                </Container>
+
+                    {/* Mobile Toggle */}
+                    <button
+                        type="button"
+                        onClick={() => setIsOpen((prev) => !prev)}
+                        aria-label={mock.navigation.mobileMenuLabel}
+                        className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-white backdrop-blur-xl transition duration-300 hover:border-sky-400/30 lg:hidden"
+                    >
+                        {isOpen ? (
+                            <HiOutlineX className="text-2xl" />
+                        ) : (
+                            <HiOutlineMenuAlt3 className="text-2xl" />
+                        )}
+                    </button>
+                </div>
             </header>
 
             {/* Mobile Menu */}
