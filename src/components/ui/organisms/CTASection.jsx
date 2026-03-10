@@ -1,16 +1,44 @@
+import { useEffect, useRef, useState } from "react";
 import Container from "../atoms/Container";
 import Button from "../atoms/Button";
 import mock from "../../../data/mock";
 
 export default function CTASection() {
     const section = mock.ctaSection;
+    const sectionRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
 
     const handlePrimaryClick = () => {
         window.location.href = "mailto:marinaakter878@gmail.com";
     };
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.15 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <section id="contact" className="relative overflow-hidden bg-white py-24 md:py-28">
+        <section
+            id="contact"
+            ref={sectionRef}
+            className="relative overflow-hidden bg-white py-24 md:py-28"
+        >
             <div className="absolute top-0 left-0 w-full leading-none">
                 <svg viewBox="0 0 1440 220" className="w-full" fill="#020617">
                     <path d="M0,80L80,90C160,100,320,120,480,118C640,116,800,92,960,82C1120,72,1280,76,1360,80L1440,84V0H0Z" />
@@ -25,8 +53,11 @@ export default function CTASection() {
             </div>
 
             <Container>
-                <div className="relative z-10 pt-20 md:pt-24">
-                    <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-[#020617] px-6 py-12 text-white shadow-[0_30px_80px_rgba(2,6,23,0.16)] md:px-10 md:py-16 lg:px-16">
+                <div className="relative z-10 pt-16 md:pt-24">
+                    <div
+                        className={`relative overflow-hidden rounded-[32px] border border-slate-200 bg-[#020617] px-6 py-12 text-white shadow-[0_30px_80px_rgba(2,6,23,0.16)] transition-all duration-1000 md:px-10 md:py-16 lg:px-16 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                            }`}
+                    >
                         <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:48px_48px]" />
 
                         <div className="pointer-events-none absolute inset-0">
@@ -66,36 +97,43 @@ export default function CTASection() {
                                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
                                     <a
                                         href="mailto:marinaakter878@gmail.com"
-                                        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition hover:border-sky-400/30"
+                                        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-sky-400/30"
                                     >
-                                        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Email</p>
-                                        <p className="mt-3 text-base font-semibold text-white break-all">
+                                        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
+                                            Email
+                                        </p>
+                                        <p className="mt-3 break-all text-base font-semibold text-white">
                                             marinaakter878@gmail.com
                                         </p>
                                     </a>
 
                                     <a
-                                        href="tel:+8801325383588"
-                                        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition hover:border-violet-400/30"
+                                        href="tel:+8801603277275"
+                                        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-violet-400/30"
                                     >
-                                        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Phone</p>
+                                        <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
+                                            Phone
+                                        </p>
                                         <p className="mt-3 text-base font-semibold text-white">
-                                            +880 1325-383588
+                                            +880 1603-277275
                                         </p>
                                     </a>
                                 </div>
                             </div>
 
                             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                                {section.cards.map((card) => (
+                                {section.cards.map((card, index) => (
                                     <div
                                         key={card.title}
-                                        className="rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl"
+                                        className="rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/20"
+                                        style={{ transitionDelay: `${index * 100}ms` }}
                                     >
                                         <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
                                             {card.label}
                                         </p>
-                                        <p className="mt-3 text-2xl font-bold text-white">{card.title}</p>
+                                        <p className="mt-3 text-2xl font-bold text-white">
+                                            {card.title}
+                                        </p>
                                         <p className="mt-2 text-sm leading-7 text-slate-300">
                                             {card.description}
                                         </p>

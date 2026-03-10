@@ -1,9 +1,12 @@
+import { useEffect, useRef, useState } from "react";
 import Container from "../atoms/Container";
 import Button from "../atoms/Button";
 import mock from "../../../data/mock";
 
 export default function ServicesSection() {
     const section = mock.homeServices;
+    const sectionRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
 
     const handleScroll = (id) => {
         const element = document.getElementById(id);
@@ -13,9 +16,31 @@ export default function ServicesSection() {
         }
     };
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.12 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
         <section
             id="services"
+            ref={sectionRef}
             className="relative overflow-hidden bg-[#020617] py-24 text-white md:py-32"
         >
             <div className="absolute top-0 left-0 w-full leading-none">
@@ -33,8 +58,11 @@ export default function ServicesSection() {
             <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:48px_48px]" />
 
             <Container>
-                <div className="relative z-10 pt-20 md:pt-24">
-                    <div className="mx-auto max-w-3xl text-center">
+                <div className="relative z-10 pt-16 md:pt-24">
+                    <div
+                        className={`mx-auto max-w-3xl text-center transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                            }`}
+                    >
                         <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
                             {section.badge}
                         </span>
@@ -50,8 +78,11 @@ export default function ServicesSection() {
                     </div>
 
                     <div className="mt-14 grid gap-6 lg:grid-cols-12">
-                        <div className="lg:col-span-5">
-                            <div className="relative h-full overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                        <div
+                            className={`lg:col-span-5 transition-all duration-1000 delay-100 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                                }`}
+                        >
+                            <div className="relative h-full overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl md:p-8">
                                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-violet-500/20 blur-[90px]" />
                                 <div className="pointer-events-none absolute bottom-0 left-0 h-32 w-32 rounded-full bg-sky-500/20 blur-[90px]" />
 
@@ -75,19 +106,20 @@ export default function ServicesSection() {
                                         {section.featured.eyebrow}
                                     </p>
 
-                                    <h3 className="mt-3 text-3xl font-bold leading-tight text-white">
+                                    <h3 className="mt-3 text-2xl font-bold leading-tight text-white md:text-3xl">
                                         {section.featured.title}
                                     </h3>
 
-                                    <p className="mt-5 max-w-xl text-base leading-8 text-slate-300">
+                                    <p className="mt-5 max-w-xl text-sm leading-7 text-slate-300 md:text-base md:leading-8">
                                         {section.featured.description}
                                     </p>
 
                                     <div className="mt-8 grid grid-cols-2 gap-4">
-                                        {section.featured.stats.map((stat) => (
+                                        {section.featured.stats.map((stat, index) => (
                                             <div
                                                 key={stat.label}
-                                                className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                                                className="rounded-2xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:-translate-y-1 hover:border-sky-400/20"
+                                                style={{ transitionDelay: `${index * 70}ms` }}
                                             >
                                                 <p className="text-2xl font-bold text-white">{stat.value}</p>
                                                 <p className="mt-1 text-sm text-slate-400">{stat.label}</p>
@@ -105,10 +137,14 @@ export default function ServicesSection() {
                         </div>
 
                         <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
-                            {section.items.map((service) => (
+                            {section.items.map((service, index) => (
                                 <div
                                     key={service.number}
-                                    className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-violet-400/30 hover:bg-white/[0.07]"
+                                    className={`group relative overflow-hidden rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-violet-400/30 hover:bg-white/[0.07] ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                                        }`}
+                                    style={{
+                                        transitionDelay: `${index * 90 + 180}ms`,
+                                    }}
                                 >
                                     <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
                                         <div className="absolute -left-8 top-0 h-24 w-24 rounded-full bg-sky-400/20 blur-2xl" />
@@ -135,7 +171,7 @@ export default function ServicesSection() {
                                             </span>
                                         </div>
 
-                                        <h3 className="mt-8 text-xl font-semibold text-white">
+                                        <h3 className="mt-8 text-lg font-semibold text-white md:text-xl">
                                             {service.title}
                                         </h3>
 
@@ -148,7 +184,10 @@ export default function ServicesSection() {
                         </div>
                     </div>
 
-                    <div className="mt-14 rounded-[28px] border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.03] p-6 backdrop-blur-xl md:p-8">
+                    <div
+                        className={`mt-14 rounded-[28px] border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.03] p-6 backdrop-blur-xl transition-all duration-1000 delay-300 md:p-8 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                            }`}
+                    >
                         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                             <div className="max-w-2xl">
                                 <p className="text-sm font-medium uppercase tracking-[0.25em] text-slate-400">
@@ -163,10 +202,11 @@ export default function ServicesSection() {
                             </div>
 
                             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                                {section.bottomStrip.items.map((item) => (
+                                {section.bottomStrip.items.map((item, index) => (
                                     <div
                                         key={item.title}
-                                        className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-center"
+                                        className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-center transition duration-300 hover:-translate-y-1 hover:border-sky-400/20"
+                                        style={{ transitionDelay: `${index * 80}ms` }}
                                     >
                                         <p className="text-xl font-bold text-white">{item.title}</p>
                                         <p className="mt-1 text-sm text-slate-400">{item.label}</p>
