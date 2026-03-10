@@ -448,19 +448,14 @@ const mock = {
       items: [
         {
           degree: "BSc in Computer Science & Engineering",
-          institution: "Your University Name",
+          institution: "World University of Bangladesh",
           year: "Running",
         },
         {
           degree: "HSC",
-          institution: "Your College Name",
-          year: "2019",
-        },
-        {
-          degree: "SSC",
-          institution: "Your School Name",
-          year: "2017",
-        },
+          institution: "Rafiqul Islam Women's College",
+          year: "2022",
+        }
       ],
     },
 
