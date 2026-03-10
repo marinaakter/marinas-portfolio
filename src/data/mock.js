@@ -361,7 +361,7 @@ const mock = {
     title: "Need a modern website or web app for your",
     highlight: "business or personal brand?",
     description:
-      "I can help you build, customize, or improve a website with clean code and responsive design.",
+      "I can help you build, customize, or improve a website with clean code, responsive design, and a modern user experience.",
     primaryButton: "Start a Project",
     secondaryButton: "Contact Me",
     cards: [
@@ -369,13 +369,13 @@ const mock = {
         label: "Timeline",
         title: "Focused and Reliable Delivery",
         description:
-          "Suitable for portfolios, landing pages, dashboards, and custom updates.",
+          "Suitable for portfolios, landing pages, dashboards, and custom website updates.",
       },
       {
         label: "Approach",
         title: "Clean, Practical, Careful",
         description:
-          "Modern updates while respecting your current project structure.",
+          "Modern improvements while respecting your current project structure and logic.",
       },
     ],
   },

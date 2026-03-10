@@ -5,11 +5,12 @@ import mock from "../../../data/mock";
 
 export default function CTASection() {
     const section = mock.ctaSection;
+    const contactInfo = mock.contactInfo;
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
     const handlePrimaryClick = () => {
-        window.location.href = "mailto:marinaakter878@gmail.com";
+        window.location.href = `mailto:${contactInfo.email}`;
     };
 
     useEffect(() => {
@@ -32,6 +33,10 @@ export default function CTASection() {
             }
         };
     }, []);
+
+    const phoneHref = contactInfo?.phone
+        ? `tel:${contactInfo.phone.replace(/\s+/g, "")}`
+        : "#";
 
     return (
         <section
@@ -87,7 +92,7 @@ export default function CTASection() {
                                     </button>
 
                                     <a
-                                        href="mailto:marinaakter878@gmail.com"
+                                        href={`mailto:${contactInfo.email}`}
                                         className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-center font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
                                     >
                                         {section.secondaryButton}
@@ -96,26 +101,26 @@ export default function CTASection() {
 
                                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
                                     <a
-                                        href="mailto:marinaakter878@gmail.com"
+                                        href={`mailto:${contactInfo.email}`}
                                         className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-sky-400/30"
                                     >
                                         <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
                                             Email
                                         </p>
                                         <p className="mt-3 break-all text-base font-semibold text-white">
-                                            marinaakter878@gmail.com
+                                            {contactInfo.email}
                                         </p>
                                     </a>
 
                                     <a
-                                        href="tel:+8801603277275"
+                                        href={phoneHref}
                                         className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-violet-400/30"
                                     >
                                         <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
                                             Phone
                                         </p>
                                         <p className="mt-3 text-base font-semibold text-white">
-                                            +880 1603-277275
+                                            {contactInfo.phone}
                                         </p>
                                     </a>
                                 </div>

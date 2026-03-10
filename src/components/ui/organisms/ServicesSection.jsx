@@ -4,7 +4,8 @@ import Button from "../atoms/Button";
 import mock from "../../../data/mock";
 
 export default function ServicesSection() {
-    const section = mock.homeServices;
+    const homeSection = mock.homeServices;
+    const page = mock.servicesPage;
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -59,25 +60,55 @@ export default function ServicesSection() {
 
             <Container>
                 <div className="relative z-10 pt-16 md:pt-24">
+                    {/* Top heading */}
                     <div
                         className={`mx-auto max-w-3xl text-center transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                             }`}
                     >
                         <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
-                            {section.badge}
+                            {page.hero.badge}
                         </span>
 
                         <h2 className="mt-6 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
-                            {section.title}
-                            <span className="text-violet-400"> {section.highlight}</span>
+                            {page.hero.title}
+                            <span className="text-violet-400"> {page.hero.highlight}</span>
                         </h2>
 
                         <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
-                            {section.description}
+                            {page.hero.description}
                         </p>
+
+                        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                            <button type="button" onClick={() => handleScroll("contact")}>
+                                <Button>{page.hero.primaryButton}</Button>
+                            </button>
+
+                            <button
+                                type="button"
+                                onClick={() => handleScroll("contact")}
+                                className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                            >
+                                {page.hero.secondaryButton}
+                            </button>
+                        </div>
+
+                        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                            {page.hero.stats.map((stat, index) => (
+                                <div
+                                    key={stat.label}
+                                    className={`rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-violet-400/20 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                                        }`}
+                                    style={{ transitionDelay: `${index * 80 + 100}ms` }}
+                                >
+                                    <p className="text-3xl font-bold text-white">{stat.value}</p>
+                                    <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
-                    <div className="mt-14 grid gap-6 lg:grid-cols-12">
+                    {/* Featured + services */}
+                    <div className="mt-16 grid gap-6 lg:grid-cols-12">
                         <div
                             className={`lg:col-span-5 transition-all duration-1000 delay-100 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                                 }`}
@@ -103,19 +134,19 @@ export default function ServicesSection() {
                                     </div>
 
                                     <p className="mt-8 text-sm font-medium uppercase tracking-[0.25em] text-slate-400">
-                                        {section.featured.eyebrow}
+                                        {homeSection.featured.eyebrow}
                                     </p>
 
                                     <h3 className="mt-3 text-2xl font-bold leading-tight text-white md:text-3xl">
-                                        {section.featured.title}
+                                        {homeSection.featured.title}
                                     </h3>
 
                                     <p className="mt-5 max-w-xl text-sm leading-7 text-slate-300 md:text-base md:leading-8">
-                                        {section.featured.description}
+                                        {homeSection.featured.description}
                                     </p>
 
                                     <div className="mt-8 grid grid-cols-2 gap-4">
-                                        {section.featured.stats.map((stat, index) => (
+                                        {homeSection.featured.stats.map((stat, index) => (
                                             <div
                                                 key={stat.label}
                                                 className="rounded-2xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:-translate-y-1 hover:border-sky-400/20"
@@ -129,7 +160,7 @@ export default function ServicesSection() {
 
                                     <div className="mt-8">
                                         <button type="button" onClick={() => handleScroll("contact")}>
-                                            <Button>{section.featured.button}</Button>
+                                            <Button>{homeSection.featured.button}</Button>
                                         </button>
                                     </div>
                                 </div>
@@ -137,7 +168,7 @@ export default function ServicesSection() {
                         </div>
 
                         <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
-                            {section.items.map((service, index) => (
+                            {page.services.map((service, index) => (
                                 <div
                                     key={service.number}
                                     className={`group relative overflow-hidden rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-violet-400/30 hover:bg-white/[0.07] ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
@@ -171,38 +202,95 @@ export default function ServicesSection() {
                                             </span>
                                         </div>
 
-                                        <h3 className="mt-8 text-lg font-semibold text-white md:text-xl">
+                                        <h3 className="mt-6 text-lg font-semibold text-white md:text-xl">
                                             {service.title}
                                         </h3>
 
                                         <p className="mt-4 text-sm leading-7 text-slate-300 md:text-base">
                                             {service.description}
                                         </p>
+
+                                        {service.points?.length > 0 && (
+                                            <div className="mt-6 flex flex-wrap gap-3">
+                                                {service.points.map((point) => (
+                                                    <span
+                                                        key={point}
+                                                        className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300"
+                                                    >
+                                                        {point}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
 
+                    {/* Process */}
                     <div
-                        className={`mt-14 rounded-[28px] border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.03] p-6 backdrop-blur-xl transition-all duration-1000 delay-300 md:p-8 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                        className={`mt-16 transition-all duration-1000 delay-300 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                            }`}
+                    >
+                        <div className="mx-auto max-w-3xl text-center">
+                            <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
+                                {page.process.badge}
+                            </span>
+
+                            <h3 className="mt-6 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
+                                {page.process.title}
+                                <span className="text-violet-400"> {page.process.highlight}</span>
+                            </h3>
+
+                            <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
+                                {page.process.description}
+                            </p>
+                        </div>
+
+                        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                            {page.process.steps.map((step, index) => (
+                                <div
+                                    key={step.number}
+                                    className="rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-violet-400/30"
+                                    style={{ transitionDelay: `${index * 80}ms` }}
+                                >
+                                    <span className="text-sm font-semibold tracking-[0.2em] text-violet-300">
+                                        {step.number}
+                                    </span>
+
+                                    <h4 className="mt-5 text-2xl font-semibold text-white">
+                                        {step.title}
+                                    </h4>
+
+                                    <p className="mt-4 text-sm leading-7 text-slate-300 md:text-base">
+                                        {step.desc}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Bottom strip */}
+                    <div
+                        className={`mt-14 rounded-[28px] border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.03] p-6 backdrop-blur-xl transition-all duration-1000 delay-500 md:p-8 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                             }`}
                     >
                         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                             <div className="max-w-2xl">
                                 <p className="text-sm font-medium uppercase tracking-[0.25em] text-slate-400">
-                                    {section.bottomStrip.eyebrow}
+                                    {homeSection.bottomStrip.eyebrow}
                                 </p>
                                 <h3 className="mt-3 text-2xl font-bold text-white md:text-3xl">
-                                    {section.bottomStrip.title}
+                                    {homeSection.bottomStrip.title}
                                 </h3>
                                 <p className="mt-3 leading-7 text-slate-300">
-                                    {section.bottomStrip.description}
+                                    {homeSection.bottomStrip.description}
                                 </p>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                                {section.bottomStrip.items.map((item, index) => (
+                                {homeSection.bottomStrip.items.map((item, index) => (
                                     <div
                                         key={item.title}
                                         className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-center transition duration-300 hover:-translate-y-1 hover:border-sky-400/20"
@@ -212,6 +300,41 @@ export default function ServicesSection() {
                                         <p className="mt-1 text-sm text-slate-400">{item.label}</p>
                                     </div>
                                 ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* CTA inside services */}
+                    <div
+                        className={`mt-16 rounded-[32px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-1000 delay-700 md:p-8 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                            }`}
+                    >
+                        <div className="mx-auto max-w-3xl text-center">
+                            <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
+                                {page.cta.badge}
+                            </span>
+
+                            <h3 className="mt-6 text-3xl font-bold leading-tight md:text-4xl">
+                                {page.cta.title}
+                                <span className="text-violet-400"> {page.cta.highlight}</span>
+                            </h3>
+
+                            <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
+                                {page.cta.description}
+                            </p>
+
+                            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                                <button type="button" onClick={() => handleScroll("contact")}>
+                                    <Button>{page.cta.primaryButton}</Button>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onClick={() => handleScroll("contact")}
+                                    className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                                >
+                                    {page.cta.secondaryButton}
+                                </button>
                             </div>
                         </div>
                     </div>
