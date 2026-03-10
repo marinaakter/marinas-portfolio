@@ -99,7 +99,7 @@ export default function Navbar() {
                                             key={item.name}
                                             type="button"
                                             onClick={() => handleScroll(item.path)}
-                                            className={`group relative overflow-hidden rounded-full px-4 py-2.5 text-[14px] font-medium tracking-[0.01em] transition-all duration-300 ${isActive
+                                            className={`group relative cursor-pointer overflow-hidden rounded-full px-4 py-2.5 text-[14px] font-medium tracking-[0.01em] transition-all duration-300 ${isActive
                                                     ? "text-white"
                                                     : "text-slate-300 hover:text-white"
                                                 }`}

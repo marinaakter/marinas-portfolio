@@ -10,7 +10,7 @@ export default function Button({
     return (
         <button
             className={cn(
-                "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl",
+                "group relative cursor-pointer inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl",
                 "bg-gradient-to-r from-sky-500 via-blue-600 to-sky-500 bg-[length:200%_200%]",
                 "px-7 py-3 font-semibold text-white",
                 "shadow-lg shadow-sky-500/30",
