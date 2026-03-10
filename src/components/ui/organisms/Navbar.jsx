@@ -1,211 +1,247 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Container from "../atoms/Container";
 import Button from "../atoms/Button";
 import mock from "../../../data/mock";
+import { HiOutlineMenuAlt3, HiOutlineX, HiOutlineArrowRight } from "react-icons/hi";
 
 export default function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const [activeHash, setActiveHash] = useState("#home");
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
+
+    const navItems = useMemo(() => mock.navigation.navbar || [], []);
 
     useEffect(() => {
-        const onScroll = () => {
-            setScrolled(window.scrollY > 16);
+        const handleScrollState = () => {
+            setIsScrolled(window.scrollY > 12);
+        };
 
-            const sections = [
-                "home",
-                "about",
-                "services",
-                "projects",
-                "testimonials",
-                "contact",
-            ];
+        const sectionIds = navItems
+            .map((item) => item.path?.replace("#", ""))
+            .filter(Boolean);
 
+        const handleActiveSection = () => {
             const scrollPosition = window.scrollY + 140;
 
-            for (const id of sections) {
-                const el = document.getElementById(id);
-                if (el) {
-                    const top = el.offsetTop;
-                    const height = el.offsetHeight;
+            for (let i = sectionIds.length - 1; i >= 0; i -= 1) {
+                const id = sectionIds[i];
+                const element = document.getElementById(id);
 
-                    if (scrollPosition >= top && scrollPosition < top + height) {
-                        setActiveHash(`#${id}`);
-                        break;
-                    }
+                if (element && element.offsetTop <= scrollPosition) {
+                    setActiveSection(id);
+                    return;
                 }
+            }
+
+            setActiveSection("home");
+        };
+
+        const handleResize = () => {
+            if (window.innerWidth >= 1024) {
+                setIsOpen(false);
             }
         };
 
-        window.addEventListener("scroll", onScroll);
-        onScroll();
+        handleScrollState();
+        handleActiveSection();
 
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+        window.addEventListener("scroll", handleScrollState);
+        window.addEventListener("scroll", handleActiveSection);
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("scroll", handleScrollState);
+            window.removeEventListener("scroll", handleActiveSection);
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [navItems]);
+
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? "hidden" : "auto";
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isOpen]);
 
     const handleScroll = (hash) => {
+        if (!hash?.startsWith("#")) return;
+
         const id = hash.replace("#", "");
         const element = document.getElementById(id);
 
         if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-            setActiveHash(hash);
-            setMobileMenuOpen(false);
+            const navbarOffset = 84;
+            const top = element.getBoundingClientRect().top + window.scrollY - navbarOffset;
+
+            window.scrollTo({
+                top,
+                behavior: "smooth",
+            });
+
+            setActiveSection(id);
+            setIsOpen(false);
         }
     };
 
-    const navItems = mock?.navigation?.navbar || [];
-    const brandTopText =
-        mock?.brand?.logoTextTop || mock?.brand?.shortName || "Marina";
-    const brandBottomText =
-        mock?.brand?.logoTextBottom || mock?.brand?.highlightName || "PORTFOLIO";
-    const ctaText = mock?.navigation?.ctaButton || "Hire Me";
-    const mobileMenuLabel = mock?.navigation?.mobileMenuLabel || "Toggle menu";
-    const showHireButton = mock?.navigation?.showHireButton ?? true;
-
     return (
-        <header
-            className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
-                    ? "border-b border-white/10 bg-[#020617]/80 shadow-[0_14px_40px_rgba(0,0,0,0.32)] backdrop-blur-2xl"
-                    : "bg-[#020617]/92 backdrop-blur-xl"
-                }`}
-        >
-            <Container>
-                <div className="relative">
-                    <div className="flex h-[70px] items-center justify-between md:h-[74px]">
-                        <Link to="/" className="group flex min-w-0 items-center gap-3">
-                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/20 via-cyan-400/10 to-white/5 shadow-[0_10px_30px_rgba(14,165,233,0.12)] transition-all duration-300 group-hover:scale-[1.03] group-hover:border-sky-400/30 md:h-11 md:w-11">
-                                <span className="h-2.5 w-2.5 rounded-full bg-sky-400 shadow-[0_0_18px_rgba(56,189,248,0.8)]" />
-                            </span>
+        <>
+            <header
+                className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${isScrolled
+                        ? "border-b border-white/10 bg-[#020617]/75 shadow-[0_12px_40px_rgba(2,6,23,0.28)] backdrop-blur-2xl"
+                        : "bg-transparent"
+                    }`}
+            >
+                <Container>
+                    <div className="flex h-[74px] items-center justify-between">
+                        {/* Brand */}
+                        <button
+                            type="button"
+                            onClick={() => handleScroll("#home")}
+                            className="group flex items-center gap-3"
+                            aria-label="Go to home"
+                        >
+                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl transition duration-300 group-hover:border-sky-400/30">
+                                {mock.brand.shortName?.charAt(0)}
+                            </div>
 
-                            <div className="min-w-0 leading-none">
-                                <p className="truncate text-[10px] font-medium uppercase tracking-[0.3em] text-white/55 md:text-[11px]">
-                                    {brandTopText}
+                            <div className="text-left leading-tight">
+                                <p className="text-base font-bold text-white">
+                                    {mock.brand.shortName}
                                 </p>
-                                <p className="mt-1 truncate text-[13px] font-semibold tracking-[0.14em] text-white md:text-[15px]">
-                                    {brandBottomText}
+                                <p className="text-[10px] tracking-[0.28em] text-sky-400">
+                                    {mock.brand.highlightName}
                                 </p>
                             </div>
-                        </Link>
+                        </button>
 
-                        <nav className="hidden items-center lg:flex">
-                            <div className="flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.03] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
+                        {/* Desktop Nav */}
+                        <nav className="hidden lg:flex lg:items-center lg:gap-2">
+                            <div className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
                                 {navItems.map((item) => {
-                                    const isActive = activeHash === item.path;
+                                    const itemId = item.path.replace("#", "");
+                                    const isActive = activeSection === itemId;
 
                                     return (
                                         <button
                                             key={item.name}
                                             type="button"
                                             onClick={() => handleScroll(item.path)}
-                                            className={`group relative cursor-pointer overflow-hidden rounded-full px-4 py-2.5 text-[14px] font-medium tracking-[0.01em] transition-all duration-300 ${isActive
-                                                    ? "text-white"
-                                                    : "text-slate-300 hover:text-white"
+                                            className={`rounded-full px-4 py-2.5 text-sm font-medium transition duration-300 ${isActive
+                                                    ? "bg-white text-slate-900 shadow-sm"
+                                                    : "text-slate-200 hover:text-white"
                                                 }`}
                                         >
-                                            <span
-                                                className={`absolute inset-0 rounded-full transition-all duration-300 ${isActive
-                                                        ? "bg-gradient-to-r from-sky-500/18 via-cyan-400/10 to-sky-500/18 ring-1 ring-sky-400/20"
-                                                        : "bg-transparent group-hover:bg-white/[0.05]"
-                                                    }`}
-                                            />
-
-                                            <span className="relative z-10">{item.name}</span>
-
-                                            <span
-                                                className={`absolute bottom-1 left-1/2 h-[2px] -translate-x-1/2 rounded-full bg-sky-400 transition-all duration-300 ${isActive ? "w-8 opacity-100" : "w-0 opacity-0"
-                                                    }`}
-                                            />
+                                            {item.name}
                                         </button>
                                     );
                                 })}
                             </div>
                         </nav>
 
-                        <div className="flex items-center gap-2">
-                            {showHireButton && (
-                                <div className="hidden sm:block">
-                                    <button type="button" onClick={() => handleScroll("#contact")}>
-                                        <Button className="rounded-full px-4 py-2.5 text-sm font-semibold shadow-[0_12px_30px_rgba(14,165,233,0.18)] md:px-6">
-                                            {ctaText}
-                                        </Button>
-                                    </button>
-                                </div>
+                        {/* Desktop CTA */}
+                        <div className="hidden lg:flex lg:items-center lg:gap-3">
+                            {mock.navigation.showHireButton && (
+                                <button type="button" onClick={() => handleScroll("#contact")}>
+                                    <Button className="rounded-full px-6 py-3 text-sm font-semibold shadow-[0_18px_45px_rgba(14,165,233,0.24)]">
+                                        <span className="inline-flex items-center gap-2">
+                                            {mock.navigation.ctaButton}
+                                            <HiOutlineArrowRight className="text-base" />
+                                        </span>
+                                    </Button>
+                                </button>
                             )}
-
-                            <button
-                                type="button"
-                                aria-label={mobileMenuLabel}
-                                onClick={() => setMobileMenuOpen((prev) => !prev)}
-                                className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl border text-white transition-all duration-300 lg:hidden ${mobileMenuOpen
-                                        ? "border-sky-400/30 bg-sky-500/10"
-                                        : "border-white/10 bg-white/[0.04] hover:bg-white/[0.08]"
-                                    }`}
-                            >
-                                <span className="relative flex h-4 w-5 flex-col items-center justify-between">
-                                    <span
-                                        className={`block h-[2px] w-5 rounded-full bg-white transition-all duration-300 ${mobileMenuOpen ? "translate-y-[7px] rotate-45" : ""
-                                            }`}
-                                    />
-                                    <span
-                                        className={`block h-[2px] w-5 rounded-full bg-white transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : "opacity-100"
-                                            }`}
-                                    />
-                                    <span
-                                        className={`block h-[2px] w-5 rounded-full bg-white transition-all duration-300 ${mobileMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
-                                            }`}
-                                    />
-                                </span>
-                            </button>
                         </div>
-                    </div>
 
-                    <div
-                        className={`absolute left-0 top-full z-40 w-full px-4 pt-2 lg:hidden transition-all duration-300 ease-out ${mobileMenuOpen
-                                ? "pointer-events-auto visible translate-y-0 opacity-100"
-                                : "pointer-events-none invisible -translate-y-2 opacity-0"
-                            }`}
-                    >
-                        <div
-                            className={`origin-top rounded-[28px] border border-white/10 bg-[#0b1120]/95 p-3 shadow-[0_18px_50px_rgba(0,0,0,0.32)] backdrop-blur-2xl transition-all duration-300 ease-out ${mobileMenuOpen ? "scale-100" : "scale-[0.98]"
-                                }`}
+                        {/* Mobile Toggle */}
+                        <button
+                            type="button"
+                            onClick={() => setIsOpen((prev) => !prev)}
+                            aria-label={mock.navigation.mobileMenuLabel}
+                            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-white backdrop-blur-xl transition duration-300 hover:border-sky-400/30 lg:hidden"
                         >
-                            <nav className="flex flex-col gap-1.5">
-                                {navItems.map((item) => {
-                                    const isActive = activeHash === item.path;
+                            {isOpen ? (
+                                <HiOutlineX className="text-2xl" />
+                            ) : (
+                                <HiOutlineMenuAlt3 className="text-2xl" />
+                            )}
+                        </button>
+                    </div>
+                </Container>
+            </header>
+
+            {/* Mobile Menu */}
+            <div
+                className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isOpen ? "pointer-events-auto visible" : "pointer-events-none invisible"
+                    }`}
+            >
+                <div
+                    className={`absolute inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"
+                        }`}
+                    onClick={() => setIsOpen(false)}
+                />
+
+                <div
+                    className={`absolute right-0 top-0 flex h-full w-full max-w-[360px] flex-col border-l border-white/10 bg-[#020617]/95 px-6 pb-8 pt-24 shadow-[0_20px_80px_rgba(2,6,23,0.5)] backdrop-blur-2xl transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
+                        }`}
+                >
+                    <div className="pointer-events-none absolute -top-10 right-0 h-48 w-48 rounded-full bg-sky-500/15 blur-[100px]" />
+                    <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-violet-500/15 blur-[100px]" />
+
+                    <div className="relative z-10">
+                        <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-xl">
+                            <div className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500/20 to-violet-500/20 text-sm font-bold text-white">
+                                    {mock.brand.shortName?.charAt(0)}
+                                </div>
+
+                                <div className="leading-tight">
+                                    <p className="text-base font-bold text-white">
+                                        {mock.brand.shortName}
+                                    </p>
+                                    <p className="text-[10px] tracking-[0.28em] text-sky-400">
+                                        {mock.brand.highlightName}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-4 space-y-2">
+                                {navItems.map((item, index) => {
+                                    const itemId = item.path.replace("#", "");
+                                    const isActive = activeSection === itemId;
 
                                     return (
                                         <button
                                             key={item.name}
                                             type="button"
                                             onClick={() => handleScroll(item.path)}
-                                            className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-[15px] font-medium transition-all duration-300 ${isActive
-                                                    ? "bg-sky-500/12 text-white ring-1 ring-sky-400/20"
-                                                    : "text-slate-300 hover:bg-white/[0.05] hover:text-white"
+                                            className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-medium transition duration-300 ${isActive
+                                                    ? "bg-white text-slate-900"
+                                                    : "bg-white/[0.03] text-slate-200 hover:bg-white/[0.06] hover:text-white"
                                                 }`}
+                                            style={{
+                                                transitionDelay: `${index * 40}ms`,
+                                            }}
                                         >
                                             <span>{item.name}</span>
-                                            <span
-                                                className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${isActive
-                                                        ? "bg-sky-400 shadow-[0_0_14px_rgba(56,189,248,0.8)]"
-                                                        : "bg-white/15"
-                                                    }`}
-                                            />
+                                            <HiOutlineArrowRight className="text-base" />
                                         </button>
                                     );
                                 })}
-                            </nav>
+                            </div>
 
-                            {showHireButton && (
-                                <div className="mt-3 border-t border-white/10 pt-3 sm:hidden">
+                            {mock.navigation.showHireButton && (
+                                <div className="mt-5">
                                     <button
                                         type="button"
                                         onClick={() => handleScroll("#contact")}
                                         className="w-full"
                                     >
-                                        <Button className="w-full rounded-full px-5 py-3 text-sm font-semibold shadow-[0_12px_30px_rgba(14,165,233,0.18)]">
-                                            {ctaText}
+                                        <Button className="w-full rounded-2xl py-3 text-sm font-semibold">
+                                            <span className="inline-flex items-center gap-2">
+                                                {mock.navigation.ctaButton}
+                                                <HiOutlineArrowRight className="text-base" />
+                                            </span>
                                         </Button>
                                     </button>
                                 </div>
@@ -213,7 +249,7 @@ export default function Navbar() {
                         </div>
                     </div>
                 </div>
-            </Container>
-        </header>
+            </div>
+        </>
     );
 }

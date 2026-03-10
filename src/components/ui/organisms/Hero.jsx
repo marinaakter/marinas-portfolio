@@ -40,7 +40,13 @@ export default function Hero() {
         const element = document.getElementById(id);
 
         if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
+            const navbarOffset = 84;
+            const top = element.getBoundingClientRect().top + window.scrollY - navbarOffset;
+
+            window.scrollTo({
+                top,
+                behavior: "smooth",
+            });
         }
     };
 
@@ -100,7 +106,7 @@ export default function Hero() {
             />
 
             <Container>
-                <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-8 xl:gap-12">
+                <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10 xl:gap-14">
                     <div
                         className={`max-w-[680px] transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                             }`}
@@ -158,7 +164,7 @@ export default function Hero() {
                         </div>
 
                         {hero?.trustText && (
-                            <div className="mt-5 flex items-center gap-3 text-sm text-slate-400">
+                            <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-slate-400">
                                 <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
                                 <p>{hero.trustText}</p>
                             </div>
@@ -233,8 +239,7 @@ export default function Hero() {
                                             {hero?.floatingCards?.[2]?.title || "Safe Updates"}
                                         </p>
                                         <p className="mt-1 text-xs leading-5 text-slate-300">
-                                            {hero?.floatingCards?.[2]?.subtitle ||
-                                                "Without breaking your logic"}
+                                            {hero?.floatingCards?.[2]?.subtitle || "Without breaking your logic"}
                                         </p>
                                     </div>
 
