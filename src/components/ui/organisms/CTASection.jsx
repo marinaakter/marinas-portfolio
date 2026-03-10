@@ -9,10 +9,6 @@ export default function CTASection() {
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
-    const handlePrimaryClick = () => {
-        window.location.href = `mailto:${contactInfo.email}`;
-    };
-
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -33,6 +29,10 @@ export default function CTASection() {
             }
         };
     }, []);
+
+    const handlePrimaryClick = () => {
+        window.location.href = `mailto:${contactInfo.email}`;
+    };
 
     const phoneHref = contactInfo?.phone
         ? `tel:${contactInfo.phone.replace(/\s+/g, "")}`
@@ -71,7 +71,7 @@ export default function CTASection() {
                             <div className="absolute bottom-0 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-fuchsia-500/10 blur-[100px]" />
                         </div>
 
-                        <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+                        <div className="relative z-10 grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr]">
                             <div>
                                 <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
                                     {section.badge}
@@ -102,7 +102,7 @@ export default function CTASection() {
                                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
                                     <a
                                         href={`mailto:${contactInfo.email}`}
-                                        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-sky-400/30"
+                                        className="rounded-[22px] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-sky-400/30"
                                     >
                                         <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
                                             Email
@@ -110,11 +110,14 @@ export default function CTASection() {
                                         <p className="mt-3 break-all text-base font-semibold text-white">
                                             {contactInfo.email}
                                         </p>
+                                        <p className="mt-2 text-sm text-slate-400">
+                                            {contactInfo.responseTime}
+                                        </p>
                                     </a>
 
                                     <a
                                         href={phoneHref}
-                                        className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-violet-400/30"
+                                        className="rounded-[22px] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-violet-400/30"
                                     >
                                         <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
                                             Phone
@@ -122,16 +125,20 @@ export default function CTASection() {
                                         <p className="mt-3 text-base font-semibold text-white">
                                             {contactInfo.phone}
                                         </p>
+                                        <p className="mt-2 text-sm text-slate-400">
+                                            {contactInfo.workingMode}
+                                        </p>
                                     </a>
                                 </div>
                             </div>
 
-                            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                            <div className="grid gap-4">
                                 {section.cards.map((card, index) => (
                                     <div
                                         key={card.title}
-                                        className="rounded-[24px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/20"
-                                        style={{ transitionDelay: `${index * 100}ms` }}
+                                        className={`rounded-[24px] border border-white/10 bg-white/[0.05] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/20 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                                            }`}
+                                        style={{ transitionDelay: `${index * 120 + 140}ms` }}
                                     >
                                         <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
                                             {card.label}
@@ -144,6 +151,22 @@ export default function CTASection() {
                                         </p>
                                     </div>
                                 ))}
+
+                                <div
+                                    className={`rounded-[24px] border border-white/10 bg-gradient-to-r from-white/[0.06] to-white/[0.03] p-5 backdrop-blur-xl transition duration-300 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                                        }`}
+                                    style={{ transitionDelay: "340ms" }}
+                                >
+                                    <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
+                                        Location
+                                    </p>
+                                    <p className="mt-3 text-lg font-semibold text-white">
+                                        {contactInfo.location}
+                                    </p>
+                                    <p className="mt-2 text-sm leading-7 text-slate-300">
+                                        Available for remote collaboration, freelance work, and modern web projects.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

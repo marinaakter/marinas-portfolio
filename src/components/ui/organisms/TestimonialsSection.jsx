@@ -68,11 +68,11 @@ export default function TestimonialsSection() {
                         </p>
                     </div>
 
-                    <div className="mt-16 grid gap-6 lg:grid-cols-3">
+                    <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                         {section.items.map((item, index) => (
                             <div
-                                key={index}
-                                className={`group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-7 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-violet-400/30 hover:bg-white/[0.07] ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                                key={`${item.name}-${index}`}
+                                className={`group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-violet-400/30 hover:bg-white/[0.07] ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                                     }`}
                                 style={{
                                     transitionDelay: `${index * 100 + 100}ms`,
@@ -84,29 +84,45 @@ export default function TestimonialsSection() {
                                 </div>
 
                                 <div className="relative z-10">
-                                    <div className="flex items-center gap-1 text-violet-300">
-                                        {Array.from({ length: item.rating || 5 }).map((_, starIndex) => (
-                                            <svg
-                                                key={starIndex}
-                                                viewBox="0 0 24 24"
-                                                fill="currentColor"
-                                                className="h-5 w-5"
-                                            >
-                                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                        ))}
+                                    <div className="flex items-start justify-between gap-4">
+                                        <div className="flex items-center gap-1 text-violet-300">
+                                            {Array.from({ length: item.rating || 5 }).map((_, starIndex) => (
+                                                <svg
+                                                    key={starIndex}
+                                                    viewBox="0 0 24 24"
+                                                    fill="currentColor"
+                                                    className="h-5 w-5"
+                                                >
+                                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                                </svg>
+                                            ))}
+                                        </div>
+
+                                        <span className="text-4xl font-semibold leading-none text-white/10">
+                                            ”
+                                        </span>
                                     </div>
 
-                                    <p className="mt-6 text-base leading-8 text-slate-300">
+                                    <p className="mt-6 min-h-[160px] text-base leading-8 text-slate-300">
                                         “{item.review}”
                                     </p>
 
                                     <div className="mt-8 border-t border-white/10 pt-5">
-                                        <h3 className="text-lg font-semibold text-white">{item.name}</h3>
-                                        <p className="mt-1 text-sm text-slate-400">
-                                            {item.role}
-                                            {item.company ? ` • ${item.company}` : ""}
-                                        </p>
+                                        <div className="flex items-center gap-4">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-sky-500/20 to-violet-500/20 text-sm font-semibold text-white">
+                                                {item.name?.charAt(0)}
+                                            </div>
+
+                                            <div>
+                                                <h3 className="text-lg font-semibold text-white">
+                                                    {item.name}
+                                                </h3>
+                                                <p className="mt-1 text-sm text-slate-400">
+                                                    {item.role}
+                                                    {item.company ? ` • ${item.company}` : ""}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -121,6 +137,7 @@ export default function TestimonialsSection() {
                             {section.stats.map((stat, index) => (
                                 <div
                                     key={stat.label}
+                                    className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-violet-400/20"
                                     style={{ transitionDelay: `${index * 80}ms` }}
                                 >
                                     <p className="text-3xl font-bold text-white">{stat.value}</p>

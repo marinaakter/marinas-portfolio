@@ -1,13 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Container from "../atoms/Container";
 import Button from "../atoms/Button";
 import mock from "../../../data/mock";
 
 export default function PortfolioSection() {
     const section = mock.portfolioSection;
+    const page = mock.portfolioPage;
+
     const [selectedProject, setSelectedProject] = useState(null);
+    const [activeFilter, setActiveFilter] = useState("All");
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
+
+    const filteredItems = useMemo(() => {
+        if (activeFilter === "All") return page.items;
+        return page.items.filter((item) => item.category === activeFilter);
+    }, [activeFilter, page.items]);
 
     const handleScroll = (id) => {
         const element = document.getElementById(id);
@@ -86,67 +94,163 @@ export default function PortfolioSection() {
 
                 <Container>
                     <div className="relative z-10 pt-16 md:pt-24">
+                        {/* heading */}
                         <div
-                            className={`mx-auto max-w-3xl text-center transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                            className={`mx-auto max-w-4xl text-center transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                                 }`}
                         >
                             <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-600">
-                                {section.badge}
+                                {page.hero.badge}
                             </span>
 
                             <h2 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">
-                                {section.title}
+                                {page.hero.title}
                             </h2>
 
-                            <p className="mt-4 text-slate-600 md:text-lg">{section.description}</p>
+                            <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 md:text-lg">
+                                {page.hero.description}
+                            </p>
                         </div>
 
+                        {/* filter tabs */}
+                        <div
+                            className={`mt-12 flex flex-wrap items-center justify-center gap-3 transition-all duration-1000 delay-100 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                                }`}
+                        >
+                            {page.filterTabs.map((tab) => (
+                                <button
+                                    key={tab}
+                                    type="button"
+                                    onClick={() => setActiveFilter(tab)}
+                                    className={`rounded-full border px-5 py-2 text-sm font-medium transition ${activeFilter === tab
+                                            ? "border-sky-500 bg-sky-500 text-white"
+                                            : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:bg-slate-100"
+                                        }`}
+                                >
+                                    {tab}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* grid */}
                         <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                            {section.projects.map((project, index) => (
+                            {filteredItems.map((item, index) => (
                                 <div
-                                    key={index}
-                                    className={`group relative overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-3 hover:shadow-2xl ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                                    key={`${item.title}-${index}`}
+                                    className={`group overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm transition duration-500 hover:-translate-y-2 hover:shadow-xl ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                                         }`}
                                     style={{
-                                        transitionDelay: `${index * 100 + 120}ms`,
+                                        transitionDelay: `${index * 90 + 140}ms`,
                                     }}
                                 >
                                     <div className="relative aspect-[16/11] overflow-hidden">
                                         <img
-                                            src={project.image}
-                                            alt={project.title}
+                                            src={item.image}
+                                            alt={item.title}
                                             className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-90" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent opacity-90" />
                                     </div>
 
-                                    <div className="absolute bottom-0 left-0 w-full p-6 text-white transition duration-500 group-hover:translate-y-[-4px]">
-                                        <p className="text-sm text-white/80">{project.category}</p>
+                                    <div className="p-6">
+                                        <span className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">
+                                            {item.category}
+                                        </span>
 
-                                        <h3 className="mt-1 text-xl font-semibold">{project.title}</h3>
+                                        <h3 className="mt-4 text-xl font-semibold text-slate-900">
+                                            {item.title}
+                                        </h3>
 
-                                        <button
-                                            type="button"
-                                            onClick={() => openModal(project)}
-                                            className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-violet-300 transition hover:text-violet-200"
-                                        >
-                                            {section.caseStudyButton}
-                                            <span className="transition-transform duration-300 group-hover:translate-x-1">
-                                                →
-                                            </span>
-                                        </button>
+                                        <p className="mt-3 text-sm leading-7 text-slate-600">
+                                            {item.description}
+                                        </p>
+
+                                        <div className="mt-5 flex flex-wrap gap-2">
+                                            {item.tech.map((tech) => (
+                                                <span
+                                                    key={tech}
+                                                    className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-500"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-6 flex flex-wrap gap-3">
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    openModal({
+                                                        title: item.title,
+                                                        category: item.category,
+                                                        image: item.image,
+                                                        description: item.description,
+                                                        tech: item.tech,
+                                                        features:
+                                                            section.projects.find(
+                                                                (project) =>
+                                                                    project.title === item.title ||
+                                                                    project.category === item.category
+                                                            )?.features || [],
+                                                        liveLink: item.liveLink,
+                                                        githubLink: item.githubLink,
+                                                    })
+                                                }
+                                                className="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
+                                            >
+                                                {section.caseStudyButton}
+                                            </button>
+
+                                            <a
+                                                href={item.liveLink || "#"}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                                            >
+                                                Live Preview
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
 
+                        {/* CTA */}
                         <div
-                            className={`mt-16 text-center transition-all duration-1000 delay-300 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                            className={`mt-20 transition-all duration-1000 delay-400 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                                 }`}
                         >
-                            <button type="button" onClick={() => handleScroll("contact")}>
-                                <Button>{section.button}</Button>
-                            </button>
+                            <div className="rounded-[32px] border border-slate-200 bg-[#020617] px-6 py-12 text-white shadow-[0_30px_80px_rgba(2,6,23,0.16)] md:px-10 md:py-16 lg:px-16">
+                                <div className="pointer-events-none absolute inset-0" />
+
+                                <div className="mx-auto max-w-3xl text-center">
+                                    <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
+                                        {section.badge}
+                                    </span>
+
+                                    <h3 className="mt-6 text-3xl font-bold md:text-4xl">
+                                        {page.cta.title}
+                                    </h3>
+
+                                    <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
+                                        {page.cta.description}
+                                    </p>
+
+                                    <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+                                        <button type="button" onClick={() => handleScroll("contact")}>
+                                            <Button>{page.cta.primaryButton}</Button>
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => handleScroll("contact")}
+                                            className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                                        >
+                                            {page.cta.secondaryButton}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Container>

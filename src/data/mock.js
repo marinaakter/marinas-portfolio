@@ -580,7 +580,7 @@ const mock = {
 
   portfolioPage: {
     hero: {
-      badge: "My portfolio",
+      badge: "My Project",
       title: "A collection of projects that reflect my skills and growth",
       description:
         "Explore selected web development, landing page, and full stack projects.",
