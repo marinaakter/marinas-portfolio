@@ -4,7 +4,6 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Portfolio from "../pages/Portfolio";
 import Services from "../pages/Services";
-import CaseStudy from "../pages/CaseStudy";
 import Contact from "../pages/Contact";
 import NotFound from "../pages/NotFound";
 
@@ -18,7 +17,6 @@ export const router = createBrowserRouter([
             { path: "about", element: <About /> },
             { path: "portfolio", element: <Portfolio /> },
             { path: "services", element: <Services /> },
-            { path: "case-study", element: <CaseStudy /> },
             { path: "contact", element: <Contact /> },
         ],
     },
