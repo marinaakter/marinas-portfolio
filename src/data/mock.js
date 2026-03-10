@@ -3,7 +3,7 @@ const mock = {
     siteName: "Marina Akter",
     siteTitle: "Marina Akter | MERN Stack Developer",
     siteDescription:
-      "Premium portfolio and agency website for modern businesses.",
+      "Personal portfolio of Marina Akter, a MERN Stack Developer building modern, responsive, and user-focused web applications.",
     siteUrl: "https://your-domain.com",
     ogImage: "/projects/project1.png",
     language: "en",
@@ -16,9 +16,9 @@ const mock = {
     logoTextTop: "Marina",
     logoTextBottom: "PORTFOLIO",
     logoAlt: "Marina Akter logo",
-    tagline: "MERN Stack Developer for modern websites",
+    tagline: "MERN Stack Developer",
     description:
-      "I build clean, modern, and premium websites for agencies, founders, and businesses.",
+      "I build responsive, modern, and user-friendly web applications using MongoDB, Express, React, and Node.js.",
     copyright: "© 2026 Marina Akter. All rights reserved.",
   },
 
@@ -54,7 +54,7 @@ const mock = {
   },
 
   socialLinks: [
-    { name: "GitHub", href: "https://github.com/" },
+    { name: "GitHub", href: "https://github.com/marinaakter" },
     { name: "LinkedIn", href: "https://linkedin.com/" },
     { name: "Facebook", href: "https://facebook.com/" },
     { name: "Instagram", href: "https://instagram.com/" },
@@ -64,7 +64,7 @@ const mock = {
     email: "marinaakter878@gmail.com",
     phone: "+880 1603277275",
     location: "Dhaka, Bangladesh",
-    workingMode: "Available for remote work",
+    workingMode: "Available for remote work and freelance projects",
     responseTime: "Replies within 24 hours",
   },
 
@@ -77,16 +77,16 @@ const mock = {
   hero: {
     badge: "MERN Stack Developer",
     title: {
-      line1: "I build premium",
-      line2: "agency and business websites",
+      line1: "I build modern",
+      line2: "websites and web applications",
       prefix: "with",
-      highlight: "clean design and modern structure.",
+      highlight: "clean code and responsive design.",
     },
     description:
-      "I help brands build modern websites that look professional, feel premium, and support real business growth.",
+      "I help businesses, startups, and personal brands build fast, modern, and professional websites with a strong user experience.",
     primaryButton: "View My Work",
-    secondaryButton: "Book A Call",
-    trustText: "Clean execution, premium UI, reliable delivery",
+    secondaryButton: "Hire Me",
+    trustText: "Clean code, responsive UI, and reliable delivery",
     stats: [
       { value: "20+", label: "Projects" },
       { value: "3+", label: "Years" },
@@ -95,37 +95,37 @@ const mock = {
     ],
     floatingCards: [
       {
-        title: "Premium Website Systems",
-        subtitle: "Built for agencies and brands",
+        title: "Modern Web Apps",
+        subtitle: "Built with MERN stack",
       },
       {
-        title: "Conversion Focused",
-        subtitle: "Designed for clarity and trust",
+        title: "Responsive UI",
+        subtitle: "Clean and user-focused design",
       },
       {
         title: "Safe Updates",
-        subtitle: "Without breaking your logic",
+        subtitle: "Without breaking existing logic",
       },
     ],
     highlights: [
-      "Premium presentation",
-      "Responsive layout",
-      "Scalable structure",
-      "Business-focused design",
+      "Modern UI",
+      "Responsive design",
+      "Clean structure",
+      "Scalable code",
     ],
   },
 
   clients: {
     badge: "About me",
-    title: "I help brands build a stronger digital presence",
+    title: "I build modern websites with clean structure and practical results",
     description:
-      "Modern websites with clean development and premium presentation.",
+      "Focused on responsive development, clean UI, and reliable frontend-backend integration.",
     logos: [
-      { name: "Google", logo: "/logos/logo1.png" },
-      { name: "Meta", logo: "/logos/logo2.png" },
-      { name: "Microsoft", logo: "/logos/logo3.png" },
-      { name: "YouTube", logo: "/logos/logo4.png" },
-      { name: "Canva", logo: "/logos/logo5.png" },
+      { name: "React", logo: "/logos/logo1.png" },
+      { name: "Node.js", logo: "/logos/logo2.png" },
+      { name: "MongoDB", logo: "/logos/logo3.png" },
+      { name: "Express", logo: "/logos/logo4.png" },
+      { name: "JavaScript", logo: "/logos/logo5.png" },
     ],
     stats: [
       { value: "20+", label: "Projects" },
@@ -136,40 +136,44 @@ const mock = {
 
   aboutOverview: {
     badge: "Who I am",
-    title: "A developer focused on premium web experiences",
+    title:
+      "A MERN stack developer focused on clean, modern, and practical web solutions",
     description:
-      "I create clean, modern, and professional websites for agencies, founders, and businesses.",
+      "I develop responsive websites and web applications using modern technologies with a strong focus on usability, structure, and performance.",
     paragraphs: [
-      "My work focuses on strong layout, responsive design, and maintainable frontend structure.",
-      "I improve websites without disturbing the existing flow more than necessary.",
+      "My work focuses on reusable frontend components, clean backend integration, and user-friendly interfaces.",
+      "I also customize and improve existing projects carefully without disturbing the original flow and logic.",
     ],
     cards: [
       {
-        title: "Design Quality",
-        description: "Modern interfaces with strong hierarchy and spacing.",
+        title: "Frontend Development",
+        description:
+          "Modern responsive interfaces using React, Tailwind CSS, HTML, and JavaScript.",
       },
       {
-        title: "Code Integrity",
-        description: "Clean updates that respect your current logic.",
+        title: "Backend Development",
+        description:
+          "Node.js, Express.js, API integration, and database connectivity.",
       },
       {
-        title: "Business Focus",
-        description: "Websites designed to build trust and clarity.",
+        title: "Clean Workflow",
+        description:
+          "Safe updates, organized structure, and practical implementation.",
       },
     ],
   },
 
   homeServices: {
     badge: "What I Do",
-    title: "Premium services for",
-    highlight: "modern brands and agencies",
+    title: "Services focused on",
+    highlight: "modern web development",
     description:
-      "I build websites that are clean, professional, and built to grow your brand.",
+      "I build websites and web applications that are clean, responsive, and tailored to real client needs.",
     featured: {
       eyebrow: "Featured expertise",
-      title: "Modern website development",
+      title: "Full stack and frontend development",
       description:
-        "Premium websites for agencies, portfolios, and service businesses.",
+        "Modern websites, portfolio projects, landing pages, dashboards, and custom updates.",
       stats: [
         { value: "20+", label: "Projects" },
         { value: "3+", label: "Experience" },
@@ -179,53 +183,59 @@ const mock = {
     items: [
       {
         number: "01",
-        title: "Agency Website Development",
-        description: "Professional websites for agencies and creative teams.",
+        title: "MERN Stack Development",
+        description:
+          "Full stack web applications using MongoDB, Express, React, and Node.js.",
       },
       {
         number: "02",
         title: "Portfolio Website Development",
-        description: "Clean personal portfolio websites with premium design.",
+        description:
+          "Clean personal portfolio websites with modern design and smooth structure.",
       },
       {
         number: "03",
         title: "Landing Page Development",
-        description: "Modern landing pages built for conversion and clarity.",
+        description:
+          "Responsive landing pages built for engagement and clarity.",
       },
       {
         number: "04",
-        title: "Business Website Development",
-        description: "Professional websites for modern businesses and brands.",
+        title: "Frontend UI Implementation",
+        description:
+          "Reusable and responsive UI sections using React and Tailwind CSS.",
       },
       {
         number: "05",
         title: "Website Redesign & Updates",
-        description: "Targeted upgrades without breaking existing logic.",
+        description:
+          "Targeted upgrades without breaking the existing code logic.",
       },
       {
         number: "06",
-        title: "Frontend UI Implementation",
-        description: "Responsive and reusable frontend sections.",
+        title: "Bug Fixing & Customization",
+        description:
+          "Fixing issues and customizing features based on project needs.",
       },
     ],
     bottomStrip: {
       eyebrow: "Why work with me",
-      title: "Premium design with reliable execution",
+      title: "Clean development with reliable execution",
       description:
-        "I focus on visual quality, responsive layout, and clean implementation.",
+        "I focus on code quality, responsive design, and safe implementation.",
       items: [
-        { title: "Premium", label: "UI" },
+        { title: "Responsive", label: "UI" },
         { title: "Clean", label: "Code" },
-        { title: "Reliable", label: "Delivery" },
+        { title: "Reliable", label: "Support" },
       ],
     },
   },
 
   portfolioSection: {
     badge: "Selected work",
-    title: "Projects built for stronger digital presence",
+    title: "Projects that reflect my development skills and design sense",
     description:
-      "A few selected works focused on premium design and modern structure.",
+      "A few selected projects built with clean code, responsive structure, and modern UI.",
     button: "Contact Me",
     caseStudyButton: "View Details",
     projects: [
@@ -237,69 +247,69 @@ const mock = {
         image: "/projects/project1.png",
         cover: "/projects/project1.png",
         description:
-          "A modern portfolio website with clean sections and premium presentation.",
-        summary: "Personal brand website with modern layout and structure.",
+          "A modern personal portfolio website designed to showcase skills, projects, and contact information.",
+        summary: "Portfolio project with clean design and responsive layout.",
         tech: ["React", "Vite", "Tailwind CSS", "JavaScript"],
         features: [
-          "Premium hero section",
+          "Modern hero section",
           "Responsive layout",
           "Smooth navigation",
-          "Professional presentation",
+          "Project showcase section",
         ],
         metrics: [
-          { label: "Style", value: "Premium" },
+          { label: "Style", value: "Modern" },
           { label: "Type", value: "Portfolio" },
-          { label: "Focus", value: "Trust" },
+          { label: "Focus", value: "Personal Brand" },
         ],
         liveLink: "#",
         githubLink: "#",
       },
       {
         id: 2,
-        slug: "agency-landing-page",
-        title: "Agency Landing Page",
-        category: "Landing Page",
+        slug: "mern-dashboard-app",
+        title: "MERN Dashboard App",
+        category: "Web App",
         image: "/projects/project2.png",
         cover: "/projects/project2.png",
         description:
-          "A conversion-focused landing page with clean flow and modern visuals.",
-        summary: "Agency landing page built for trust and lead generation.",
-        tech: ["React", "Tailwind CSS", "UI Design"],
+          "A dashboard-style web application with frontend components, backend integration, and reusable structure.",
+        summary: "Full stack dashboard project built with MERN technologies.",
+        tech: ["MongoDB", "Express", "React", "Node.js"],
         features: [
-          "Clear hierarchy",
-          "Premium visual style",
-          "Offer-focused layout",
-          "Responsive CTA blocks",
+          "Dashboard layout",
+          "API integration",
+          "Reusable components",
+          "Responsive interface",
         ],
         metrics: [
-          { label: "Style", value: "Modern" },
-          { label: "Type", value: "Landing Page" },
-          { label: "Focus", value: "Conversion" },
+          { label: "Style", value: "Application" },
+          { label: "Type", value: "Dashboard" },
+          { label: "Focus", value: "Functionality" },
         ],
         liveLink: "#",
         githubLink: "#",
       },
       {
         id: 3,
-        slug: "business-website-ui",
-        title: "Business Website UI",
-        category: "Business",
+        slug: "landing-page-ui-project",
+        title: "Landing Page UI Project",
+        category: "Landing Page",
         image: "/projects/project3.png",
         cover: "/projects/project3.png",
         description:
-          "A premium business website designed for credibility and clarity.",
-        summary: "Business-facing website with clean UI and strong structure.",
-        tech: ["MongoDB", "Express", "React", "Node.js"],
+          "A modern landing page built for presentation, structure, and responsive user experience.",
+        summary: "Landing page design and development with clean sections.",
+        tech: ["React", "Tailwind CSS", "JavaScript"],
         features: [
-          "Professional layout",
-          "Scalable sections",
-          "Responsive UI",
-          "Reusable components",
+          "Modern layout",
+          "Clear call-to-actions",
+          "Responsive sections",
+          "Reusable structure",
         ],
         metrics: [
-          { label: "Style", value: "Business" },
-          { label: "Type", value: "Website" },
-          { label: "Focus", value: "Brand Trust" },
+          { label: "Style", value: "Clean" },
+          { label: "Type", value: "Landing Page" },
+          { label: "Focus", value: "Engagement" },
         ],
         liveLink: "#",
         githubLink: "#",
@@ -309,17 +319,17 @@ const mock = {
 
   testimonialsSection: {
     badge: "Client feedback",
-    title: "Trusted by clients who value",
-    highlight: "quality and clarity",
+    title: "People appreciate",
+    highlight: "clean work and clear communication",
     description:
-      "Projects handled with strong communication and premium execution.",
+      "Projects completed with careful attention to detail, responsiveness, and usability.",
     items: [
       {
         name: "Sarah Mitchell",
-        role: "Marketing Director",
+        role: "Business Owner",
         company: "Bright Path Studio",
         review:
-          "The website looked far more premium and professional after the update.",
+          "Marina delivered a clean and modern website that looked professional on every device.",
         rating: 5,
       },
       {
@@ -327,15 +337,15 @@ const mock = {
         role: "Startup Founder",
         company: "Northscale Labs",
         review:
-          "Clean work, strong layout sense, and a much sharper final result.",
+          "Very helpful, reliable, and careful with existing code structure during updates.",
         rating: 5,
       },
       {
         name: "Ariana Brooks",
-        role: "Product Manager",
+        role: "Project Manager",
         company: "Elevate Digital",
         review:
-          "Very reliable and professional. The final design felt polished and high-end.",
+          "The final website felt polished, responsive, and much easier to use.",
         rating: 5,
       },
     ],
@@ -348,23 +358,24 @@ const mock = {
 
   ctaSection: {
     badge: "Let’s work together",
-    title: "Need a premium website for your",
-    highlight: "agency, brand, or business?",
+    title: "Need a modern website or web app for your",
+    highlight: "business or personal brand?",
     description:
-      "I can help you build or upgrade a website that feels modern and professional.",
+      "I can help you build, customize, or improve a website with clean code and responsive design.",
     primaryButton: "Start a Project",
     secondaryButton: "Contact Me",
     cards: [
       {
         label: "Timeline",
-        title: "Fast & Focused Delivery",
+        title: "Focused and Reliable Delivery",
         description:
-          "Ideal for portfolios, agencies, landing pages, and redesigns.",
+          "Suitable for portfolios, landing pages, dashboards, and custom updates.",
       },
       {
         label: "Approach",
-        title: "Clean, Strategic, Reliable",
-        description: "Visual upgrades while respecting your current code flow.",
+        title: "Clean, Practical, Careful",
+        description:
+          "Modern updates while respecting your current project structure.",
       },
     ],
   },
@@ -375,23 +386,24 @@ const mock = {
     description: "A few quick answers before starting a project.",
     items: [
       {
-        question: "Can you redesign without changing the main logic?",
+        question:
+          "Can you update an existing website without changing the logic?",
         answer:
-          "Yes, I focus on safe updates while keeping the existing flow intact.",
+          "Yes, I focus on safe updates while keeping the existing structure and main logic intact.",
       },
       {
-        question: "Do you only build portfolios?",
+        question: "Do you build only portfolio websites?",
         answer:
-          "No, I work on portfolios, agency sites, business websites, and landing pages.",
+          "No, I also work on MERN stack projects, landing pages, dashboards, and website customization.",
       },
       {
         question: "Will the website be responsive?",
         answer:
-          "Yes, all sections are built to work across desktop, tablet, and mobile.",
+          "Yes, all sections are built to work smoothly across desktop, tablet, and mobile devices.",
       },
       {
         question: "Can all content stay dynamic from one file?",
-        answer: "Yes, we can manage most website content from mock.js.",
+        answer: "Yes, most website content can be managed from mock.js.",
       },
     ],
   },
@@ -401,7 +413,7 @@ const mock = {
     companyTitle: "Information",
     newsletterTitle: "Stay connected",
     newsletterDescription:
-      "Get updates on premium websites, UI, and modern web design.",
+      "Get updates on web development, UI improvements, and modern portfolio design.",
     newsletterPlaceholder: "Enter email",
     newsletterButton: "Join",
   },
@@ -410,43 +422,145 @@ const mock = {
     title: "About Me",
     hero: {
       badge: "About",
-      title: "Building digital experiences that feel premium",
+      title: "Building modern digital experiences with clean code",
       description:
-        "I help brands present themselves online with clean code and modern design.",
+        "I am a MERN Stack Developer passionate about creating responsive, user-friendly, and visually strong websites.",
       stats: [
         { value: "20+", label: "Projects" },
         { value: "3+", label: "Years" },
         { value: "10+", label: "Clients" },
       ],
     },
+
     story: {
       title: "My approach",
       description:
-        "A strong website should look modern, feel clear, and support business goals.",
+        "I believe a strong website should be clean, responsive, and built with both users and performance in mind.",
       paragraphs: [
-        "My work focuses on layout, spacing, responsive design, and clean frontend structure.",
-        "Whether building from scratch or improving an existing site, I keep the result polished and professional.",
+        "My work focuses on frontend structure, responsive design, reusable components, and full stack development.",
+        "Whether building from scratch or updating an existing project, I aim to keep the result polished, practical, and maintainable.",
       ],
     },
+
+    education: {
+      title: "Educational Background",
+      description: "A short overview of my academic background.",
+      items: [
+        {
+          degree: "BSc in Computer Science & Engineering",
+          institution: "Your University Name",
+          year: "Running",
+        },
+        {
+          degree: "HSC",
+          institution: "Your College Name",
+          year: "2019",
+        },
+        {
+          degree: "SSC",
+          institution: "Your School Name",
+          year: "2017",
+        },
+      ],
+    },
+
+    skills: {
+      title: "My Skills",
+      description:
+        "Technologies and practical skills I use to build modern web applications.",
+      groups: [
+        {
+          title: "Frontend",
+          items: [
+            "React.js",
+            "JavaScript",
+            "Tailwind CSS",
+            "HTML5",
+            "CSS3",
+            "Responsive Design",
+          ],
+        },
+        {
+          title: "Backend",
+          items: ["Node.js", "Express.js", "REST API", "Authentication"],
+        },
+        {
+          title: "Database",
+          items: ["MongoDB", "Mongoose", "Firebase"],
+        },
+        {
+          title: "Soft Skills",
+          items: [
+            "Communication",
+            "Problem Solving",
+            "Team Collaboration",
+            "Project Understanding",
+          ],
+        },
+      ],
+    },
+
+    tools: {
+      title: "Tools I Use",
+      description:
+        "Tools and platforms I use regularly in my development workflow.",
+      items: [
+        {
+          name: "VS Code",
+          category: "Code Editor",
+        },
+        {
+          name: "GitHub",
+          category: "Version Control",
+        },
+        {
+          name: "Postman",
+          category: "API Testing",
+        },
+        {
+          name: "MongoDB Atlas",
+          category: "Database Platform",
+        },
+        {
+          name: "Firebase",
+          category: "Backend Service",
+        },
+        {
+          name: "Vercel",
+          category: "Deployment",
+        },
+        {
+          name: "Netlify",
+          category: "Deployment",
+        },
+        {
+          name: "Figma",
+          category: "Design Support",
+        },
+      ],
+    },
+
     expertise: [
-      "Agency website development",
-      "Portfolio website systems",
-      "Responsive business websites",
+      "MERN stack web development",
+      "Portfolio website development",
+      "Responsive web design",
       "Landing page UI",
-      "Safe redesigns",
+      "Safe redesigns and custom updates",
     ],
+
     values: [
       {
         title: "Clarity",
-        description: "Clear structure and better communication.",
+        description: "Simple structure and clear user experience.",
       },
       {
         title: "Consistency",
-        description: "Unified styling across the full website.",
+        description: "Balanced design and unified styling across the website.",
       },
       {
         title: "Execution",
-        description: "Stable and responsive frontend implementation.",
+        description:
+          "Responsive and stable development with attention to detail.",
       },
     ],
   },
@@ -455,9 +569,9 @@ const mock = {
     text: "Case study page content goes here.",
     hero: {
       badge: "Case Study",
-      title: "Project details and design thinking",
+      title: "Project details and development thinking",
       description:
-        "A deeper look into the goals, layout, and implementation of each project.",
+        "A closer look at the goals, structure, and implementation behind each project.",
     },
   },
 
@@ -472,73 +586,77 @@ const mock = {
   portfolioPage: {
     hero: {
       badge: "My portfolio",
-      title: "A curated collection of digital work",
+      title: "A collection of projects that reflect my skills and growth",
       description:
-        "Explore selected portfolio, landing page, and business website projects.",
+        "Explore selected web development, landing page, and full stack projects.",
     },
-    filterTabs: ["All", "Development", "Landing Page", "Business"],
+    filterTabs: ["All", "Development", "Web App", "Landing Page"],
     items: [
       {
         title: "Personal Brand Portfolio",
         category: "Development",
         image: "/projects/project1.png",
         description:
-          "A premium portfolio website designed for personal branding and clarity.",
+          "A modern personal portfolio website designed to present skills and projects clearly.",
         tech: ["React", "Vite", "Tailwind CSS"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Business Website Experience",
-        category: "Business",
+        title: "MERN Business Dashboard",
+        category: "Web App",
         image: "/projects/project2.png",
         description:
-          "A polished business website focused on hierarchy and responsiveness.",
-        tech: ["React", "Node.js", "Responsive Design"],
+          "A dashboard-based full stack application with clean structure and responsive layout.",
+        tech: ["MongoDB", "Express", "React", "Node.js"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Marketing Campaign Landing Page",
+        title: "Marketing Landing Page",
         category: "Landing Page",
         image: "/projects/project3.png",
-        description: "A landing page built for engagement and conversion.",
-        tech: ["Landing Page", "Conversion Strategy", "Brand Messaging"],
+        description:
+          "A landing page built for modern presentation and engagement.",
+        tech: ["React", "Tailwind CSS", "Responsive Design"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Digital Agency Portfolio",
+        title: "Developer Portfolio UI",
         category: "Development",
         image: "/projects/project1.png",
-        description: "A modern agency portfolio with a premium visual system.",
-        tech: ["React", "UI Architecture", "Tailwind CSS"],
+        description:
+          "A portfolio interface built with a clean and modern visual system.",
+        tech: ["React", "UI Structure", "Tailwind CSS"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Service Business Landing Page",
+        title: "Product Showcase Landing Page",
         category: "Landing Page",
         image: "/projects/project2.png",
-        description: "A lead-focused landing page with clear content flow.",
-        tech: ["Landing Page", "Responsive Design", "Content Structure"],
+        description:
+          "A responsive landing page with clear content flow and call-to-actions.",
+        tech: ["Landing Page", "Responsive Design", "Content Layout"],
         liveLink: "#",
         githubLink: "#",
       },
       {
-        title: "Corporate Website UI System",
-        category: "Business",
+        title: "Full Stack Website System",
+        category: "Web App",
         image: "/projects/project3.png",
         description:
-          "A structured website UI for brands that need a more professional presence.",
-        tech: ["React", "Design System", "Reusable Components"],
+          "A structured MERN stack project with reusable components and scalable layout.",
+        tech: ["MongoDB", "Express", "React", "Node.js"],
         liveLink: "#",
         githubLink: "#",
       },
     ],
     cta: {
-      title: "Want a stronger online presence?",
-      description: "I can help you build a cleaner and more strategic website.",
+      title: "Want to work with a dedicated developer?",
+      description:
+        "I can help you build a cleaner, stronger, and more modern website.",
       primaryButton: "Start a Project",
       secondaryButton: "Contact Me",
     },
@@ -547,9 +665,9 @@ const mock = {
   contactPage: {
     hero: {
       badge: "Contact me",
-      title: "Let’s discuss your next website project",
+      title: "Let’s discuss your next project",
       description:
-        "Whether you need a full website or a premium redesign, I’d love to hear from you.",
+        "Whether you need a portfolio, landing page, full stack website, or custom update, I’d love to hear from you.",
     },
     infoCards: [
       {
@@ -575,7 +693,7 @@ const mock = {
     ],
     form: {
       title: "Send a message",
-      description: "Share your project goals and website needs.",
+      description: "Share your project goals and development needs.",
       fields: {
         name: "Your name",
         email: "Email address",
@@ -587,12 +705,12 @@ const mock = {
     availability: {
       title: "Availability",
       description:
-        "Available for agency websites, portfolios, landing pages, and redesign work.",
+        "Available for freelance projects, remote work, and website customization.",
       items: [
         "MERN stack website development",
-        "Agency website design",
         "Portfolio website design",
         "Landing page development",
+        "Frontend UI implementation",
         "Website redesign and updates",
       ],
     },
@@ -601,10 +719,10 @@ const mock = {
   servicesPage: {
     hero: {
       badge: "Services",
-      title: "Premium services for",
-      highlight: "modern digital growth",
+      title: "Development services for",
+      highlight: "modern web projects",
       description:
-        "I provide clean and modern website solutions for agencies, founders, and businesses.",
+        "I provide clean, responsive, and practical website solutions for businesses, clients, and personal brands.",
       primaryButton: "Start Your Project",
       secondaryButton: "Book A Free Call",
       stats: [
@@ -616,9 +734,9 @@ const mock = {
 
     servicesIntro: {
       badge: "What I do best",
-      title: "Solutions built for clarity and credibility",
+      title: "Solutions built with clean structure and real usability",
       description:
-        "Each service is designed to help your brand look stronger and more professional online.",
+        "Each service is focused on helping you build a better web presence with modern technologies.",
     },
 
     services: [
@@ -626,21 +744,22 @@ const mock = {
         number: "01",
         title: "MERN Stack Web Development",
         description:
-          "Modern websites and web applications with clean structure.",
+          "Modern web applications and websites with clean full stack structure.",
         points: ["Responsive UI", "Modern stack", "Clean architecture"],
       },
       {
         number: "02",
-        title: "Agency & Business Website Design",
+        title: "Portfolio Website Development",
         description:
-          "Professional websites that improve trust and presentation.",
-        points: ["Professional layout", "Strong hierarchy", "Premium style"],
+          "Personal and professional portfolio websites designed for strong presentation.",
+        points: ["Personal branding", "Modern layout", "Responsive structure"],
       },
       {
         number: "03",
         title: "Landing Page Development",
-        description: "Landing pages built for conversion and clarity.",
-        points: ["Clear CTA", "Strategic layout", "Optimized messaging"],
+        description:
+          "Landing pages built for engagement, clarity, and responsiveness.",
+        points: ["Clear CTA", "Strategic layout", "Modern sections"],
       },
       {
         number: "04",
@@ -659,7 +778,8 @@ const mock = {
       {
         number: "06",
         title: "Website Maintenance Support",
-        description: "Ongoing support for content updates and UI improvements.",
+        description:
+          "Ongoing support for fixes, content updates, and UI improvements.",
         points: ["Fast support", "Targeted updates", "Stable structure"],
       },
     ],
@@ -667,39 +787,39 @@ const mock = {
     process: {
       badge: "My process",
       title: "A workflow that keeps",
-      highlight: "projects clear and controlled",
+      highlight: "projects clear and organized",
       description:
-        "From planning to launch, every step is handled with structure and clarity.",
+        "From planning to delivery, every step is handled carefully and professionally.",
       steps: [
         {
           number: "01",
           title: "Discovery",
-          desc: "Understanding your goals, audience, and website needs.",
+          desc: "Understanding your goals, users, and project requirements.",
         },
         {
           number: "02",
-          title: "Strategy",
-          desc: "Planning structure, hierarchy, and content direction.",
+          title: "Planning",
+          desc: "Organizing structure, sections, and development direction.",
         },
         {
           number: "03",
           title: "Build & Refine",
-          desc: "Designing and developing with responsive and premium UI.",
+          desc: "Developing responsive UI and improving details carefully.",
         },
         {
           number: "04",
           title: "Launch & Support",
-          desc: "Final delivery with room for future growth.",
+          desc: "Final delivery with future-ready structure and support.",
         },
       ],
     },
 
     cta: {
-      badge: "Ready to grow?",
+      badge: "Ready to start?",
       title: "Let’s create something your",
-      highlight: "audience will remember",
+      highlight: "users will enjoy",
       description:
-        "Whether you need a premium website or a cleaner digital presence, I’m ready to help.",
+        "Whether you need a full website or a focused update, I’m ready to help.",
       primaryButton: "Start Your Project",
       secondaryButton: "Contact Me",
     },
