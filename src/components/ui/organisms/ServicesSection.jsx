@@ -1,343 +1,231 @@
-import { useEffect, useRef, useState } from "react";
-import Container from "../atoms/Container";
-import Button from "../atoms/Button";
 import mock from "../../../data/mock";
+import Container from "../atoms/Container";
+import { HiOutlineArrowRight } from "react-icons/hi";
+import {
+    HiOutlineCodeBracket,
+    HiOutlineGlobeAlt,
+    HiOutlineWindow,
+    HiOutlineWrenchScrewdriver,
+    HiOutlinePaintBrush,
+    HiOutlineBugAnt,
+} from "react-icons/hi2";
 
 export default function ServicesSection() {
-    const homeSection = mock.homeServices;
-    const page = mock.servicesPage;
-    const sectionRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
+    const services = mock.homeServices || {};
+    const featured = services?.featured || {};
+    const items = services?.items || [];
+    const bottomStrip = services?.bottomStrip || {};
 
-    const handleScroll = (id) => {
-        const element = document.getElementById(id);
+    const getServiceIcon = (title = "", index = 0) => {
+        const normalized = title.toLowerCase();
 
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        if (normalized.includes("mern")) return HiOutlineCodeBracket;
+        if (normalized.includes("portfolio")) return HiOutlineGlobeAlt;
+        if (normalized.includes("landing")) return HiOutlineWindow;
+        if (normalized.includes("frontend")) return HiOutlinePaintBrush;
+        if (normalized.includes("redesign")) return HiOutlineWrenchScrewdriver;
+        if (normalized.includes("bug")) return HiOutlineBugAnt;
+
+        const fallbackIcons = [
+            HiOutlineCodeBracket,
+            HiOutlineGlobeAlt,
+            HiOutlineWindow,
+            HiOutlinePaintBrush,
+            HiOutlineWrenchScrewdriver,
+            HiOutlineBugAnt,
+        ];
+
+        return fallbackIcons[index % fallbackIcons.length];
     };
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.12 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, []);
+    const getStripCardClass = (index) => {
+        if (index === 0) return "border-sky-400/15 bg-sky-500/10";
+        if (index === 1) return "border-violet-400/15 bg-violet-500/10";
+        return "border-emerald-400/15 bg-emerald-500/10";
+    };
 
     return (
         <section
             id="services"
-            ref={sectionRef}
-            className="relative overflow-hidden bg-[#020617] py-24 text-white md:py-32"
+            className="relative overflow-hidden bg-[#020617] py-16 text-white sm:py-20 lg:py-24"
         >
-            <div className="absolute top-0 left-0 w-full leading-none">
-                <svg viewBox="0 0 1440 220" className="w-full" fill="#f8fafc">
-                    <path d="M0,80L80,90C160,100,320,120,480,118C640,116,800,92,960,82C1120,72,1280,76,1360,80L1440,84V0H0Z" />
-                </svg>
+            <div className="pointer-events-none absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:56px_56px] opacity-[0.04]" />
+                <div className="absolute -left-20 top-10 h-[220px] w-[220px] rounded-full bg-sky-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
+                <div className="absolute right-0 top-24 h-[220px] w-[220px] rounded-full bg-violet-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
+                <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-fuchsia-500/8 blur-[120px] md:h-[300px] md:w-[300px]" />
             </div>
-
-            <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-[-120px] top-32 h-72 w-72 rounded-full bg-sky-500/15 blur-[120px]" />
-                <div className="absolute right-[-120px] top-40 h-80 w-80 rounded-full bg-violet-500/15 blur-[120px]" />
-                <div className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-fuchsia-500/10 blur-[120px]" />
-            </div>
-
-            <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:48px_48px]" />
 
             <Container>
-                <div className="relative z-10 pt-16 md:pt-24">
-                    {/* Top heading */}
-                    <div
-                        className={`mx-auto max-w-3xl text-center transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                            }`}
-                    >
-                        <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
-                            {page.hero.badge}
-                        </span>
+                <div className="relative z-10">
+                    <div className="mx-auto max-w-[860px] text-center">
+                        {services?.badge && (
+                            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl">
+                                <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)]" />
+                                <span>{services.badge}</span>
+                            </div>
+                        )}
 
-                        <h2 className="mt-6 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
-                            {page.hero.title}
-                            <span className="text-violet-400"> {page.hero.highlight}</span>
+                        <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl md:text-5xl lg:text-[54px]">
+                            {services?.title}{" "}
+                            <span className="bg-gradient-to-r from-sky-300 via-cyan-200 to-violet-300 bg-clip-text text-transparent">
+                                {services?.highlight}
+                            </span>
                         </h2>
 
-                        <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
-                            {page.hero.description}
+                        <p className="mx-auto mt-4 max-w-[720px] text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-[17px]">
+                            {services?.description}
                         </p>
-
-                        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-                            <button type="button" onClick={() => handleScroll("contact")}>
-                                <Button>{page.hero.primaryButton}</Button>
-                            </button>
-
-                            <button
-                                type="button"
-                                onClick={() => handleScroll("contact")}
-                                className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
-                            >
-                                {page.hero.secondaryButton}
-                            </button>
-                        </div>
-
-                        <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                            {page.hero.stats.map((stat, index) => (
-                                <div
-                                    key={stat.label}
-                                    className={`rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-violet-400/20 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                                        }`}
-                                    style={{ transitionDelay: `${index * 80 + 100}ms` }}
-                                >
-                                    <p className="text-3xl font-bold text-white">{stat.value}</p>
-                                    <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
-                                </div>
-                            ))}
-                        </div>
                     </div>
 
-                    {/* Featured + services */}
-                    <div className="mt-16 grid gap-6 lg:grid-cols-12">
-                        <div
-                            className={`lg:col-span-5 transition-all duration-1000 delay-100 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                }`}
-                        >
-                            <div className="relative h-full overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl md:p-8">
-                                <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-violet-500/20 blur-[90px]" />
-                                <div className="pointer-events-none absolute bottom-0 left-0 h-32 w-32 rounded-full bg-sky-500/20 blur-[90px]" />
+                    <div className="mt-12 grid gap-6 xl:grid-cols-[0.95fr_1.05fr] xl:gap-8">
+                        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_25px_80px_rgba(0,0,0,0.24)] backdrop-blur-2xl">
+                            <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-b from-[#07111f] via-[#0a1323] to-[#050b17] p-5 sm:p-6 lg:p-7">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.14),transparent_34%)]" />
+                                <div className="absolute -top-24 left-1/2 h-[240px] w-[240px] -translate-x-1/2 rounded-full bg-sky-500/10 blur-[120px]" />
+                                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
                                 <div className="relative z-10">
-                                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-sky-500/20 to-violet-500/20 backdrop-blur">
-                                        <svg
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            strokeWidth="1.8"
-                                            className="h-8 w-8 text-sky-300"
-                                        >
-                                            <path d="M4 6h16v12H4z" />
-                                            <path d="M4 10h16" />
-                                            <path d="M9 14l-2 2 2 2" />
-                                            <path d="M15 14l2 2-2 2" />
-                                        </svg>
-                                    </div>
+                                    {featured?.eyebrow && (
+                                        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-200 backdrop-blur-xl">
+                                            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.72)]" />
+                                            {featured.eyebrow}
+                                        </div>
+                                    )}
 
-                                    <p className="mt-8 text-sm font-medium uppercase tracking-[0.25em] text-slate-400">
-                                        {homeSection.featured.eyebrow}
-                                    </p>
-
-                                    <h3 className="mt-3 text-2xl font-bold leading-tight text-white md:text-3xl">
-                                        {homeSection.featured.title}
+                                    <h3 className="mt-5 max-w-[14ch] text-2xl font-semibold leading-[1.06] tracking-[-0.03em] text-white sm:text-3xl lg:text-[34px]">
+                                        {featured?.title}
                                     </h3>
 
-                                    <p className="mt-5 max-w-xl text-sm leading-7 text-slate-300 md:text-base md:leading-8">
-                                        {homeSection.featured.description}
+                                    <p className="mt-3 max-w-[540px] text-sm leading-7 text-slate-300 sm:text-base">
+                                        {featured?.description}
                                     </p>
 
-                                    <div className="mt-8 grid grid-cols-2 gap-4">
-                                        {homeSection.featured.stats.map((stat, index) => (
-                                            <div
-                                                key={stat.label}
-                                                className="rounded-2xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:-translate-y-1 hover:border-sky-400/20"
-                                                style={{ transitionDelay: `${index * 70}ms` }}
-                                            >
-                                                <p className="text-2xl font-bold text-white">{stat.value}</p>
-                                                <p className="mt-1 text-sm text-slate-400">{stat.label}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="mt-8">
-                                        <button type="button" onClick={() => handleScroll("contact")}>
-                                            <Button>{homeSection.featured.button}</Button>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
-                            {page.services.map((service, index) => (
-                                <div
-                                    key={service.number}
-                                    className={`group relative overflow-hidden rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-violet-400/30 hover:bg-white/[0.07] ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                        }`}
-                                    style={{
-                                        transitionDelay: `${index * 90 + 180}ms`,
-                                    }}
-                                >
-                                    <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
-                                        <div className="absolute -left-8 top-0 h-24 w-24 rounded-full bg-sky-400/20 blur-2xl" />
-                                        <div className="absolute right-0 top-8 h-24 w-24 rounded-full bg-violet-400/20 blur-2xl" />
-                                    </div>
-
-                                    <div className="relative z-10">
-                                        <div className="flex items-start justify-between gap-4">
-                                            <span className="text-sm font-semibold tracking-[0.2em] text-violet-300">
-                                                {service.number}
-                                            </span>
-
-                                            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition group-hover:text-white">
-                                                <svg
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="1.8"
-                                                    className="h-5 w-5"
+                                    {!!featured?.stats?.length && (
+                                        <div className="mt-6 grid grid-cols-2 gap-3">
+                                            {featured.stats.map((stat, index) => (
+                                                <div
+                                                    key={`${stat.label}-${index}`}
+                                                    className="rounded-[18px] border border-white/10 bg-white/[0.04] px-4 py-4 text-center backdrop-blur-xl"
                                                 >
-                                                    <path d="M7 17L17 7" />
-                                                    <path d="M8 7h9v9" />
-                                                </svg>
-                                            </span>
+                                                    <p className="text-xl font-semibold text-white sm:text-2xl">
+                                                        {stat.value}
+                                                    </p>
+                                                    <p className="mt-1.5 text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                                                        {stat.label}
+                                                    </p>
+                                                </div>
+                                            ))}
                                         </div>
+                                    )}
 
-                                        <h3 className="mt-6 text-lg font-semibold text-white md:text-xl">
-                                            {service.title}
-                                        </h3>
+                                    {featured?.button && (
+                                        <div className="mt-6">
+                                            <button
+                                                type="button"
+                                                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(14,165,233,0.24)] transition duration-300 hover:-translate-y-[1px]"
+                                                onClick={() => {
+                                                    const element = document.getElementById("contact");
+                                                    if (element) {
+                                                        const navbarOffset = 90;
+                                                        const top =
+                                                            element.getBoundingClientRect().top +
+                                                            window.scrollY -
+                                                            navbarOffset;
 
-                                        <p className="mt-4 text-sm leading-7 text-slate-300 md:text-base">
-                                            {service.description}
-                                        </p>
-
-                                        {service.points?.length > 0 && (
-                                            <div className="mt-6 flex flex-wrap gap-3">
-                                                {service.points.map((point) => (
-                                                    <span
-                                                        key={point}
-                                                        className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300"
-                                                    >
-                                                        {point}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
+                                                        window.scrollTo({
+                                                            top,
+                                                            behavior: "smooth",
+                                                        });
+                                                    }
+                                                }}
+                                            >
+                                                {featured.button}
+                                                <HiOutlineArrowRight className="text-base" />
+                                            </button>
+                                        </div>
+                                    )}
                                 </div>
-                            ))}
+                            </div>
+                        </div>
+
+                        <div className="grid gap-4 sm:grid-cols-2">
+                            {items.map((service, index) => {
+                                const Icon = getServiceIcon(service?.title, index);
+
+                                return (
+                                    <div
+                                        key={`${service?.title}-${index}`}
+                                        className="group relative overflow-hidden rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,17,31,0.98),rgba(10,19,35,0.96))] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/20 hover:shadow-[0_20px_60px_rgba(14,165,233,0.08)]"
+                                    >
+                                        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                                        <div className="absolute -right-10 top-0 h-24 w-24 rounded-full bg-sky-500/8 blur-3xl transition duration-300 group-hover:bg-sky-500/12" />
+
+                                        <div className="relative z-10">
+                                            <div className="flex items-start gap-4">
+                                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-sky-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                                                    <Icon className="text-[22px]" />
+                                                </div>
+
+                                                <div className="min-w-0">
+                                                    <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+                                                        {service?.number}
+                                                    </p>
+                                                    <h3 className="mt-1 text-lg font-semibold text-white">
+                                                        {service?.title}
+                                                    </h3>
+                                                </div>
+                                            </div>
+
+                                            <p className="mt-4 text-sm leading-7 text-slate-300">
+                                                {service?.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
 
-                    {/* Process */}
-                    <div
-                        className={`mt-16 transition-all duration-1000 delay-300 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                            }`}
-                    >
-                        <div className="mx-auto max-w-3xl text-center">
-                            <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
-                                {page.process.badge}
-                            </span>
+                    {!!bottomStrip?.items?.length && (
+                        <div className="mt-10 rounded-[28px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:p-5 lg:p-6">
+                            <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+                                <div className="max-w-[620px]">
+                                    {bottomStrip?.eyebrow && (
+                                        <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-slate-300">
+                                            {bottomStrip.eyebrow}
+                                        </span>
+                                    )}
 
-                            <h3 className="mt-6 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
-                                {page.process.title}
-                                <span className="text-violet-400"> {page.process.highlight}</span>
-                            </h3>
+                                    <h3 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
+                                        {bottomStrip?.title}
+                                    </h3>
 
-                            <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
-                                {page.process.description}
-                            </p>
-                        </div>
-
-                        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                            {page.process.steps.map((step, index) => (
-                                <div
-                                    key={step.number}
-                                    className="rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-violet-400/30"
-                                    style={{ transitionDelay: `${index * 80}ms` }}
-                                >
-                                    <span className="text-sm font-semibold tracking-[0.2em] text-violet-300">
-                                        {step.number}
-                                    </span>
-
-                                    <h4 className="mt-5 text-2xl font-semibold text-white">
-                                        {step.title}
-                                    </h4>
-
-                                    <p className="mt-4 text-sm leading-7 text-slate-300 md:text-base">
-                                        {step.desc}
+                                    <p className="mt-2.5 text-sm leading-7 text-slate-300 md:text-base">
+                                        {bottomStrip?.description}
                                     </p>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
 
-                    {/* Bottom strip */}
-                    <div
-                        className={`mt-14 rounded-[28px] border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.03] p-6 backdrop-blur-xl transition-all duration-1000 delay-500 md:p-8 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                            }`}
-                    >
-                        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                            <div className="max-w-2xl">
-                                <p className="text-sm font-medium uppercase tracking-[0.25em] text-slate-400">
-                                    {homeSection.bottomStrip.eyebrow}
-                                </p>
-                                <h3 className="mt-3 text-2xl font-bold text-white md:text-3xl">
-                                    {homeSection.bottomStrip.title}
-                                </h3>
-                                <p className="mt-3 leading-7 text-slate-300">
-                                    {homeSection.bottomStrip.description}
-                                </p>
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                                {homeSection.bottomStrip.items.map((item, index) => (
-                                    <div
-                                        key={item.title}
-                                        className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-center transition duration-300 hover:-translate-y-1 hover:border-sky-400/20"
-                                        style={{ transitionDelay: `${index * 80}ms` }}
-                                    >
-                                        <p className="text-xl font-bold text-white">{item.title}</p>
-                                        <p className="mt-1 text-sm text-slate-400">{item.label}</p>
-                                    </div>
-                                ))}
+                                <div className="grid w-full gap-3 sm:grid-cols-3 lg:max-w-[480px]">
+                                    {bottomStrip.items.map((item, index) => (
+                                        <div
+                                            key={`${item.title}-${index}`}
+                                            className={`rounded-[18px] border px-4 py-4 text-center backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/20 ${getStripCardClass(
+                                                index
+                                            )}`}
+                                        >
+                                            <p className="text-lg font-semibold text-white">
+                                                {item?.title}
+                                            </p>
+                                            <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-slate-300">
+                                                {item?.label}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    {/* CTA inside services */}
-                    <div
-                        className={`mt-16 rounded-[32px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-1000 delay-700 md:p-8 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                            }`}
-                    >
-                        <div className="mx-auto max-w-3xl text-center">
-                            <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-slate-200 backdrop-blur">
-                                {page.cta.badge}
-                            </span>
-
-                            <h3 className="mt-6 text-3xl font-bold leading-tight md:text-4xl">
-                                {page.cta.title}
-                                <span className="text-violet-400"> {page.cta.highlight}</span>
-                            </h3>
-
-                            <p className="mt-5 text-base leading-8 text-slate-300 md:text-lg">
-                                {page.cta.description}
-                            </p>
-
-                            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-                                <button type="button" onClick={() => handleScroll("contact")}>
-                                    <Button>{page.cta.primaryButton}</Button>
-                                </button>
-
-                                <button
-                                    type="button"
-                                    onClick={() => handleScroll("contact")}
-                                    className="rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-medium text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
-                                >
-                                    {page.cta.secondaryButton}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    )}
                 </div>
             </Container>
         </section>
