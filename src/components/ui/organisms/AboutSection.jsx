@@ -14,6 +14,9 @@ import {
 } from "react-icons/hi2";
 import { FaGithub, FaFigma, FaFire } from "react-icons/fa";
 import { SiPostman, SiMongodb, SiVercel, SiNetlify } from "react-icons/si";
+import SectionReveal from "../shared/SectionReveal";
+import PremiumCard from "../shared/PremiumCard";
+import GlowButton from "../shared/GlowButton";
 
 export default function AboutSection() {
     const overview = mock.aboutOverview || {};
@@ -84,12 +87,8 @@ export default function AboutSection() {
     };
 
     const getHighlightClass = (index) => {
-        if (index === 0) {
-            return "border-sky-400/15 bg-sky-500/10";
-        }
-        if (index === 1) {
-            return "border-violet-400/15 bg-violet-500/10";
-        }
+        if (index === 0) return "border-sky-400/15 bg-sky-500/10";
+        if (index === 1) return "border-violet-400/15 bg-violet-500/10";
         return "border-emerald-400/15 bg-emerald-500/10";
     };
 
@@ -125,16 +124,11 @@ export default function AboutSection() {
                 <div className="absolute -left-24 top-6 h-[220px] w-[220px] rounded-full bg-fuchsia-600/12 blur-[120px] md:h-[320px] md:w-[320px]" />
                 <div className="absolute right-0 top-16 h-[220px] w-[220px] rounded-full bg-sky-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
                 <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
-                <div className="absolute left-[10%] top-[18%] hidden h-4 w-4 rounded-full bg-sky-400/40 blur-[1px] lg:block" />
-                <div className="absolute right-[12%] top-[26%] hidden h-5 w-5 rounded-full bg-violet-400/30 blur-[1px] lg:block" />
             </div>
 
             <Container>
                 <div className="relative z-10">
-                    <div
-                        className={`mx-auto max-w-[880px] text-center transition-all duration-1000 ${visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                            }`}
-                    >
+                    <SectionReveal className="mx-auto max-w-[880px] text-center">
                         <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl">
                             <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_14px_rgba(56,189,248,0.8)]" />
                             <span>{overview?.badge || "About Me"}</span>
@@ -147,14 +141,11 @@ export default function AboutSection() {
                         <p className="mx-auto mt-4 max-w-[740px] text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-[17px]">
                             {overview?.description}
                         </p>
-                    </div>
+                    </SectionReveal>
 
                     <div className="mt-12 grid gap-6 xl:grid-cols-[1.02fr_0.98fr] xl:gap-8">
-                        <div
-                            className={`transition-all duration-1000 delay-100 ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                }`}
-                        >
-                            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_25px_80px_rgba(0,0,0,0.24)] backdrop-blur-2xl sm:p-4 lg:p-5">
+                        <SectionReveal delay={0.05}>
+                            <PremiumCard className="p-3 sm:p-4 lg:p-5" glow="sky">
                                 <div className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,#07111f,#0a1323)] p-5 sm:p-6 lg:p-7">
                                     <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-sky-300">
                                         <span className="h-2 w-2 rounded-full bg-sky-400" />
@@ -203,36 +194,25 @@ export default function AboutSection() {
                                     </div>
 
                                     <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                                        <button
-                                            type="button"
-                                            onClick={() => handleScroll("projects")}
-                                            className="inline-flex cursor-pointer items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(14,165,233,0.24)] transition duration-300 hover:-translate-y-[1px]"
-                                        >
+                                        <GlowButton onClick={() => handleScroll("projects")}>
                                             {mock?.hero?.primaryButton || "View My Work"}
-                                        </button>
+                                        </GlowButton>
 
-                                        <button
-                                            type="button"
+                                        <GlowButton
+                                            variant="secondary"
                                             onClick={() => handleScroll("contact")}
-                                            className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-medium text-white backdrop-blur-xl transition-all duration-300 hover:border-white/25 hover:bg-white/[0.08]"
                                         >
                                             {mock?.hero?.secondaryButton || "Let’s Talk"}
                                             <HiOutlineArrowRight className="text-base" />
-                                        </button>
+                                        </GlowButton>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </PremiumCard>
+                        </SectionReveal>
 
                         <div className="grid gap-5">
-                            <div
-                                className={`transition-all duration-1000 delay-150 ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                    }`}
-                            >
-                                <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_30px_90px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:p-4">
-                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.14),transparent_34%)]" />
-                                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
+                            <SectionReveal delay={0.1}>
+                                <PremiumCard className="p-3 sm:p-4" glow="violet">
                                     <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-gradient-to-b from-[#07111f] via-[#0a1323] to-[#050b17] px-5 pb-6 pt-12 sm:px-6 sm:pb-7 sm:pt-14 lg:px-7 lg:pb-8 lg:pt-16">
                                         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:38px_38px] opacity-15" />
                                         <div className="absolute -top-24 left-1/2 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-sky-500/10 blur-[120px]" />
@@ -261,9 +241,10 @@ export default function AboutSection() {
                                             {!!heroCards.length && (
                                                 <div className="mt-7 grid gap-4 sm:grid-cols-2">
                                                     {heroCards.map((card, index) => (
-                                                        <div
+                                                        <PremiumCard
                                                             key={getKey(card, index)}
-                                                            className="group rounded-[22px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]"
+                                                            className="p-5"
+                                                            glow={index === 0 ? "sky" : "violet"}
                                                         >
                                                             <div className="flex items-start gap-4">
                                                                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
@@ -285,7 +266,7 @@ export default function AboutSection() {
                                                                     </p>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </PremiumCard>
                                                     ))}
                                                 </div>
                                             )}
@@ -329,56 +310,51 @@ export default function AboutSection() {
                                             </div>
                                         )}
                                     </div>
-                                </div>
-                            </div>
+                                </PremiumCard>
+                            </SectionReveal>
 
                             {!!heroStats.length && (
-                                <div
-                                    className={`grid grid-cols-2 gap-3 transition-all duration-1000 delay-200 sm:grid-cols-4 xl:grid-cols-2 ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                        }`}
-                                >
-                                    {heroStats.map((stat, index) => (
-                                        <div
-                                            key={`${stat.label}-${index}`}
-                                            className="rounded-[20px] border border-white/10 bg-white/[0.04] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]"
-                                            style={{ transitionDelay: `${index * 70}ms` }}
-                                        >
-                                            <p className="text-xl font-semibold text-white sm:text-2xl">{stat.value}</p>
-                                            <p className="mt-1.5 text-[11px] uppercase tracking-[0.16em] text-slate-400">
-                                                {stat.label}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div>
+                                <SectionReveal delay={0.15}>
+                                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-2">
+                                        {heroStats.map((stat, index) => (
+                                            <PremiumCard
+                                                key={`${stat.label}-${index}`}
+                                                className="px-4 py-4"
+                                                glow={index % 2 === 0 ? "sky" : "violet"}
+                                            >
+                                                <p className="text-xl font-semibold text-white sm:text-2xl">{stat.value}</p>
+                                                <p className="mt-1.5 text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                                                    {stat.label}
+                                                </p>
+                                            </PremiumCard>
+                                        ))}
+                                    </div>
+                                </SectionReveal>
                             )}
 
                             {!!overviewCards.length && (
                                 <div className="grid gap-3">
                                     {overviewCards.map((card, index) => (
-                                        <div
-                                            key={getKey(card, index)}
-                                            className={`rounded-[20px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_25px_70px_rgba(0,0,0,0.16)] backdrop-blur-2xl transition-all duration-1000 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05] ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                                }`}
-                                            style={{ transitionDelay: `${index * 100 + 260}ms` }}
-                                        >
-                                            <p className="text-base font-semibold text-white sm:text-lg">{getText(card)}</p>
-                                            <p className="mt-2 text-sm leading-7 text-slate-300">
-                                                {typeof card === "object" && card !== null
-                                                    ? card.description || card.category || ""
-                                                    : ""}
-                                            </p>
-                                        </div>
+                                        <SectionReveal key={getKey(card, index)} delay={0.18 + index * 0.06}>
+                                            <PremiumCard className="p-4" glow={index % 2 === 0 ? "sky" : "emerald"}>
+                                                <p className="text-base font-semibold text-white sm:text-lg">
+                                                    {getText(card)}
+                                                </p>
+                                                <p className="mt-2 text-sm leading-7 text-slate-300">
+                                                    {typeof card === "object" && card !== null
+                                                        ? card.description || card.category || ""
+                                                        : ""}
+                                                </p>
+                                            </PremiumCard>
+                                        </SectionReveal>
                                     ))}
                                 </div>
                             )}
                         </div>
                     </div>
 
-                    <div
-                        className={`mt-12 transition-all duration-1000 delay-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                            }`}
-                    >
-                        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:p-5 lg:p-6">
+                    <SectionReveal delay={0.22} className="mt-12">
+                        <PremiumCard className="p-4 sm:p-5 lg:p-6" glow="emerald">
                             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
                                 <div className="max-w-[560px]">
                                     <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-slate-300">
@@ -403,15 +379,12 @@ export default function AboutSection() {
                                     ))}
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </PremiumCard>
+                    </SectionReveal>
 
                     <div className="mt-12 grid gap-6 xl:grid-cols-2">
-                        <div
-                            className={`transition-all duration-1000 delay-400 ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                }`}
-                        >
-                            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:p-5 lg:p-6">
+                        <SectionReveal delay={0.26}>
+                            <PremiumCard className="p-4 sm:p-5 lg:p-6" glow="sky">
                                 <h3 className="text-2xl font-semibold text-white">
                                     {about?.education?.title}
                                 </h3>
@@ -421,9 +394,10 @@ export default function AboutSection() {
 
                                 <div className="mt-6 space-y-3">
                                     {educationItems.map((edu, index) => (
-                                        <div
+                                        <PremiumCard
                                             key={getKey(edu, index)}
-                                            className="rounded-[20px] border border-white/10 bg-[linear-gradient(180deg,#07111f,#0a1323)] p-4 sm:p-5"
+                                            className="p-4 sm:p-5"
+                                            glow={index % 2 === 0 ? "sky" : "violet"}
                                         >
                                             <span className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-sky-300">
                                                 {typeof edu === "object" && edu !== null ? edu.year : ""}
@@ -438,17 +412,14 @@ export default function AboutSection() {
                                                     ? edu.institution || edu.description || ""
                                                     : ""}
                                             </p>
-                                        </div>
+                                        </PremiumCard>
                                     ))}
                                 </div>
-                            </div>
-                        </div>
+                            </PremiumCard>
+                        </SectionReveal>
 
-                        <div
-                            className={`transition-all duration-1000 delay-500 ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                }`}
-                        >
-                            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:p-5 lg:p-6">
+                        <SectionReveal delay={0.3}>
+                            <PremiumCard className="p-4 sm:p-5 lg:p-6" glow="violet">
                                 <h3 className="text-2xl font-semibold text-white">
                                     {about?.skills?.title}
                                 </h3>
@@ -464,59 +435,52 @@ export default function AboutSection() {
                                                 : HiCodeBracket;
 
                                         return (
-                                            <div
+                                            <PremiumCard
                                                 key={getKey(group, index)}
-                                                className="group relative overflow-hidden rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,17,31,0.98),rgba(10,19,35,0.96))] p-5 shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/20 hover:shadow-[0_20px_60px_rgba(14,165,233,0.08)]"
+                                                className="p-5"
+                                                glow={index % 2 === 0 ? "sky" : "violet"}
                                             >
-                                                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                                                <div className="absolute -right-10 top-0 h-24 w-24 rounded-full bg-sky-500/8 blur-3xl transition duration-300 group-hover:bg-sky-500/12" />
-
-                                                <div className="relative z-10">
-                                                    <div className="flex items-center gap-4">
-                                                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-sky-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-                                                            <SkillIcon className="text-[22px]" />
-                                                        </div>
-
-                                                        <div>
-                                                            <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
-                                                                Expertise
-                                                            </p>
-                                                            <h4 className="mt-1 text-lg font-semibold text-white">
-                                                                {typeof group === "object" && group !== null
-                                                                    ? group.title || group.name
-                                                                    : getText(group)}
-                                                            </h4>
-                                                        </div>
+                                                <div className="flex items-center gap-4">
+                                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-sky-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                                                        <SkillIcon className="text-[22px]" />
                                                     </div>
 
-                                                    <ul className="mt-5 space-y-3">
-                                                        {(typeof group === "object" && group !== null
-                                                            ? group.items || []
-                                                            : []
-                                                        ).map((skill, skillIndex) => (
-                                                            <li
-                                                                key={getKey(skill, skillIndex)}
-                                                                className="flex items-start gap-3 text-sm leading-6 text-slate-300"
-                                                            >
-                                                                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.6)]" />
-                                                                <span>{getText(skill)}</span>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
+                                                    <div>
+                                                        <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+                                                            Expertise
+                                                        </p>
+                                                        <h4 className="mt-1 text-lg font-semibold text-white">
+                                                            {typeof group === "object" && group !== null
+                                                                ? group.title || group.name
+                                                                : getText(group)}
+                                                        </h4>
+                                                    </div>
                                                 </div>
-                                            </div>
+
+                                                <ul className="mt-5 space-y-3">
+                                                    {(typeof group === "object" && group !== null
+                                                        ? group.items || []
+                                                        : []
+                                                    ).map((skill, skillIndex) => (
+                                                        <li
+                                                            key={getKey(skill, skillIndex)}
+                                                            className="flex items-start gap-3 text-sm leading-6 text-slate-300"
+                                                        >
+                                                            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.6)]" />
+                                                            <span>{getText(skill)}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </PremiumCard>
                                         );
                                     })}
                                 </div>
-                            </div>
-                        </div>
+                            </PremiumCard>
+                        </SectionReveal>
                     </div>
 
-                    <div
-                        className={`mt-12 transition-all duration-1000 delay-600 ${visible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                            }`}
-                    >
-                        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_25px_80px_rgba(0,0,0,0.2)] backdrop-blur-2xl sm:p-5 lg:p-6">
+                    <SectionReveal delay={0.34} className="mt-12">
+                        <PremiumCard className="p-4 sm:p-5 lg:p-6" glow="fuchsia">
                             <h3 className="text-2xl font-semibold text-white">
                                 {about?.tools?.title}
                             </h3>
@@ -532,14 +496,12 @@ export default function AboutSection() {
                                             : HiOutlineRocketLaunch;
 
                                     return (
-                                        <div
+                                        <PremiumCard
                                             key={getKey(tool, index)}
-                                            className="group relative overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.04] p-4 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]"
+                                            className="p-4"
+                                            glow={index % 2 === 0 ? "violet" : "sky"}
                                         >
-                                            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                                            <div className="absolute -right-8 -top-8 h-20 w-20 rounded-full bg-violet-500/8 blur-3xl transition duration-300 group-hover:bg-violet-500/12" />
-
-                                            <div className="relative z-10 flex items-start gap-3">
+                                            <div className="flex items-start gap-3">
                                                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                                                     <ToolIcon className="text-[20px]" />
                                                 </div>
@@ -557,12 +519,12 @@ export default function AboutSection() {
                                                     </p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </PremiumCard>
                                     );
                                 })}
                             </div>
-                        </div>
-                    </div>
+                        </PremiumCard>
+                    </SectionReveal>
                 </div>
             </Container>
         </section>
