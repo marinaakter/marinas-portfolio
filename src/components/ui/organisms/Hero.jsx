@@ -135,7 +135,7 @@ export default function Hero() {
                             <div className="mt-6 flex flex-wrap gap-2.5">
                                 {hero.highlights.map((item, index) => (
                                     <span
-                                        key={item}
+                                        key={`${item}-${index}`}
                                         className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-slate-300 backdrop-blur-lg sm:text-sm"
                                         style={{
                                             animation: `fadeUp .7s ease ${index * 0.08 + 0.15}s both`,
@@ -148,11 +148,12 @@ export default function Hero() {
                         )}
 
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                            <button type="button" onClick={() => handleScroll("projects")} className="cursor-pointer">
-                                <Button className="w-full rounded-full px-6 py-3 text-sm font-semibold shadow-[0_14px_40px_rgba(14,165,233,0.2)] sm:w-auto md:px-7">
-                                    {hero.primaryButton}
-                                </Button>
-                            </button>
+                            <Button
+                                onClick={() => handleScroll("projects")}
+                                className="w-full rounded-full px-6 py-3 text-sm font-semibold shadow-[0_14px_40px_rgba(14,165,233,0.2)] sm:w-auto md:px-7 cursor-pointer"
+                            >
+                                {hero.primaryButton}
+                            </Button>
 
                             <button
                                 type="button"
@@ -173,7 +174,7 @@ export default function Hero() {
                         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
                             {hero?.stats?.map((stat, index) => (
                                 <div
-                                    key={stat.label}
+                                    key={`${stat.label}-${index}`}
                                     className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-sky-400/20 hover:bg-white/[0.05]"
                                     style={{
                                         animation: `fadeUp .7s ease ${index * 0.08 + 0.25}s both`,

@@ -115,7 +115,6 @@ export default function Navbar() {
                         }`}
                 >
                     <div className="relative mx-auto flex h-[74px] w-full max-w-[1280px] items-center justify-between px-4 md:px-6 lg:px-8">
-                        {/* Brand */}
                         <button
                             type="button"
                             onClick={() => handleScroll("#home")}
@@ -136,7 +135,6 @@ export default function Navbar() {
                             </div>
                         </button>
 
-                        {/* Desktop Nav */}
                         <nav className="absolute left-1/2 hidden -translate-x-1/2 lg:flex lg:items-center lg:gap-2">
                             <div className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
                                 {navItems.map((item) => {
@@ -160,25 +158,20 @@ export default function Navbar() {
                             </div>
                         </nav>
 
-                        {/* Desktop CTA */}
                         <div className="hidden lg:flex lg:items-center">
                             {mock.navigation.showHireButton && (
-                                <button
-                                    type="button"
+                                <Button
                                     onClick={() => handleScroll("#contact")}
-                                    className="cursor-pointer"
+                                    className="rounded-full px-6 py-3 text-sm font-semibold shadow-[0_18px_45px_rgba(14,165,233,0.24)] cursor-pointer"
                                 >
-                                    <Button className="rounded-full px-6 py-3 text-sm font-semibold shadow-[0_18px_45px_rgba(14,165,233,0.24)]">
-                                        <span className="inline-flex items-center gap-2">
-                                            {mock.navigation.ctaButton}
-                                            <HiOutlineArrowRight className="text-base" />
-                                        </span>
-                                    </Button>
-                                </button>
+                                    <span className="inline-flex items-center gap-2">
+                                        {mock.navigation.ctaButton}
+                                        <HiOutlineArrowRight className="text-base" />
+                                    </span>
+                                </Button>
                             )}
                         </div>
 
-                        {/* Mobile Toggle */}
                         <button
                             type="button"
                             onClick={() => setIsOpen((prev) => !prev)}
@@ -195,7 +188,6 @@ export default function Navbar() {
                 </div>
             </header>
 
-            {/* Mobile Menu */}
             <div
                 className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isOpen ? "pointer-events-auto visible" : "pointer-events-none invisible"
                     }`}
@@ -257,18 +249,15 @@ export default function Navbar() {
 
                             {mock.navigation.showHireButton && (
                                 <div className="mt-5">
-                                    <button
-                                        type="button"
+                                    <Button
                                         onClick={() => handleScroll("#contact")}
-                                        className="w-full cursor-pointer"
+                                        className="w-full rounded-2xl py-3 text-sm font-semibold cursor-pointer"
                                     >
-                                        <Button className="w-full rounded-2xl py-3 text-sm font-semibold">
-                                            <span className="inline-flex items-center gap-2">
-                                                {mock.navigation.ctaButton}
-                                                <HiOutlineArrowRight className="text-base" />
-                                            </span>
-                                        </Button>
-                                    </button>
+                                        <span className="inline-flex items-center gap-2">
+                                            {mock.navigation.ctaButton}
+                                            <HiOutlineArrowRight className="text-base" />
+                                        </span>
+                                    </Button>
                                 </div>
                             )}
                         </div>
