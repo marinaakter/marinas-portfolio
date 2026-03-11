@@ -163,6 +163,41 @@ const mock = {
     ],
   },
 
+  aboutSectionHero: {
+    badge: "Available for projects",
+    title: "Turning ideas into clean and scalable products",
+    description:
+      "I focus on building user-friendly, fast, and maintainable web experiences that help brands grow online with confidence.",
+    cards: [
+      {
+        label: "Primary focus",
+        title: "MERN Stack Development",
+        description:
+          "Modern websites, dashboards, and scalable business solutions.",
+      },
+      {
+        label: "Work style",
+        title: "Strategy + Execution",
+        description: "I care about both clean UI and stable implementation.",
+      },
+    ],
+    highlights: [
+      { label: "Delivery", value: "Fast" },
+      { label: "Quality", value: "Premium" },
+      { label: "Support", value: "Reliable" },
+    ],
+    floatingCards: [
+      {
+        title: "Client-focused builds",
+        description: "Clean process, strong communication",
+      },
+      {
+        title: "Safe updates",
+        description: "Without breaking existing logic",
+      },
+    ],
+  },
+
   homeServices: {
     badge: "What I Do",
     title: "Services focused on",
@@ -455,7 +490,7 @@ const mock = {
           degree: "HSC",
           institution: "Rafiqul Islam Women's College",
           year: "2022",
-        }
+        },
       ],
     },
 
@@ -466,6 +501,7 @@ const mock = {
       groups: [
         {
           title: "Frontend",
+          icon: "frontend",
           items: [
             "React.js",
             "JavaScript",
@@ -477,14 +513,17 @@ const mock = {
         },
         {
           title: "Backend",
+          icon: "backend",
           items: ["Node.js", "Express.js", "REST API", "Authentication"],
         },
         {
           title: "Database",
+          icon: "database",
           items: ["MongoDB", "Mongoose", "Firebase"],
         },
         {
           title: "Soft Skills",
+          icon: "softskills",
           items: [
             "Communication",
             "Problem Solving",
@@ -503,34 +542,42 @@ const mock = {
         {
           name: "VS Code",
           category: "Code Editor",
+          icon: "vscode",
         },
         {
           name: "GitHub",
           category: "Version Control",
+          icon: "github",
         },
         {
           name: "Postman",
           category: "API Testing",
+          icon: "postman",
         },
         {
           name: "MongoDB Atlas",
           category: "Database Platform",
+          icon: "mongodb",
         },
         {
           name: "Firebase",
           category: "Backend Service",
+          icon: "firebase",
         },
         {
           name: "Vercel",
           category: "Deployment",
+          icon: "vercel",
         },
         {
           name: "Netlify",
           category: "Deployment",
+          icon: "netlify",
         },
         {
           name: "Figma",
           category: "Design Support",
+          icon: "figma",
         },
       ],
     },
