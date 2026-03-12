@@ -1,15 +1,17 @@
-import Hero from "../components/ui/organisms/Hero";
-import Clients from "../components/ui/organisms/Clients";
-import ServicesSection from "../components/ui/organisms/ServicesSection";
-import PortfolioSection from "../components/ui/organisms/PortfolioSection";
-import TestimonialsSection from "../components/ui/organisms/TestimonialsSection";
-import CTASection from "../components/ui/organisms/CTASection";
+import {
+    Hero,
+    AboutSection,
+    ServicesSection,
+    PortfolioSection,
+    TestimonialsSection,
+    CTASection,
+} from "@/components/ui";
 
 export default function Home() {
     return (
         <main className="landing-page-bg text-white">
             <Hero />
-            <Clients />
+            <AboutSection />
             <ServicesSection />
             <PortfolioSection />
             <TestimonialsSection />

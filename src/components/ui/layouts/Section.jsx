@@ -1,4 +1,4 @@
-import Container from "./Container";
+import Container from "../atoms/Container";
 
 export default function Section({
     id,

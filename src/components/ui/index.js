@@ -1,5 +1,6 @@
 // atoms
 export { default as Button } from "./atoms/Button";
+export { default as Container } from "./atoms/Container";
 export { default as GlowButton } from "./atoms/GlowButton";
 
 // molecules
@@ -20,12 +21,11 @@ export { default as ParallaxMouse } from "./animations/ParallaxMouse";
 export { default as SectionReveal } from "./animations/SectionReveal";
 
 // layouts
-export { default as Container } from "./layouts/Container";
 export { default as Section } from "./layouts/Section";
 
 // organisms
 export { default as Hero } from "./organisms/Hero";
-export { default as Clients } from "./organisms/Clients";
+export { default as AboutSection } from "./organisms/AboutSection";
 export { default as ServicesSection } from "./organisms/ServicesSection";
 export { default as PortfolioSection } from "./organisms/PortfolioSection";
 export { default as TestimonialsSection } from "./organisms/TestimonialsSection";

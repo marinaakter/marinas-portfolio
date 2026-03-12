@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
-import Container from "../atoms/Container";
-import Button from "../atoms/Button";
-import heroImg from "../../../assets/myHero.png";
-import mock from "../../../data/mock";
+import heroImg from "@/assets/myHero.png";
+import mock from "@/data/mock";
+import {
+    Button,
+    Container,
+    StatsCard,
+    FloatingInfoCard,
+    ShowcaseImage,
+    FadeUp,
+    ParallaxMouse,
+} from "@/components/ui";
 
 export default function Hero() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -73,35 +80,29 @@ export default function Hero() {
             <div className="absolute right-0 top-12 h-[220px] w-[220px] rounded-full bg-sky-500/12 blur-[100px] md:h-[280px] md:w-[280px] md:blur-[120px]" />
             <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-500/8 blur-[100px] md:h-[260px] md:w-[260px] md:blur-[120px]" />
 
-            <div
+            <ParallaxMouse
+                x={mousePosition.x}
+                y={mousePosition.y}
+                strengthX={6}
+                strengthY={6}
                 className="absolute left-[8%] top-[18%] hidden h-3.5 w-3.5 rounded-full bg-sky-400/60 blur-[1px] lg:block"
-                style={{
-                    transform: isDesktop
-                        ? `translate3d(${mousePosition.x * 6}px, ${mousePosition.y * 6}px, 0)`
-                        : "translate3d(0px, 0px, 0)",
-                    transition: "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
-                    animation: "floatDotA 7s ease-in-out infinite",
-                }}
+                style={{ animation: "floatDotA 7s ease-in-out infinite" }}
             />
-            <div
+            <ParallaxMouse
+                x={mousePosition.x}
+                y={mousePosition.y}
+                strengthX={-8}
+                strengthY={6}
                 className="absolute right-[12%] top-[26%] hidden h-5 w-5 rounded-full bg-violet-400/40 blur-[1px] lg:block"
-                style={{
-                    transform: isDesktop
-                        ? `translate3d(${mousePosition.x * -8}px, ${mousePosition.y * 6}px, 0)`
-                        : "translate3d(0px, 0px, 0)",
-                    transition: "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
-                    animation: "floatDotB 8s ease-in-out infinite",
-                }}
+                style={{ animation: "floatDotB 8s ease-in-out infinite" }}
             />
-            <div
+            <ParallaxMouse
+                x={mousePosition.x}
+                y={mousePosition.y}
+                strengthX={5}
+                strengthY={-5}
                 className="absolute left-[18%] bottom-[18%] hidden h-4 w-4 rounded-full bg-fuchsia-400/40 blur-[1px] lg:block"
-                style={{
-                    transform: isDesktop
-                        ? `translate3d(${mousePosition.x * 5}px, ${mousePosition.y * -5}px, 0)`
-                        : "translate3d(0px, 0px, 0)",
-                    transition: "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
-                    animation: "floatDotC 9s ease-in-out infinite",
-                }}
+                style={{ animation: "floatDotC 9s ease-in-out infinite" }}
             />
 
             <Container>
@@ -110,84 +111,87 @@ export default function Hero() {
                         className={`max-w-[680px] transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                             }`}
                     >
-                        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl">
-                            <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_14px_rgba(56,189,248,0.8)]" />
-                            <span>{hero.badge}</span>
-                        </div>
+                        {hero?.badge && (
+                            <FadeUp delay={0.05}>
+                                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl">
+                                    <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_14px_rgba(56,189,248,0.8)]" />
+                                    <span>{hero.badge}</span>
+                                </div>
+                            </FadeUp>
+                        )}
 
-                        <h1 className="mt-6 max-w-[13ch] text-[38px] font-semibold leading-[1.02] tracking-[-0.05em] text-white sm:text-[52px] md:text-[62px] lg:text-[58px] xl:text-[66px]">
-                            {hero?.title?.line1}
-                            <span className="block text-white/96">{hero?.title?.line2}</span>
-                            <span className="mt-2 block text-white/90">
-                                {hero?.title?.prefix}{" "}
-                                <span className="bg-gradient-to-r from-sky-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent">
-                                    {hero?.title?.highlight}
+                        <FadeUp delay={0.12}>
+                            <h1 className="mt-6 max-w-[13ch] text-[38px] font-semibold leading-[1.02] tracking-[-0.05em] text-white sm:text-[52px] md:text-[62px] lg:text-[58px] xl:text-[66px]">
+                                {hero?.title?.line1}
+                                <span className="block text-white/96">{hero?.title?.line2}</span>
+                                <span className="mt-2 block text-white/90">
+                                    {hero?.title?.prefix}{" "}
+                                    <span className="bg-gradient-to-r from-sky-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent">
+                                        {hero?.title?.highlight}
+                                    </span>
                                 </span>
-                            </span>
-                        </h1>
+                            </h1>
+                        </FadeUp>
 
-                        <p className="mt-6 max-w-[620px] text-[15px] leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-[17px] lg:max-w-[560px]">
-                            {hero.description}
-                        </p>
+                        <FadeUp delay={0.2}>
+                            <p className="mt-6 max-w-[620px] text-[15px] leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-[17px] lg:max-w-[560px]">
+                                {hero.description}
+                            </p>
+                        </FadeUp>
 
                         {hero?.highlights?.length > 0 && (
                             <div className="mt-6 flex flex-wrap gap-2.5">
                                 {hero.highlights.map((item, index) => (
-                                    <span
-                                        key={`${item}-${index}`}
-                                        className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-slate-300 backdrop-blur-lg sm:text-sm"
-                                        style={{
-                                            animation: `fadeUp .7s ease ${index * 0.08 + 0.15}s both`,
-                                        }}
-                                    >
-                                        {item}
-                                    </span>
+                                    <FadeUp key={`${item}-${index}`} delay={index * 0.08 + 0.15}>
+                                        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-slate-300 backdrop-blur-lg sm:text-sm">
+                                            {item}
+                                        </span>
+                                    </FadeUp>
                                 ))}
                             </div>
                         )}
 
-                        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                            <Button
-                                onClick={() => handleScroll("projects")}
-                                className="w-full cursor-pointer rounded-full px-6 py-3 text-sm font-semibold shadow-[0_14px_40px_rgba(14,165,233,0.2)] sm:w-auto md:px-7"
-                            >
-                                {hero.primaryButton}
-                            </Button>
+                        <FadeUp delay={0.24}>
+                            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                                <Button
+                                    variant="primary"
+                                    fullWidth
+                                    onClick={() => handleScroll("projects")}
+                                    className="cursor-pointer sm:w-auto"
+                                >
+                                    {hero.primaryButton}
+                                </Button>
 
-                            <button
-                                type="button"
-                                onClick={() => handleScroll("contact")}
-                                className="inline-flex w-full cursor-pointer items-center justify-center rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-medium text-white backdrop-blur-xl transition-all duration-300 hover:border-white/25 hover:bg-white/[0.08] sm:w-auto md:px-7"
-                            >
-                                {hero.secondaryButton}
-                            </button>
-                        </div>
+                                <Button
+                                    type="button"
+                                    variant="secondary"
+                                    fullWidth
+                                    onClick={() => handleScroll("contact")}
+                                    className="cursor-pointer sm:w-auto"
+                                >
+                                    {hero.secondaryButton}
+                                </Button>
+                            </div>
+                        </FadeUp>
 
                         {hero?.trustText && (
-                            <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-slate-400">
-                                <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-                                <p>{hero.trustText}</p>
-                            </div>
+                            <FadeUp delay={0.3}>
+                                <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-slate-400">
+                                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+                                    <p>{hero.trustText}</p>
+                                </div>
+                            </FadeUp>
                         )}
 
-                        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-                            {hero?.stats?.map((stat, index) => (
-                                <div
-                                    key={`${stat.label}-${index}`}
-                                    className="rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-sky-400/20 hover:bg-white/[0.05]"
-                                    style={{
-                                        animation: `fadeUp .7s ease ${index * 0.08 + 0.25}s both`,
-                                    }}
-                                >
-                                    <p className="text-xl font-semibold text-white sm:text-2xl">
-                                        {stat.value}
-                                    </p>
-                                    <p className="mt-1 text-xs uppercase tracking-[0.16em] text-slate-400 sm:text-[11px]">
-                                        {stat.label}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
+                        {hero?.stats?.length > 0 && (
+                            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+                                {hero.stats.map((stat, index) => (
+                                    <FadeUp key={`${stat.label}-${index}`} delay={index * 0.08 + 0.25}>
+                                        <StatsCard value={stat.value} label={stat.label} />
+                                    </FadeUp>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     <div
@@ -202,98 +206,87 @@ export default function Hero() {
                         <div className="relative w-full max-w-[460px] sm:max-w-[540px] lg:max-w-[620px]">
                             <div className="absolute -inset-3 rounded-[34px] bg-gradient-to-br from-white/[0.06] to-transparent blur-2xl lg:-inset-4 lg:rounded-[38px]" />
 
-                            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_36px_90px_rgba(0,0,0,0.38)] backdrop-blur-2xl sm:p-4 lg:rounded-[34px] lg:shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.14),transparent_34%)]" />
-                                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                            <ShowcaseImage
+                                src={heroImg}
+                                alt="Hero"
+                                imageClassName="lg:mt-3"
+                                imageStyle={{
+                                    transform: isDesktop
+                                        ? `translate3d(${mousePosition.x * 6}px, ${mousePosition.y * 6 + 6}px, 0)`
+                                        : "translate3d(0px, 0px, 0)",
+                                    transition:
+                                        "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease-out",
+                                    animation: isDesktop
+                                        ? "floatImageDesktop 8s ease-in-out infinite"
+                                        : "floatImageMobile 7s ease-in-out infinite",
+                                }}
+                            >
+                                <ParallaxMouse
+                                    x={mousePosition.x}
+                                    y={mousePosition.y}
+                                    strengthX={4}
+                                    strengthY={4}
+                                    className="absolute left-4 top-4 z-20 hidden max-w-[180px] lg:block"
+                                    style={{ animation: "floatCardA 7.5s ease-in-out infinite" }}
+                                >
+                                    <FloatingInfoCard
+                                        title={hero?.floatingCards?.[0]?.title}
+                                        subtitle={hero?.floatingCards?.[0]?.subtitle}
+                                    />
+                                </ParallaxMouse>
 
-                                <div className="relative rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,17,31,0.88),rgba(10,19,35,0.78))] p-4 sm:p-5 lg:rounded-[28px] lg:p-7">
-                                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:38px_38px] opacity-30" />
+                                <ParallaxMouse
+                                    x={mousePosition.x}
+                                    y={mousePosition.y}
+                                    strengthX={-3}
+                                    strengthY={3}
+                                    className="absolute right-4 top-[20%] z-20 hidden max-w-[175px] lg:block"
+                                    style={{ animation: "floatCardB 8.5s ease-in-out infinite" }}
+                                >
+                                    <FloatingInfoCard
+                                        variant="accent"
+                                        title={hero?.floatingCards?.[2]?.title || "Safe Updates"}
+                                        subtitle={
+                                            hero?.floatingCards?.[2]?.subtitle ||
+                                            "Without breaking your logic"
+                                        }
+                                    />
+                                </ParallaxMouse>
 
-                                    <div
-                                        className="absolute left-4 top-4 z-20 hidden max-w-[180px] rounded-2xl border border-white/10 bg-[#0f172a]/72 px-3.5 py-2.5 text-sm text-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl lg:block"
-                                        style={{
-                                            transform: isDesktop
-                                                ? `translate3d(${mousePosition.x * 4}px, ${mousePosition.y * 4}px, 0)`
-                                                : "translate3d(0px, 0px, 0)",
-                                            transition: "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)",
-                                            animation: "floatCardA 7.5s ease-in-out infinite",
-                                        }}
-                                    >
-                                        <p className="font-semibold">{hero?.floatingCards?.[0]?.title}</p>
-                                        <p className="mt-1 text-xs leading-5 text-slate-300">
-                                            {hero?.floatingCards?.[0]?.subtitle}
-                                        </p>
-                                    </div>
+                                <ParallaxMouse
+                                    x={mousePosition.x}
+                                    y={mousePosition.y}
+                                    strengthX={2.5}
+                                    strengthY={-2.5}
+                                    className="absolute bottom-5 left-5 z-20 hidden lg:block"
+                                    style={{ animation: "floatCardC 9s ease-in-out infinite" }}
+                                >
+                                    <FloatingInfoCard variant="dark" className="rounded-[20px] px-4 py-3">
+                                        <>
+                                            <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                                                Build quality
+                                            </p>
+                                            <p className="mt-2 text-lg font-semibold text-white">
+                                                Premium UI
+                                            </p>
+                                        </>
+                                    </FloatingInfoCard>
+                                </ParallaxMouse>
 
-                                    <div
-                                        className="absolute right-4 top-[20%] z-20 hidden max-w-[175px] rounded-2xl border border-sky-400/20 bg-sky-500/10 px-3.5 py-2.5 text-sm text-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl lg:block"
-                                        style={{
-                                            transform: isDesktop
-                                                ? `translate3d(${mousePosition.x * -3}px, ${mousePosition.y * 3}px, 0)`
-                                                : "translate3d(0px, 0px, 0)",
-                                            transition: "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)",
-                                            animation: "floatCardB 8.5s ease-in-out infinite",
-                                        }}
-                                    >
-                                        <p className="font-semibold">
-                                            {hero?.floatingCards?.[2]?.title || "Safe Updates"}
-                                        </p>
-                                        <p className="mt-1 text-xs leading-5 text-slate-300">
-                                            {hero?.floatingCards?.[2]?.subtitle || "Without breaking your logic"}
-                                        </p>
-                                    </div>
-
-                                    <div
-                                        className="absolute bottom-5 left-5 z-20 hidden rounded-[20px] border border-white/10 bg-[#0f172a]/78 px-4 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl lg:block"
-                                        style={{
-                                            transform: isDesktop
-                                                ? `translate3d(${mousePosition.x * 2.5}px, ${mousePosition.y * -2.5}px, 0)`
-                                                : "translate3d(0px, 0px, 0)",
-                                            transition: "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)",
-                                            animation: "floatCardC 9s ease-in-out infinite",
-                                        }}
-                                    >
-                                        <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
-                                            Build quality
-                                        </p>
-                                        <p className="mt-2 text-lg font-semibold text-white">Premium UI</p>
-                                    </div>
-
-                                    <div
-                                        className="absolute bottom-6 right-5 z-20 hidden max-w-[185px] rounded-2xl border border-white/10 bg-[#0f172a]/72 px-3.5 py-2.5 text-sm text-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl lg:block"
-                                        style={{
-                                            transform: isDesktop
-                                                ? `translate3d(${mousePosition.x * -4}px, ${mousePosition.y * -4}px, 0)`
-                                                : "translate3d(0px, 0px, 0)",
-                                            transition: "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)",
-                                            animation: "floatCardD 8s ease-in-out infinite",
-                                        }}
-                                    >
-                                        <p className="font-semibold">{hero?.floatingCards?.[1]?.title}</p>
-                                        <p className="mt-1 text-xs leading-5 text-slate-300">
-                                            {hero?.floatingCards?.[1]?.subtitle}
-                                        </p>
-                                    </div>
-
-                                    <div className="relative z-10 flex min-h-[320px] items-center justify-center sm:min-h-[360px] lg:min-h-[450px]">
-                                        <img
-                                            src={heroImg}
-                                            alt="Hero"
-                                            className="mx-auto w-full max-w-[320px] drop-shadow-[0_30px_100px_rgba(0,0,0,0.5)] sm:max-w-[380px] lg:mt-3 lg:max-w-[430px]"
-                                            style={{
-                                                transform: isDesktop
-                                                    ? `translate3d(${mousePosition.x * 6}px, ${mousePosition.y * 6 + 6}px, 0)`
-                                                    : "translate3d(0px, 0px, 0)",
-                                                transition:
-                                                    "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease-out",
-                                                animation: isDesktop
-                                                    ? "floatImageDesktop 8s ease-in-out infinite"
-                                                    : "floatImageMobile 7s ease-in-out infinite",
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
+                                <ParallaxMouse
+                                    x={mousePosition.x}
+                                    y={mousePosition.y}
+                                    strengthX={-4}
+                                    strengthY={-4}
+                                    className="absolute bottom-6 right-5 z-20 hidden max-w-[185px] lg:block"
+                                    style={{ animation: "floatCardD 8s ease-in-out infinite" }}
+                                >
+                                    <FloatingInfoCard
+                                        title={hero?.floatingCards?.[1]?.title}
+                                        subtitle={hero?.floatingCards?.[1]?.subtitle}
+                                    />
+                                </ParallaxMouse>
+                            </ShowcaseImage>
                         </div>
                     </div>
                 </div>
@@ -343,17 +336,6 @@ export default function Hero() {
                 @keyframes floatCardD {
                     0%, 100% { margin-top: 0px; margin-left: 0px; }
                     50% { margin-top: 9px; margin-left: -4px; }
-                }
-
-                @keyframes fadeUp {
-                    0% {
-                        opacity: 0;
-                        transform: translateY(18px);
-                    }
-                    100% {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
                 }
             `}</style>
         </section>
