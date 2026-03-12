@@ -1,10 +1,10 @@
-import mock from "../../../data/mock";
-import Container from "../atoms/Container";
-import { HiOutlineArrowRight, HiOutlineGlobeAlt } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
-import SectionReveal, { RevealItem } from "../../shared/SectionReveal";
-import PremiumCard from "../../shared/PremiumCard";
-import GlowButton from "../../shared/GlowButton";
+import { HiOutlineArrowRight, HiOutlineGlobeAlt } from "react-icons/hi";
+import mock from "../../../data/mock";
+import SectionReveal, { RevealItem } from "../animations/SectionReveal";
+import Container from "../atoms/Container";
+import GlowButton from "../atoms/GlowButton";
+import PremiumCard from "../molecules/PremiumCard";
 
 export default function PortfolioSection() {
     const portfolio = mock.portfolioSection || {};

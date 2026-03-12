@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import Button from "../atoms/Button";
-import mock from "../../../data/mock";
-import { HiOutlineMenuAlt3, HiOutlineX, HiOutlineArrowRight } from "react-icons/hi";
+import { Button } from "@/components/ui";
+import mock from "@/data/mock";
+import {
+    HiOutlineMenuAlt3,
+    HiOutlineX,
+    HiOutlineArrowRight,
+} from "react-icons/hi";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +14,7 @@ export default function Navbar() {
     const [manualActive, setManualActive] = useState(null);
 
     const manualScrollTargetRef = useRef(null);
-    const navItems = useMemo(() => mock.navigation.navbar || [], []);
+    const navItems = useMemo(() => mock.navigation?.navbar || [], []);
 
     useEffect(() => {
         const handleScrollState = () => {
@@ -23,12 +27,16 @@ export default function Navbar() {
 
         const handleActiveSection = () => {
             if (manualActive && manualScrollTargetRef.current) {
-                const targetElement = document.getElementById(manualScrollTargetRef.current);
+                const targetElement = document.getElementById(
+                    manualScrollTargetRef.current
+                );
 
                 if (targetElement) {
                     const navbarOffset = 90;
                     const targetTop =
-                        targetElement.getBoundingClientRect().top + window.scrollY - navbarOffset;
+                        targetElement.getBoundingClientRect().top +
+                        window.scrollY -
+                        navbarOffset;
 
                     if (Math.abs(window.scrollY - targetTop) <= 8) {
                         setActiveSection(manualScrollTargetRef.current);
@@ -107,29 +115,29 @@ export default function Navbar() {
 
     return (
         <>
-            <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10">
+            <header className="fixed left-0 top-0 z-50 w-full">
                 <div
-                    className={`w-full transition-all duration-300 ${isScrolled
-                            ? "bg-[#020617]/58 shadow-[0_18px_50px_rgba(2,6,23,0.26)] backdrop-blur-2xl"
+                    className={`transition-all duration-300 ${isScrolled
+                            ? "border-b border-white/10 bg-[#020617]/70 shadow-[0_18px_50px_rgba(2,6,23,0.26)] backdrop-blur-2xl"
                             : "bg-transparent"
                         }`}
                 >
-                    <div className="relative mx-auto flex h-[74px] w-full max-w-[1280px] items-center justify-between px-4 md:px-6 lg:px-8">
+                    <div className="mx-auto flex h-[74px] w-full max-w-[1280px] items-center justify-between px-4 sm:px-5 md:px-6 lg:px-8">
                         <button
                             type="button"
                             onClick={() => handleScroll("#home")}
-                            className="group flex cursor-pointer items-center gap-3"
+                            className="group flex shrink-0 cursor-pointer items-center gap-3"
                             aria-label="Go to home"
                         >
-                            <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-sm font-bold text-white backdrop-blur-xl transition duration-300 group-hover:border-sky-400/30">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-sm font-bold text-white backdrop-blur-xl transition duration-300 group-hover:border-sky-400/30 sm:h-11 sm:w-11">
                                 {mock.brand.shortName?.charAt(0)}
                             </div>
 
                             <div className="text-left leading-tight">
-                                <p className="text-base font-bold text-white">
+                                <p className="text-sm font-bold text-white sm:text-base">
                                     {mock.brand.shortName}
                                 </p>
-                                <p className="text-[10px] tracking-[0.28em] text-sky-400">
+                                <p className="text-[9px] tracking-[0.24em] text-sky-400 sm:text-[10px] sm:tracking-[0.28em]">
                                     {mock.brand.highlightName}
                                 </p>
                             </div>
@@ -161,8 +169,9 @@ export default function Navbar() {
                         <div className="hidden lg:flex lg:items-center">
                             {mock.navigation.showHireButton && (
                                 <Button
+                                    variant="primary"
                                     onClick={() => handleScroll("#contact")}
-                                    className="rounded-full px-6 py-3 text-sm font-semibold shadow-[0_18px_45px_rgba(14,165,233,0.24)] cursor-pointer"
+                                    className="cursor-pointer"
                                 >
                                     <span className="inline-flex items-center gap-2">
                                         {mock.navigation.ctaButton}
@@ -176,6 +185,7 @@ export default function Navbar() {
                             type="button"
                             onClick={() => setIsOpen((prev) => !prev)}
                             aria-label={mock.navigation.mobileMenuLabel}
+                            aria-expanded={isOpen}
                             className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.05] text-white backdrop-blur-xl transition duration-300 hover:border-sky-400/30 lg:hidden"
                         >
                             {isOpen ? (
@@ -189,7 +199,9 @@ export default function Navbar() {
             </header>
 
             <div
-                className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isOpen ? "pointer-events-auto visible" : "pointer-events-none invisible"
+                className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isOpen
+                        ? "pointer-events-auto visible opacity-100"
+                        : "pointer-events-none invisible opacity-0"
                     }`}
             >
                 <div
@@ -199,24 +211,24 @@ export default function Navbar() {
                 />
 
                 <div
-                    className={`absolute right-0 top-0 flex h-full w-full max-w-[360px] flex-col border-l border-white/10 bg-[#020617]/95 px-6 pb-8 pt-24 shadow-[0_20px_80px_rgba(2,6,23,0.5)] backdrop-blur-2xl transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
+                    className={`absolute right-0 top-0 flex h-full w-full max-w-[380px] flex-col border-l border-white/10 bg-[#020617]/95 px-4 pb-6 pt-20 shadow-[0_20px_80px_rgba(2,6,23,0.5)] backdrop-blur-2xl transition-transform duration-300 sm:px-5 sm:pb-8 sm:pt-24 ${isOpen ? "translate-x-0" : "translate-x-full"
                         }`}
                 >
                     <div className="pointer-events-none absolute -top-10 right-0 h-48 w-48 rounded-full bg-sky-500/15 blur-[100px]" />
                     <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-violet-500/15 blur-[100px]" />
 
-                    <div className="relative z-10">
-                        <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-xl">
+                    <div className="relative z-10 flex h-full flex-col">
+                        <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-3 backdrop-blur-xl sm:p-4">
                             <div className="flex items-center gap-3 rounded-2xl bg-white/[0.03] px-3 py-3">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500/20 to-violet-500/20 text-sm font-bold text-white">
                                     {mock.brand.shortName?.charAt(0)}
                                 </div>
 
                                 <div className="leading-tight">
-                                    <p className="text-base font-bold text-white">
+                                    <p className="text-sm font-bold text-white sm:text-base">
                                         {mock.brand.shortName}
                                     </p>
-                                    <p className="text-[10px] tracking-[0.28em] text-sky-400">
+                                    <p className="text-[9px] tracking-[0.24em] text-sky-400 sm:text-[10px] sm:tracking-[0.28em]">
                                         {mock.brand.highlightName}
                                     </p>
                                 </div>
@@ -250,8 +262,10 @@ export default function Navbar() {
                             {mock.navigation.showHireButton && (
                                 <div className="mt-5">
                                     <Button
+                                        variant="primary"
+                                        fullWidth
                                         onClick={() => handleScroll("#contact")}
-                                        className="w-full rounded-2xl py-3 text-sm font-semibold cursor-pointer"
+                                        className="cursor-pointer rounded-2xl"
                                     >
                                         <span className="inline-flex items-center gap-2">
                                             {mock.navigation.ctaButton}

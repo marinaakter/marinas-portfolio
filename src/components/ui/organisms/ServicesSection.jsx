@@ -1,17 +1,17 @@
-import mock from "../../../data/mock";
-import Container from "../atoms/Container";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import {
+    HiOutlineBugAnt,
     HiOutlineCodeBracket,
     HiOutlineGlobeAlt,
+    HiOutlinePaintBrush,
     HiOutlineWindow,
     HiOutlineWrenchScrewdriver,
-    HiOutlinePaintBrush,
-    HiOutlineBugAnt,
 } from "react-icons/hi2";
-import SectionReveal from "../../shared/SectionReveal";
-import PremiumCard from "../../shared/PremiumCard";
-import GlowButton from "../../shared/GlowButton";
+import mock from "../../../data/mock";
+import SectionReveal from "../animations/SectionReveal";
+import Container from "../atoms/Container";
+import GlowButton from "../atoms/GlowButton";
+import PremiumCard from "../molecules/PremiumCard";
 
 export default function ServicesSection() {
     const services = mock.homeServices || {};
