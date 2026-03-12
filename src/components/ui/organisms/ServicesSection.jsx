@@ -9,9 +9,9 @@ import {
     HiOutlinePaintBrush,
     HiOutlineBugAnt,
 } from "react-icons/hi2";
-import SectionReveal from "../shared/SectionReveal";
-import PremiumCard from "../shared/PremiumCard";
-import GlowButton from "../shared/GlowButton";
+import SectionReveal from "../../shared/SectionReveal";
+import PremiumCard from "../../shared/PremiumCard";
+import GlowButton from "../../shared/GlowButton";
 
 export default function ServicesSection() {
     const services = mock.homeServices || {};

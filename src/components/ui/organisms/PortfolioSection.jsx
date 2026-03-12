@@ -2,7 +2,7 @@ import mock from "../../../data/mock";
 import Container from "../atoms/Container";
 import { HiOutlineArrowRight, HiOutlineGlobeAlt } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
-import SectionReveal from "../../shared/SectionReveal";
+import SectionReveal, { RevealItem } from "../../shared/SectionReveal";
 import PremiumCard from "../../shared/PremiumCard";
 import GlowButton from "../../shared/GlowButton";
 
@@ -38,21 +38,31 @@ export default function PortfolioSection() {
 
             <Container>
                 <div className="relative z-10">
-                    <SectionReveal className="mx-auto max-w-[860px] text-center">
+                    <SectionReveal
+                        className="mx-auto max-w-[860px] text-center"
+                        staggerChildren={0.12}
+                        delayChildren={0.05}
+                    >
                         {portfolio?.badge && (
-                            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl">
-                                <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)]" />
-                                <span>{portfolio.badge}</span>
-                            </div>
+                            <RevealItem>
+                                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-2 text-sm text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl">
+                                    <span className="h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)]" />
+                                    <span>{portfolio.badge}</span>
+                                </div>
+                            </RevealItem>
                         )}
 
-                        <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl md:text-5xl lg:text-[54px]">
-                            {portfolio?.title}
-                        </h2>
+                        <RevealItem>
+                            <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-4xl md:text-5xl lg:text-[54px]">
+                                {portfolio?.title}
+                            </h2>
+                        </RevealItem>
 
-                        <p className="mx-auto mt-4 max-w-[720px] text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-[17px]">
-                            {portfolio?.description}
-                        </p>
+                        <RevealItem>
+                            <p className="mx-auto mt-4 max-w-[720px] text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 md:text-[17px]">
+                                {portfolio?.description}
+                            </p>
+                        </RevealItem>
                     </SectionReveal>
 
                     {!!projects.length && (
@@ -60,9 +70,10 @@ export default function PortfolioSection() {
                             {projects.map((project, index) => (
                                 <SectionReveal
                                     key={project?.id || project?.slug || `${project?.title}-${index}`}
-                                    delay={index * 0.06}
+                                    delay={index * 0.08}
+                                    y={30}
                                 >
-                                    <PremiumCard className="p-3" glow={index % 2 === 0 ? "sky" : "violet"}>
+                                    <PremiumCard className="group p-3" glow={index % 2 === 0 ? "sky" : "violet"}>
                                         <div className="overflow-hidden rounded-[22px] border border-white/10 bg-[#08111f]">
                                             <div className="relative aspect-[16/10] overflow-hidden">
                                                 <img
@@ -99,7 +110,7 @@ export default function PortfolioSection() {
                                                         </p>
                                                     </div>
 
-                                                    <div className="hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-sky-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                                                    <div className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-sky-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-transform duration-300 group-hover:translate-x-1 sm:flex">
                                                         <HiOutlineArrowRight className="text-[20px]" />
                                                     </div>
                                                 </div>
@@ -169,7 +180,7 @@ export default function PortfolioSection() {
                     )}
 
                     {portfolio?.button && (
-                        <SectionReveal delay={0.18} className="mt-10 flex justify-center">
+                        <SectionReveal delay={0.2} className="mt-10 flex justify-center">
                             <GlowButton
                                 variant="secondary"
                                 onClick={() => handleScroll("contact")}

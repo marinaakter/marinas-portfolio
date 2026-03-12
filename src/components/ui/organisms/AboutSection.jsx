@@ -14,9 +14,9 @@ import {
 } from "react-icons/hi2";
 import { FaGithub, FaFigma, FaFire } from "react-icons/fa";
 import { SiPostman, SiMongodb, SiVercel, SiNetlify } from "react-icons/si";
-import SectionReveal from "../shared/SectionReveal";
-import PremiumCard from "../shared/PremiumCard";
-import GlowButton from "../shared/GlowButton";
+import SectionReveal from "../../shared/SectionReveal";
+import PremiumCard from "../../shared/PremiumCard";
+import GlowButton from "../../shared/GlowButton";
 
 export default function AboutSection() {
     const overview = mock.aboutOverview || {};
