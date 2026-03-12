@@ -56,7 +56,7 @@ const mock = {
   socialLinks: [
     { name: "GitHub", href: "https://github.com/marinaakter" },
     { name: "LinkedIn", href: "https://linkedin.com/" },
-    { name: "Facebook", href: "https://facebook.com/" },
+    { name: "Facebook", href: "https://facebook.com/marinaakter.01" },
     { name: "Instagram", href: "https://instagram.com/" },
   ],
 

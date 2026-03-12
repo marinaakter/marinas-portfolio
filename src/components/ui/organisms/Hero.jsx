@@ -55,24 +55,23 @@ export default function Hero() {
     return (
         <section
             id="home"
-            className="relative overflow-hidden bg-[#020617] pb-16 pt-[104px] text-white sm:pt-[108px] md:pb-24 md:pt-[112px] lg:pb-16 lg:pt-[122px] xl:pt-[128px]"
+            className="relative overflow-hidden pb-16 pt-[104px] text-white sm:pt-[108px] md:pb-24 md:pt-[112px] lg:pb-16 lg:pt-[122px] xl:pt-[128px]"
         >
             <div
                 className="pointer-events-none absolute inset-0 z-0 transition-transform duration-500"
                 style={{
                     background: isDesktop
-                        ? `radial-gradient(700px circle at ${52 + mousePosition.x * 8}% ${18 + mousePosition.y * 8}%, rgba(56,189,248,0.14), transparent 42%),
-                           radial-gradient(460px circle at ${18 + mousePosition.x * 7}% ${20 + mousePosition.y * 7}%, rgba(168,85,247,0.10), transparent 36%),
-                           radial-gradient(420px circle at ${84 + mousePosition.x * -7}% ${24 + mousePosition.y * 7}%, rgba(34,211,238,0.08), transparent 38%)`
-                        : `radial-gradient(420px circle at 50% 14%, rgba(59,130,246,0.12), transparent 46%),
-                           radial-gradient(280px circle at 18% 18%, rgba(168,85,247,0.10), transparent 38%)`,
+                        ? `radial-gradient(700px circle at ${52 + mousePosition.x * 8}% ${18 + mousePosition.y * 8}%, rgba(56,189,248,0.10), transparent 42%),
+                           radial-gradient(460px circle at ${18 + mousePosition.x * 7}% ${20 + mousePosition.y * 7}%, rgba(168,85,247,0.08), transparent 36%),
+                           radial-gradient(420px circle at ${84 + mousePosition.x * -7}% ${24 + mousePosition.y * 7}%, rgba(34,211,238,0.06), transparent 38%)`
+                        : `radial-gradient(420px circle at 50% 14%, rgba(59,130,246,0.10), transparent 46%),
+                           radial-gradient(280px circle at 18% 18%, rgba(168,85,247,0.08), transparent 38%)`,
                 }}
             />
 
-            <div className="pointer-events-none absolute inset-0 opacity-[0.06] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:56px_56px]" />
-            <div className="absolute -left-20 top-8 h-[220px] w-[220px] rounded-full bg-fuchsia-600/18 blur-[100px] md:h-[300px] md:w-[300px] md:blur-[120px]" />
-            <div className="absolute right-0 top-12 h-[220px] w-[220px] rounded-full bg-sky-500/14 blur-[100px] md:h-[280px] md:w-[280px] md:blur-[120px]" />
-            <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[100px] md:h-[260px] md:w-[260px] md:blur-[120px]" />
+            <div className="absolute -left-20 top-8 h-[220px] w-[220px] rounded-full bg-fuchsia-600/14 blur-[100px] md:h-[300px] md:w-[300px] md:blur-[120px]" />
+            <div className="absolute right-0 top-12 h-[220px] w-[220px] rounded-full bg-sky-500/12 blur-[100px] md:h-[280px] md:w-[280px] md:blur-[120px]" />
+            <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-500/8 blur-[100px] md:h-[260px] md:w-[260px] md:blur-[120px]" />
 
             <div
                 className="absolute left-[8%] top-[18%] hidden h-3.5 w-3.5 rounded-full bg-sky-400/60 blur-[1px] lg:block"
@@ -150,7 +149,7 @@ export default function Hero() {
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                             <Button
                                 onClick={() => handleScroll("projects")}
-                                className="w-full rounded-full px-6 py-3 text-sm font-semibold shadow-[0_14px_40px_rgba(14,165,233,0.2)] sm:w-auto md:px-7 cursor-pointer"
+                                className="w-full cursor-pointer rounded-full px-6 py-3 text-sm font-semibold shadow-[0_14px_40px_rgba(14,165,233,0.2)] sm:w-auto md:px-7"
                             >
                                 {hero.primaryButton}
                             </Button>
@@ -207,7 +206,7 @@ export default function Hero() {
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.14),transparent_34%)]" />
                                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-                                <div className="relative rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,#07111f,#0a1323)] p-4 sm:p-5 lg:rounded-[28px] lg:p-7">
+                                <div className="relative rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(7,17,31,0.88),rgba(10,19,35,0.78))] p-4 sm:p-5 lg:rounded-[28px] lg:p-7">
                                     <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:38px_38px] opacity-30" />
 
                                     <div
@@ -299,8 +298,6 @@ export default function Hero() {
                     </div>
                 </div>
             </Container>
-
-            <div className="pointer-events-none absolute bottom-0 left-0 z-20 h-10 w-full bg-gradient-to-b from-transparent via-[#020617]/20 to-[#0f172a] md:h-12 lg:h-14" />
 
             <style>{`
                 @keyframes floatDotA {

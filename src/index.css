@@ -72,4 +72,41 @@
   .glass-dark {
     @apply border border-white/10 bg-slate-950/60 backdrop-blur-xl;
   }
+
+  /* NEW: full landing page reusable background */
+  .landing-page-bg {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+      radial-gradient(circle at top right, rgba(168, 85, 247, 0.16), transparent 30%),
+      radial-gradient(circle at bottom center, rgba(59, 130, 246, 0.12), transparent 35%),
+      #020617;
+  }
+
+  .landing-page-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.65));
+    pointer-events: none;
+  }
+
+  .landing-page-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(to bottom, rgba(2, 6, 23, 0.25), rgba(2, 6, 23, 0.75)),
+      radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.12), transparent 20%),
+      radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.12), transparent 22%);
+    pointer-events: none;
+  }
 }
