@@ -5,13 +5,13 @@ import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
 const getSocialIcon = (name) => {
     switch (name.toLowerCase()) {
         case "github":
-            return <FaGithub size={18} />;
+            return <FaGithub size={17} />;
         case "linkedin":
-            return <FaLinkedin size={18} />;
+            return <FaLinkedin size={17} />;
         case "facebook":
-            return <FaFacebook size={18} />;
+            return <FaFacebook size={17} />;
         case "instagram":
-            return <FaInstagram size={18} />;
+            return <FaInstagram size={17} />;
         default:
             return name[0];
     }
@@ -37,30 +37,29 @@ export default function Footer() {
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-fuchsia-500/5 blur-[140px]" />
 
             <Container>
-                <div className="relative z-10 py-20 md:py-24">
-                    <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-[1.2fr_0.7fr_0.7fr_1fr]">
-                        {/* Brand */}
+                <div className="relative z-10 py-14 md:py-16">
+                    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-[1.15fr_0.7fr_0.7fr_0.95fr]">
                         <div>
-                            <div className="inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 backdrop-blur-xl">
-                                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500/20 to-violet-500/20 text-sm font-bold text-white">
+                            <div className="inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 backdrop-blur-xl">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500/20 to-violet-500/20 text-sm font-bold text-white">
                                     {mock.brand.shortName?.charAt(0)}
                                 </div>
 
                                 <div className="leading-tight">
-                                    <p className="text-lg font-bold text-white">
+                                    <p className="text-base font-bold text-white">
                                         {mock.brand.shortName}
                                     </p>
-                                    <p className="text-[11px] tracking-[0.28em] text-sky-400">
+                                    <p className="text-[10px] tracking-[0.24em] text-sky-400">
                                         {mock.brand.highlightName}
                                     </p>
                                 </div>
                             </div>
 
-                            <p className="mt-6 max-w-sm text-sm leading-7 text-slate-300">
+                            <p className="mt-4 max-w-sm text-sm leading-6 text-slate-300">
                                 {mock.brand.description}
                             </p>
 
-                            <div className="mt-6 flex flex-wrap gap-3">
+                            <div className="mt-5 flex flex-wrap gap-2.5">
                                 {mock.socialLinks.map((item) => (
                                     <a
                                         key={item.name}
@@ -68,7 +67,7 @@ export default function Footer() {
                                         target="_blank"
                                         rel="noreferrer"
                                         aria-label={item.name}
-                                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition duration-300 hover:-translate-y-1 hover:border-sky-500/40 hover:text-sky-400"
+                                        className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition duration-300 hover:-translate-y-1 hover:border-sky-500/40 hover:text-sky-400"
                                     >
                                         {getSocialIcon(item.name)}
                                     </a>
@@ -76,13 +75,12 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        {/* Pages */}
                         <div>
-                            <h3 className="text-lg font-semibold text-white">
+                            <h3 className="text-base font-semibold text-white">
                                 {mock.footer.productTitle}
                             </h3>
 
-                            <ul className="mt-6 space-y-4 text-sm text-slate-300">
+                            <ul className="mt-4 space-y-3 text-sm text-slate-300">
                                 {mock.navigation.footerProduct.map((item) => (
                                     <li key={item.name}>
                                         <button
@@ -97,13 +95,12 @@ export default function Footer() {
                             </ul>
                         </div>
 
-                        {/* Information */}
                         <div>
-                            <h3 className="text-lg font-semibold text-white">
+                            <h3 className="text-base font-semibold text-white">
                                 {mock.footer.companyTitle}
                             </h3>
 
-                            <ul className="mt-6 space-y-4 text-sm text-slate-300">
+                            <ul className="mt-4 space-y-3 text-sm text-slate-300">
                                 {mock.navigation.footerCompany.map((item) => (
                                     <li key={item.name}>
                                         {item.path.startsWith("#") ? (
@@ -127,27 +124,26 @@ export default function Footer() {
                             </ul>
                         </div>
 
-                        {/* Newsletter */}
                         <div>
-                            <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl md:p-6">
-                                <h3 className="text-lg font-semibold text-white">
+                            <div className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4 backdrop-blur-xl md:p-5">
+                                <h3 className="text-base font-semibold text-white">
                                     {mock.footer.newsletterTitle}
                                 </h3>
 
-                                <p className="mt-4 text-sm leading-7 text-slate-300">
+                                <p className="mt-3 text-sm leading-6 text-slate-300">
                                     {mock.footer.newsletterDescription}
                                 </p>
 
-                                <form className="mt-6 flex flex-col gap-3 sm:flex-row xl:flex-col">
+                                <form className="mt-4 flex flex-col gap-2.5">
                                     <input
                                         type="email"
                                         placeholder={mock.footer.newsletterPlaceholder}
-                                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-sky-500"
+                                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-sky-500"
                                     />
 
                                     <button
                                         type="submit"
-                                        className="rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                                        className="rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
                                     >
                                         {mock.footer.newsletterButton}
                                     </button>
@@ -156,10 +152,10 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-center text-sm text-slate-400 md:flex-row md:text-left">
+                    <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-5 text-center text-sm text-slate-400 md:flex-row md:text-left">
                         <p>{mock.brand.copyright}</p>
 
-                        <div className="flex flex-wrap items-center justify-center gap-5 md:justify-end">
+                        <div className="flex flex-wrap items-center justify-center gap-4 md:justify-end">
                             {mock.navigation.footerBottom.map((item) => (
                                 <a
                                     key={item.name}
