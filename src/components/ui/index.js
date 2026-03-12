@@ -30,3 +30,5 @@ export { default as ServicesSection } from "./organisms/ServicesSection";
 export { default as PortfolioSection } from "./organisms/PortfolioSection";
 export { default as TestimonialsSection } from "./organisms/TestimonialsSection";
 export { default as CTASection } from "./organisms/CTASection";
+
+export { default as PageBackground } from "./PageBackground";

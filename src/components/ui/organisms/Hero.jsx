@@ -64,21 +64,11 @@ export default function Hero() {
             id="home"
             className="relative overflow-hidden pb-16 pt-[104px] text-white sm:pt-[108px] md:pb-24 md:pt-[112px] lg:pb-16 lg:pt-[122px] xl:pt-[128px]"
         >
-            <div
-                className="pointer-events-none absolute inset-0 z-0 transition-transform duration-500"
-                style={{
-                    background: isDesktop
-                        ? `radial-gradient(700px circle at ${52 + mousePosition.x * 8}% ${18 + mousePosition.y * 8}%, rgba(56,189,248,0.10), transparent 42%),
-                           radial-gradient(460px circle at ${18 + mousePosition.x * 7}% ${20 + mousePosition.y * 7}%, rgba(168,85,247,0.08), transparent 36%),
-                           radial-gradient(420px circle at ${84 + mousePosition.x * -7}% ${24 + mousePosition.y * 7}%, rgba(34,211,238,0.06), transparent 38%)`
-                        : `radial-gradient(420px circle at 50% 14%, rgba(59,130,246,0.10), transparent 46%),
-                           radial-gradient(280px circle at 18% 18%, rgba(168,85,247,0.08), transparent 38%)`,
-                }}
-            />
-
-            <div className="absolute -left-20 top-8 h-[220px] w-[220px] rounded-full bg-fuchsia-600/14 blur-[100px] md:h-[300px] md:w-[300px] md:blur-[120px]" />
-            <div className="absolute right-0 top-12 h-[220px] w-[220px] rounded-full bg-sky-500/12 blur-[100px] md:h-[280px] md:w-[280px] md:blur-[120px]" />
-            <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-500/8 blur-[100px] md:h-[260px] md:w-[260px] md:blur-[120px]" />
+            <div className="pointer-events-none absolute inset-0 z-0">
+                <div className="absolute -left-20 top-10 h-[220px] w-[220px] rounded-full bg-sky-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
+                <div className="absolute right-0 top-24 h-[220px] w-[220px] rounded-full bg-violet-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
+                <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-fuchsia-500/8 blur-[120px] md:h-[300px] md:w-[300px]" />
+            </div>
 
             <ParallaxMouse
                 x={mousePosition.x}
@@ -198,10 +188,8 @@ export default function Hero() {
                         className={`relative flex items-center justify-center transition-all duration-[1200ms] ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                             }`}
                     >
-                        <div className="absolute inset-x-8 top-12 h-[260px] rounded-full bg-sky-500/12 blur-[90px] sm:h-[320px]" />
-                        <div className="absolute bottom-8 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-500/12 blur-[90px] md:h-[260px] md:w-[260px]" />
-                        <div className="absolute right-[12%] top-[10%] hidden h-[280px] w-[280px] rounded-full bg-sky-500/12 blur-[110px] lg:block" />
-                        <div className="absolute bottom-[10%] left-[16%] hidden h-[240px] w-[240px] rounded-full bg-violet-500/12 blur-[110px] lg:block" />
+                        <div className="absolute inset-x-8 top-12 h-[260px] rounded-full bg-sky-500/10 blur-[100px] sm:h-[320px]" />
+                        <div className="absolute bottom-8 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[100px] md:h-[260px] md:w-[260px]" />
 
                         <div className="relative w-full max-w-[460px] sm:max-w-[540px] lg:max-w-[620px]">
                             <div className="absolute -inset-3 rounded-[34px] bg-gradient-to-br from-white/[0.06] to-transparent blur-2xl lg:-inset-4 lg:rounded-[38px]" />

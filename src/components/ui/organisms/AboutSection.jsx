@@ -132,10 +132,9 @@ export default function AboutSection() {
                     }`}
             >
                 <div className="pointer-events-none absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:56px_56px] opacity-[0.05]" />
-                    <div className="absolute -left-24 top-6 h-[220px] w-[220px] rounded-full bg-fuchsia-600/12 blur-[120px] md:h-[320px] md:w-[320px]" />
-                    <div className="absolute right-0 top-16 h-[220px] w-[220px] rounded-full bg-sky-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
-                    <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
+                    <div className="absolute -left-20 top-10 h-[220px] w-[220px] rounded-full bg-sky-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
+                    <div className="absolute right-0 top-24 h-[220px] w-[220px] rounded-full bg-violet-500/10 blur-[120px] md:h-[300px] md:w-[300px]" />
+                    <div className="absolute bottom-0 left-1/2 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-fuchsia-500/8 blur-[120px] md:h-[300px] md:w-[300px]" />
                 </div>
 
                 <SectionHeader
@@ -148,7 +147,7 @@ export default function AboutSection() {
                 <div className="mt-12 grid gap-6 xl:grid-cols-[1.02fr_0.98fr] xl:gap-8">
                     <Reveal delay={0.05}>
                         <PrimaryCard className="h-full p-3 sm:p-4 lg:p-5">
-                            <div className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,#07111f,#0a1323)] p-5 sm:p-6 lg:p-7">
+                            <div className="rounded-[24px] border border-white/10 bg-gradient-to-b from-[#07111f] via-[#0a1323] to-[#050b17] p-5 sm:p-6 lg:p-7">
                                 <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-sky-300">
                                     <span className="h-2 w-2 rounded-full bg-sky-400" />
                                     {about?.hero?.badge || about?.title || "About"}
@@ -223,7 +222,7 @@ export default function AboutSection() {
                         <Reveal delay={0.1}>
                             <PrimaryCard className="p-3 sm:p-4">
                                 <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-gradient-to-b from-[#07111f] via-[#0a1323] to-[#050b17] px-5 pb-6 pt-12 sm:px-6 sm:pb-7 sm:pt-14 lg:px-7 lg:pb-8 lg:pt-16">
-                                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:38px_38px] opacity-15" />
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.14),transparent_34%)]" />
                                     <div className="absolute -top-24 left-1/2 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-sky-500/10 blur-[120px]" />
                                     <div className="absolute bottom-0 right-[-40px] h-[180px] w-[180px] rounded-full bg-violet-500/10 blur-[100px]" />
 
